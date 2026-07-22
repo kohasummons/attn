@@ -1,39 +1,88 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "motion/react";
 
-const logoGroups = [
-  { src: "/v2/logo_group_1.png", alt: "Logo group 1" },
-  { src: "/v2/Logos_Group_X_02.png", alt: "Logo group 2" },
-  { src: "/v2/logo_group_3.png", alt: "Logo group 3" },
-  { src: "/v2/logo_group_4.png", alt: "Logo group 4" },
-  { src: "/v2/Logos_Group_X_03.png", alt: "Logo group 5" },
-  { src: "/v2/logo_group_6.png", alt: "Logo group 6" },
+import { Marquee } from "@/components/ui/marquee";
+
+type Brand = {
+  name: string;
+  logo?: { src: string; width: number; height: number };
+};
+
+const brands: Brand[] = [
+  { name: "Meta", logo: { src: "/v2/brands/meta.png", width: 791, height: 160 } },
+  {
+    name: "Google Labs",
+    logo: { src: "/v2/brands/google-labs.png", width: 996, height: 160 },
+  },
+  { name: "Higgsfield" },
+  { name: "Kimi", logo: { src: "/v2/brands/kimi.png", width: 522, height: 160 } },
+  {
+    name: "Relume",
+    logo: { src: "/v2/brands/relume.png", width: 525, height: 160 },
+  },
+  {
+    name: "Gamma",
+    logo: { src: "/v2/brands/gamma.png", width: 532, height: 160 },
+  },
+  {
+    name: "Speak French Fast",
+    logo: {
+      src: "/v2/brands/speak-french-fast.png",
+      width: 252,
+      height: 160,
+    },
+  },
+  {
+    name: "Abacus",
+    logo: { src: "/v2/brands/abacus.png", width: 965, height: 160 },
+  },
+  {
+    name: "Red Bull",
+    logo: { src: "/v2/brands/red-bull.png", width: 239, height: 160 },
+  },
+  { name: "Liners" },
+  {
+    name: "Recall",
+    logo: { src: "/v2/brands/recall.png", width: 776, height: 160 },
+  },
+  {
+    name: "KaneAI",
+    logo: { src: "/v2/brands/kaneai.png", width: 1020, height: 160 },
+  },
 ];
 
 export function LogoMarquee() {
-  const doubled = [...logoGroups, ...logoGroups];
-
   return (
-    <div className="w-full overflow-hidden">
-      <motion.div
-        className="flex w-max items-center"
-        animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 100, repeat: Infinity, ease: "linear" }}
+    <div className="flex border-y border-[#e4e3de] bg-background">
+      <div className="flex shrink-0 items-center border-r border-[#e4e3de] px-6 md:px-10">
+        <span className="text-[13px] font-medium tracking-[-0.02em] whitespace-nowrap text-[#8a8a86] md:text-[14px]">
+          Trusted by
+        </span>
+      </div>
+      <Marquee
+        repeat={2}
+        className="min-w-0 flex-1 p-0 [--duration:90s] [--gap:0px]"
       >
-        {doubled.map((logo, i) => (
-          <Image
-            key={i}
-            src={logo.src}
-            alt={logo.alt}
-            width={1200}
-            height={300}
-            className="h-[100px] w-auto select-none"
-            priority={i < logoGroups.length}
-          />
+        {brands.map((brand) => (
+          <div
+            key={brand.name}
+            className="flex size-[160px] shrink-0 items-center justify-center border-l border-[#e4e3de] px-4 md:size-[272px] md:px-6"
+          >
+            {brand.logo ? (
+              <Image
+                src={brand.logo.src}
+                alt={brand.name}
+                width={brand.logo.width}
+                height={brand.logo.height}
+                className="h-auto max-h-[34px] w-auto max-w-[110px] object-contain select-none md:max-h-[46px] md:max-w-[160px]"
+              />
+            ) : (
+              <span className="text-[16px] font-medium tracking-[-0.02em] whitespace-nowrap text-[#8a8a86] md:text-[22px]">
+                {brand.name}
+              </span>
+            )}
+          </div>
         ))}
-      </motion.div>
+      </Marquee>
     </div>
   );
 }

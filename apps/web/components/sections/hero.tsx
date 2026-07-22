@@ -26,7 +26,7 @@ export function Hero() {
         </p>
 
         <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
-          <ArrowButton variant="dark">Join the Community</ArrowButton>
+          <ArrowButton variant="dark">Join the AI University</ArrowButton>
           <ArrowButton variant="light" showArrow={false}>
             Train your team
           </ArrowButton>

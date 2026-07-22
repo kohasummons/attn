@@ -4,8 +4,8 @@ import { CaretDown } from "@/components/ui/caret-down";
 import { cn } from "@/lib/utils";
 
 const variantClasses = {
-  dark: "bg-[#0a0a0a] text-[#fdfdfd] hover:bg-[#1a1a1a]",
-  light: "bg-white text-black hover:bg-white/90",
+  dark: "bg-[#ff4100] text-[#fdfdfd] hover:bg-white hover:text-black",
+  light: "text-white border border-white hover:bg-white hover:text-black",
   ghost: "bg-transparent text-foreground hover:bg-foreground/5",
 } as const;
 

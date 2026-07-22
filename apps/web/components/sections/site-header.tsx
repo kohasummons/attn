@@ -1,35 +1,153 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
-import { CaretDown } from "@/components/ui/caret-down";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
 
-const navItems = [
-  { label: "Services", hasMenu: true },
-  { label: "Courses", hasMenu: true },
-  { label: "Case Studies", hasMenu: true },
-  { label: "Resources", hasMenu: false },
-  { label: "Intelligence", hasMenu: false },
+type MenuItem = {
+  title: string;
+  description: string;
+  href: string;
+};
+
+const servicesMenu: MenuItem[] = [
+  {
+    title: "Software building",
+    description: "Ship production-ready AI applications and platforms.",
+    href: "/v2/services/software-building",
+  },
+  {
+    title: "Workflow automation",
+    description:
+      "Build the agents and automations that kill your team's repetitive work.",
+    href: "/v2/services/workflow-automation",
+  },
+  {
+    title: "AI transformation planning",
+    description:
+      "Build a clear roadmap and training for AI across your company.",
+    href: "/v2/services/ai-transformation-planning",
+  },
+  {
+    title: "AI strategy support",
+    description:
+      "Get integrated experts driving your rollout from plan to launch.",
+    href: "/v2/services/ai-strategy-support",
+  },
 ];
+
+const universityMenu: MenuItem[] = [
+  {
+    title: "Courses",
+    description: "Browse the courses we offer.",
+    href: "/v2/courses",
+  },
+  {
+    title: "Membership",
+    description:
+      "Join Attention University, our full learning platform and community.",
+    href: "/v2/membership",
+  },
+];
+
+const resourcesMenu: MenuItem[] = [
+  {
+    title: "Weekends of AI",
+    description: "Free live AI training sessions.",
+    href: "/v2/weekends-of-ai",
+  },
+  {
+    title: "Playbooks, guides and tools",
+    description: "Practical resources for putting AI to work.",
+    href: "/v2/playbooks",
+  },
+  {
+    title: "AI archetype",
+    description: "Take the quiz to find your AI archetype.",
+    href: "/v2/ai-archetype",
+  },
+  {
+    title: "Blog",
+    description: "Insights and updates from Attention Factory.",
+    href: "/v2/blog",
+  },
+];
+
+const dropdowns = [
+  { label: "Services", items: servicesMenu },
+  { label: "University", items: universityMenu },
+] as const;
+
+function MenuPanel({ items }: { items: MenuItem[] }) {
+  return (
+    <ul className="grid w-[360px] gap-1 p-1">
+      {items.map((item) => (
+        <li key={item.title}>
+          <NavigationMenuLink
+            href={item.href}
+            className="flex-col items-start gap-1 p-3"
+          >
+            <span className="text-sm font-medium text-foreground">
+              {item.title}
+            </span>
+            <span className="text-[13px] leading-snug text-muted-foreground">
+              {item.description}
+            </span>
+          </NavigationMenuLink>
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export function SiteHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
-    onScroll();
+    lastScrollY.current = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastScrollY.current;
+      setScrolled(y > 10);
+      if (y < 80) {
+        setHidden(false);
+      } else if (delta > 4) {
+        setHidden(true);
+      } else if (delta < -4) {
+        setHidden(false);
+      }
+      lastScrollY.current = y;
+    };
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const triggerClasses = cn(
+    "h-auto bg-transparent px-3 py-2 text-[16px] font-medium",
+    scrolled
+      ? "text-[#121313] hover:bg-black/5 focus:bg-black/5 data-open:bg-black/5 data-open:hover:bg-black/5 data-open:focus:bg-black/5 data-popup-open:bg-black/5 data-popup-open:hover:bg-black/5"
+      : "text-white/90 hover:bg-white/10 hover:text-white focus:bg-white/10 data-open:bg-white/10 data-open:hover:bg-white/10 data-open:focus:bg-white/10 data-popup-open:bg-white/10 data-popup-open:hover:bg-white/10",
+  );
+
   return (
-    <header
+    <motion.header
+      initial={false}
+      animate={{ y: hidden ? "-100%" : "0%" }}
+      transition={{ type: "spring", stiffness: 320, damping: 32, mass: 0.6 }}
       className={cn(
         "fixed inset-x-0 top-0 z-50 h-20 transition-colors duration-200",
-        scrolled
-          ? "bg-white backdrop-blur-md"
-          : "bg-transparent",
+        scrolled ? "bg-white backdrop-blur-md" : "bg-transparent",
       )}
     >
       <div className="mx-auto flex h-full max-w-[1166px] items-center justify-between px-6">
@@ -44,31 +162,64 @@ export function SiteHeader() {
           <span>factory</span>
         </a>
 
-        <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <button
-              key={item.label}
-              type="button"
-              className={cn(
-                "inline-flex items-center gap-1 text-[16px] font-medium transition-colors",
-                scrolled
-                  ? "text-[#121313] hover:text-[#121313]/70"
-                  : "text-white/90 hover:text-white",
-              )}
-            >
-              {item.label}
-              {item.hasMenu ? <CaretDown /> : null}
-            </button>
-          ))}
-        </nav>
+        <NavigationMenu className="hidden md:flex">
+          <NavigationMenuList className="gap-1">
+            {dropdowns.map((menu) => (
+              <NavigationMenuItem key={menu.label}>
+                <NavigationMenuTrigger className={triggerClasses}>
+                  {menu.label}
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <MenuPanel items={menu.items} />
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            ))}
 
-        <button
-          type="button"
-          className="bg-black px-5 py-3 text-[16px] font-medium text-[#fdfdfd] hover:bg-black/85 transition-colors"
-        >
-          Join the Community
-        </button>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href="/v2/organizations"
+                className={cn("inline-flex rounded-lg", triggerClasses)}
+              >
+                Organizations
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            <NavigationMenuItem>
+              <NavigationMenuTrigger className={triggerClasses}>
+                Resources
+              </NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <MenuPanel items={resourcesMenu} />
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
+        <div className="flex items-center gap-6">
+          <a
+            href="https://platform.attentionfactory.io"
+            className={cn(
+              "hidden text-[16px] font-medium transition-colors sm:inline",
+              scrolled
+                ? "text-[#121313] hover:text-[#121313]/70"
+                : "text-white/90 hover:text-white",
+            )}
+          >
+            Log in
+          </a>
+          <a
+            href="/v2/organizations"
+            className={cn(
+              "px-5 py-2 text-[16px] font-medium transition-colors",
+              scrolled
+                ? "bg-black text-[#fdfdfd] hover:bg-black/90"
+                : "bg-white text-[#121313] hover:bg-white/90",
+            )}
+          >
+            Book a demo
+          </a>
+        </div>
       </div>
-    </header>
+    </motion.header>
   );
 }
