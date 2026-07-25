@@ -2,22 +2,62 @@ import Image from "next/image";
 
 import { Container } from "@/components/ui/container";
 
-const columns = [
+const APP_URL = "https://app.attentionfactory.io";
+const WOA_URL = "https://weekendsofai.com";
+
+type FooterLink = { label: string; href: string };
+
+const columns: { label: string; items: FooterLink[] }[] = [
   {
-    label: "Product",
-    items: ["Features", "Pricing", "Book a demo"],
+    label: "Services",
+    items: [
+      { label: "Software building", href: "/v2/services/software-building" },
+      {
+        label: "Workflow automation",
+        href: "/v2/services/workflow-automation",
+      },
+      {
+        label: "AI transformation planning",
+        href: "/v2/services/ai-transformation-planning",
+      },
+      {
+        label: "AI strategy support",
+        href: "/v2/services/ai-strategy-support",
+      },
+      { label: "Organization training", href: "/v2/organizations" },
+    ],
   },
   {
-    label: "Explore",
-    items: ["Events", "Blog"],
+    label: "University",
+    items: [
+      { label: "Courses", href: `${APP_URL}/courses` },
+      { label: "Membership", href: `${APP_URL}/membership` },
+      { label: "Weekends of AI", href: WOA_URL },
+    ],
+  },
+  {
+    label: "Resources",
+    items: [
+      { label: "Blog", href: "/v2/blog" },
+      { label: "Playbooks, guides and tools", href: "/v2/playbooks" },
+      { label: "AI archetype", href: "/v2/ai-archetype" },
+      {
+        label: "Attention Factory Intelligence",
+        href: "/v2/intelligence",
+      },
+      { label: "The Lab", href: "/v2/the-lab" },
+      { label: "About", href: "/v2/about" },
+    ],
   },
   {
     label: "Company",
-    items: ["About us", "Contact us"],
-  },
-  {
-    label: "Legal",
-    items: ["Privacy Policy", "Terms of Service"],
+    items: [
+      { label: "About us", href: "/v2/about" },
+      { label: "Contact us", href: "/v2/contact" },
+      { label: "Talk to us", href: "/v2/contact" },
+      { label: "Privacy Policy", href: "/v2/privacy-policy" },
+      { label: "Terms of Service", href: "/v2/terms-of-service" },
+    ],
   },
 ];
 
@@ -53,16 +93,22 @@ export function SiteFooter() {
               <div key={col.label}>
                 <p className="text-[16px] font-normal text-white/65">{col.label}</p>
                 <ul className="mt-7 flex flex-col gap-3">
-                  {col.items.map((item) => (
-                    <li key={item}>
-                      <a
-                        href="#"
-                        className="text-[16px] tracking-[-0.02em] text-[#d0d0d0] hover:text-white transition-colors"
-                      >
-                        {item}
-                      </a>
-                    </li>
-                  ))}
+                  {col.items.map((item) => {
+                    const external = item.href.startsWith("http");
+                    return (
+                      <li key={item.label}>
+                        <a
+                          href={item.href}
+                          {...(external
+                            ? { target: "_blank", rel: "noopener noreferrer" }
+                            : {})}
+                          className="text-[16px] tracking-[-0.02em] text-[#d0d0d0] transition-colors hover:text-white"
+                        >
+                          {item.label}
+                        </a>
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             ))}

@@ -3,7 +3,7 @@ import Image from "next/image";
 import { ArrowButton } from "@/components/ui/arrow-button";
 import { EyebrowLabel } from "@/components/ui/eyebrow-label";
 
-export function CTABanner() {
+export function Business() {
   return (
     <section className="relative overflow-hidden bg-[#d9d9d9]">
       <Image
@@ -15,24 +15,24 @@ export function CTABanner() {
       />
       <div className="absolute inset-0 bg-black/30" />
 
-      <div className="relative mx-auto min-h-[600px] max-w-[1166px] px-6 py-24">
+      {/* <div className="relative mx-auto min-h-[600px] max-w-[1166px] px-6 py-24">
         <div className="max-w-[535px]">
-          <EyebrowLabel className="text-white">Intelligence</EyebrowLabel>
+          <EyebrowLabel className="text-white">Business</EyebrowLabel>
           <h2 className="mt-3 text-[clamp(36px,6vw,64px)] font-medium leading-[1.05] tracking-[-0.04em] text-white">
-            What kind of AI user are you?
+            Your team is already using AI. Badly.
           </h2>
           <p className="mt-5 text-[clamp(15px,1.8vw,19px)] leading-[1.45] tracking-[-0.01em] text-white">
-            Most people use AI in a way that doesn&rsquo;t match how they
-            actually work. Answer a few questions and find out what fits you,
-            plus what to learn next.
+            Most companies buy the tools and skip the training, so nothing
+            changes. We train your people to use AI on their actual work, then
+            leave you with systems that hold up after we go.
           </p>
           <div className="mt-10">
             <ArrowButton variant="light" showArrow={false}>
-              Find your archetype
+              Train your team
             </ArrowButton>
           </div>
         </div>
-      </div>
+      </div> */}
     </section>
   );
 }

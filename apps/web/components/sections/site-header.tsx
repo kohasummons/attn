@@ -49,13 +49,13 @@ const universityMenu: MenuItem[] = [
   {
     title: "Courses",
     description: "Browse the courses we offer.",
-    href: "/v2/courses",
+    href: "https://app.attentionfactory.io/courses",
   },
   {
     title: "Membership",
     description:
       "Join Attention University, our full learning platform and community.",
-    href: "/v2/membership",
+    href: "https://app.attentionfactory.io/membership",
   },
 ];
 
@@ -63,7 +63,7 @@ const resourcesMenu: MenuItem[] = [
   {
     title: "Weekends of AI",
     description: "Free live AI training sessions.",
-    href: "/v2/weekends-of-ai",
+    href: "https://weekendsofai.com",
   },
   {
     title: "Playbooks, guides and tools",
@@ -79,6 +79,21 @@ const resourcesMenu: MenuItem[] = [
     title: "Blog",
     description: "Insights and updates from Attention Factory.",
     href: "/v2/blog",
+  },
+  {
+    title: "Attention Factory Intelligence",
+    description: "Our read on where AI is actually going, minus the hype.",
+    href: "/v2/intelligence",
+  },
+  {
+    title: "The Lab",
+    description: "The products and experiments we ship.",
+    href: "/v2/the-lab",
+  },
+  {
+    title: "About",
+    description: "Why we started, and who builds this.",
+    href: "/v2/about",
   },
 ];
 
@@ -208,7 +223,7 @@ export function SiteHeader() {
             Log in
           </a>
           <a
-            href="/v2/organizations"
+            href="/v2/contact"
             className={cn(
               "px-5 py-2 text-[16px] font-medium transition-colors",
               scrolled
@@ -216,7 +231,7 @@ export function SiteHeader() {
                 : "bg-white text-[#121313] hover:bg-white/90",
             )}
           >
-            Book a demo
+            Talk to us
           </a>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import Image from "next/image";
 
 import { CTABanner } from "@/components/sections/cta-banner";
+import { Business } from "@/components/sections/business";
 import { FAQ } from "@/components/sections/faq";
 import { ImpactStats } from "@/components/sections/impact-stats";
 import { Services } from "@/components/sections/services";
@@ -93,9 +94,10 @@ export default function V2Page() {
         {/* <MembershipsIntro /> */}
         {/* <MembershipsBento /> */}
         {/* <Intelligence /> */}
-        {/* <Testimonial /> */}
+        <Testimonial />
         <FAQ />
         <CTABanner />
+        <Business />
       </main>
       <SiteFooter />
     </>
