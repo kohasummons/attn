@@ -26,7 +26,7 @@ export default function ServicesIndexPage() {
       <main>
         <PageHero
           eyebrow="Build with us"
-          title="Four ways we work. All of them end in something running."
+          title={["Four ways we work.", "Each ends in something running."]}
           lead="We plan rollouts, build software, automate the work that repeats, and stay embedded until your team runs it without us."
         >
           <ButtonLink href="/v2/contact">Talk to us</ButtonLink>
@@ -42,7 +42,7 @@ export default function ServicesIndexPage() {
                   className="group flex flex-col justify-between bg-white p-8 transition-colors hover:bg-[#f9f9f9] md:p-10"
                 >
                   <div className="flex items-start justify-between gap-4">
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                    <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                       {s.eyebrow}
                     </p>
                     <span
@@ -57,7 +57,7 @@ export default function ServicesIndexPage() {
                       {s.nav}
                     </h2>
                     <p className="mt-3 max-w-[420px] text-[15px] leading-[1.5] text-[#5a5a5a]">
-                      {s.lead}
+                      {s.menuDescription}
                     </p>
                   </div>
                 </Link>

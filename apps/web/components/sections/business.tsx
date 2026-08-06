@@ -1,8 +1,5 @@
 import Image from "next/image";
 
-import { ArrowButton } from "@/components/ui/arrow-button";
-import { EyebrowLabel } from "@/components/ui/eyebrow-label";
-
 export function Business() {
   return (
     <section className="relative overflow-hidden bg-[#d9d9d9]">

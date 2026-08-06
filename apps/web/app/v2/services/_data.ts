@@ -1,333 +1,674 @@
+export type CTA = { label: string; href: string };
+
+export type Tone = "light" | "paper";
+
+export type ShowcaseVariant = "wireframes" | "workflow" | "roadmap" | "cadence";
+
+export type ProcessStep = { title: string; body: string };
+/** A card in the sliding support strip: title, one line, and its image. */
+export type ListCard = {
+  title: string;
+  body: string;
+  image: string;
+  alt: string;
+};
+export type Feature = { name: string; body: string };
+export type Deliverable = { name: string; body: string };
+export type WorkProject = {
+  name: string;
+  /** Short category, sentence case. */
+  tag: string;
+  /** One line on what it is. */
+  blurb: string;
+  image: string;
+};
+
+/**
+ * Every service page is assembled from an ordered list of blocks so the four
+ * pages share one visual system but keep the distinct flow each one needs.
+ * The copy inside is authored and used verbatim.
+ */
+export type Block =
+  | { kind: "opening"; tone?: Tone; title: string[]; body: string[] }
+  | {
+      kind: "showcase";
+      tone?: Tone;
+      variant?: ShowcaseVariant;
+      image?: string;
+      alt?: string;
+    }
+  | {
+      kind: "process";
+      id?: string;
+      eyebrow: string;
+      title: string;
+      muted?: string;
+      intro?: string;
+      numbered: boolean;
+      steps: ProcessStep[];
+      note?: string;
+    }
+  | {
+      kind: "deliverables";
+      id?: string;
+      tone?: Tone;
+      eyebrow: string;
+      title: string;
+      muted: string;
+      items: Deliverable[];
+    }
+  | {
+      kind: "grid";
+      id?: string;
+      tone?: Tone;
+      eyebrow?: string;
+      title: string;
+      intro?: string;
+      cols: 2 | 3;
+      items: Feature[];
+    }
+  | {
+      kind: "list";
+      id?: string;
+      tone?: Tone;
+      eyebrow?: string;
+      title: string;
+      intro?: string;
+      items: ListCard[];
+    }
+  | { kind: "aside"; eyebrow?: string; title: string; body: string[] }
+  | {
+      kind: "rhythm";
+      id?: string;
+      tone?: Tone;
+      eyebrow?: string;
+      title: string;
+      muted?: string;
+      items: ProcessStep[];
+    }
+  | {
+      kind: "work";
+      id?: string;
+      tone?: Tone;
+      eyebrow: string;
+      title: string;
+      intro: string;
+      projects: WorkProject[];
+    };
+
 export type ServiceContent = {
   slug: string;
+  /** Display name in nav, footer and index cards. */
   nav: string;
-  eyebrow: string;
+  /** Dropdown description in nav, footer and index cards. */
+  menuDescription: string;
   /** Full-bleed hero art. */
   hero: string;
-  /** Single bloom used on the mid-page band, matches the services grid. */
-  bloom: string;
-  /** Outcome + timebox. */
-  h1: string;
-  /** Problem fork: most teams do A or B. */
+  /** Hero uppercase kicker (sentence case in source, uppercased in CSS). */
+  eyebrow: string;
+  /** Hero heading, one <span> per line. */
+  h1: string[];
   lead: string;
-  problem: { title: string; body: string };
-  steps: { when: string; title: string; body: string }[];
-  deliverables: { label: string; name: string; body: string }[];
-  ladder: { rung: string; name: string; body: string }[];
-  fit: { title: string; body: string; requires: string[] };
+  primary: CTA;
+  secondary: CTA;
+  supporting: string;
+  blocks: Block[];
+  final: {
+    title: string;
+    body: string;
+    button: CTA;
+    call: { eyebrow: string; items: string[] };
+  };
 };
+
+const CONTACT = "/v2/contact";
 
 export const services: ServiceContent[] = [
   {
     slug: "software-building",
+    nav: "Software development",
+    menuDescription:
+      "Apps, internal tools, platforms, and AI products, from first brief to launch.",
     hero: "/images/hero/amber.webp",
-    bloom: "rose",
-    nav: "Software building",
-    eyebrow: "Build with us",
-    h1: "From idea to software people actually use. In eight weeks.",
-    lead: "Most teams either spend six months in discovery or ship a prototype nobody opens. We build the smallest thing that proves the value, then harden what survives.",
-    problem: {
-      title: "Prototypes are easy now. Production is not.",
-      body: "Anyone can get a demo working in an afternoon. The hard part starts after: auth, evals, error states, the edge cases your users hit on day three, and the question of who maintains it once the excitement wears off. That gap is where most internal AI projects quietly die.",
-    },
-    steps: [
+    eyebrow: "Custom software development",
+    h1: ["Need a software built?", "Idea to working product."],
+    lead: "Come with a rough brief or a half-built product that stalled. We decide what the first version needs, then design, build, and launch it.",
+    primary: { label: "Tell us what you're building", href: CONTACT },
+    secondary: { label: "See our work", href: "#work" },
+    supporting: "Apps. Internal tools. Customer platforms. AI products.",
+    blocks: [
       {
-        when: "Week 1–2",
-        title: "Scope to one job",
-        body: "We map the workflow, pick the single job worth automating first, and agree what “working” means in numbers before anyone writes code.",
+        kind: "opening",
+        tone: "light",
+        title: ["You do not need to have it all figured out."],
+        body: [
+          "Some clients come with a detailed brief. Others come with a problem, a few notes, or a product that is not working yet.",
+          "We help you get clear on the user, the job, and the first version worth building. We keep that version focused. It should be useful enough to test with real people and small enough to finish.",
+        ],
       },
       {
-        when: "Week 3–6",
-        title: "Build in the open",
-        body: "You get a working build every week and the people who will use it test it every week. Nothing is designed in a vacuum.",
+        kind: "showcase",
+        tone: "paper",
+        image: "/images/showcase/software-building.webp",
+        alt: "Product design workspace: wireframe layouts beside a mobile app frame",
       },
       {
-        when: "Week 7–8",
-        title: "Harden and hand over",
-        body: "Evals, monitoring, docs, and a walkthrough with whoever owns it next. We leave with the repo in your hands.",
+        kind: "process",
+        eyebrow: "How we work",
+        title: "Three stages.",
+        muted: "One working product.",
+        intro:
+          "You see the product taking shape throughout the build. Every stage ends with something you can review.",
+        numbered: true,
+        steps: [
+          {
+            title: "Shape the product",
+            body: "We define who the software is for, what it needs to do, and what can wait. You leave this stage with a clear scope, timeline, and cost.",
+          },
+          {
+            title: "Design and build",
+            body: "We design the flows and build the software in short cycles. You see progress each week and make decisions while changes are still easy to make.",
+          },
+          {
+            title: "Test, launch, and hand over",
+            body: "We test the product, fix what needs fixing, and prepare it for real users. You receive the code, accounts, documentation, and access your team needs.",
+          },
+        ],
+        note: "Most first versions are built in about eight weeks. Larger products are planned in phases.",
+      },
+      {
+        kind: "deliverables",
+        tone: "paper",
+        eyebrow: "You walk away with",
+        title: "Go in with an idea.",
+        muted: "Walk away with these.",
+        items: [
+          {
+            name: "A working first version",
+            body: "Software people can sign into, use, and give feedback on. It is built for real use, not a staged demo.",
+          },
+          {
+            name: "A clear product plan",
+            body: "A practical view of what to improve, remove, or build next based on the product and its first users.",
+          },
+          {
+            name: "A codebase you own",
+            body: "Clean code, full project access, and documentation your team can keep working with.",
+          },
+        ],
+      },
+      {
+        kind: "grid",
+        tone: "light",
+        title: "Software takes different shapes.",
+        intro:
+          "We build customer apps, internal tools, AI products, dashboards, portals, and the software that connects work behind the scenes.",
+        cols: 2,
+        items: [
+          {
+            name: "Customer products",
+            body: "Apps and platforms your customers can use, pay for, and return to.",
+          },
+          {
+            name: "Internal tools",
+            body: "Software that replaces spreadsheets, manual handoffs, and repeated admin.",
+          },
+          {
+            name: "AI products",
+            body: "Products that use AI where it improves the experience or removes work.",
+          },
+          {
+            name: "Existing products",
+            body: "New features, rebuilds, and rescue work for products that have stalled.",
+          },
+        ],
+      },
+      {
+        kind: "work",
+        id: "work",
+        tone: "paper",
+        eyebrow: "Our work",
+        title: "What we have built.",
+        intro:
+          "A selection of products, internal tools, and AI systems built for real teams and real users.",
+        projects: [
+          {
+            name: "TranscriptX",
+            tag: "Live product",
+            blurb:
+              "Turns recorded conversations into searchable, quotable text.",
+            image: "/images/work/transcriptx.webp",
+          },
+          {
+            name: "Kohl",
+            tag: "Mobile app",
+            blurb: "A consumer mobile app built end to end, first screen to store.",
+            image: "/images/work/kohl.webp",
+          },
+          {
+            name: "AttentionHQ",
+            tag: "Internal tool",
+            blurb: "The internal hub that runs our programs, members, and operations.",
+            image: "/images/work/attentionhq.webp",
+          },
+          {
+            name: "Billa",
+            tag: "Automation",
+            blurb: "Billing and invoicing, automated from quote to receipt.",
+            image: "/images/work/billa.webp",
+          },
+        ],
       },
     ],
-    deliverables: [
-      {
-        label: "Software",
-        name: "A production application",
-        body: "Deployed, authenticated, monitored, and running on your infrastructure. Not a demo behind our login.",
+    final: {
+      title: "Have software you need built?",
+      body: "Tell us what you know so far. We will help you define the first useful version, estimate the work, and decide whether we are the right team to build it.",
+      button: { label: "Tell us what you're building", href: CONTACT },
+      call: {
+        eyebrow: "What we will cover on the call",
+        items: [
+          "Who the software is for",
+          "What the first version needs to do",
+          "The likely scope, timeline, and budget",
+          "What happens next",
+        ],
       },
-      {
-        label: "Evidence",
-        name: "An evaluation suite",
-        body: "The test set and scoring we used to decide the thing works, so you can tell if it stops working.",
-      },
-      {
-        label: "Handover",
-        name: "The repo and a runbook",
-        body: "Source, deployment steps, and a recorded walkthrough for the engineer who inherits it.",
-      },
-    ],
-    ladder: [
-      {
-        rung: "01",
-        name: "Scattered experiments",
-        body: "A few people are using chat tools privately. Nothing is shared, nothing is measured.",
-      },
-      {
-        rung: "02",
-        name: "One-off prototypes",
-        body: "Someone built a demo that impressed a meeting and now sits unused in a browser tab.",
-      },
-      {
-        rung: "03",
-        name: "A tool in production",
-        body: "One workflow runs on software you own, with a named owner and real usage numbers.",
-      },
-      {
-        rung: "04",
-        name: "A build habit",
-        body: "Your team ships its own internal tools without us, and knows when not to.",
-      },
-    ],
-    fit: {
-      title: "Is this right for you?",
-      body: "Built for teams with a specific workflow that hurts and someone senior who can make decisions in the room. Not a fit if you're still deciding whether AI is worth doing.",
-      requires: [
-        "One named business owner who can approve scope",
-        "Access to the people who do the work today",
-        "A workflow you can describe in one sentence",
-      ],
     },
   },
+
   {
     slug: "workflow-automation",
-    hero: "/images/hero/teal.webp",
-    bloom: "dahlia",
     nav: "Workflow automation",
+    menuDescription:
+      "Find the repetitive work slowing your team down, then automate the right parts.",
+    hero: "/images/hero/teal.webp",
     eyebrow: "Agents and automation",
-    h1: "Find the work worth automating. Then automate it.",
-    lead: "Most teams either automate the loudest complaint or wait for a perfect roadmap. We score the whole surface first, then build the two or three that actually pay.",
-    problem: {
-      title: "The bottleneck is rarely where people think it is.",
-      body: "Ask a team what to automate and you'll get the task they hate most. That's rarely the task costing the most hours. Without a scored view of the whole workflow you end up automating irritation instead of cost, and the numbers never move.",
-    },
-    steps: [
+    h1: ["Find the work worth automating.", "Then automate it."],
+    lead: "Your team should not spend every week copying data and rebuilding the same reports. We find what costs the most time, then take it off their hands.",
+    primary: { label: "Show us the workflow", href: CONTACT },
+    secondary: { label: "See what we automate", href: "#examples" },
+    supporting: "Email. Reporting. Lead handling. Support. Operations.",
+    blocks: [
       {
-        when: "Week 1–2",
-        title: "Map and score",
-        body: "We catalogue every repeatable task in the target function and score each on hours burned, error rate, and how automatable it honestly is.",
+        kind: "opening",
+        tone: "light",
+        title: ["The work comes first."],
+        body: [
+          "Most automation projects begin with a tool. We begin with the week your team actually has.",
+          "We look at where people repeat themselves, wait for updates, fix the same mistakes, or move information by hand. That tells us what is worth automating and what should stay as it is.",
+          "The task people complain about most is not always the task costing the company the most.",
+        ],
+      },
+      { kind: "showcase", tone: "paper", variant: "workflow" },
+      {
+        kind: "process",
+        eyebrow: "How we work",
+        title: "Map it. Build it. Measure it.",
+        numbered: true,
+        steps: [
+          {
+            title: "See the whole workflow",
+            body: "We follow the work from start to finish, speak with the people doing it, and find where time is lost, mistakes happen, or handoffs break.",
+          },
+          {
+            title: "Automate the right parts",
+            body: "We build the highest value automations first and test them with the people who will use them.",
+          },
+          {
+            title: "Measure what changed",
+            body: "We track time saved, work completed, errors reduced, and adoption. Then we decide what to improve or automate next.",
+          },
+        ],
       },
       {
-        when: "Week 3–5",
-        title: "Build the top two",
-        body: "We build working automations for the highest-scoring candidates, with your team in the loop each week.",
+        kind: "deliverables",
+        tone: "paper",
+        eyebrow: "You walk away with",
+        title: "Go in with a messy workflow.",
+        muted: "Walk away with these.",
+        items: [
+          {
+            name: "A scored workflow map",
+            body: "Every step, owner, delay, repeated task, and opportunity in one view.",
+          },
+          {
+            name: "Working automations",
+            body: "Live systems connected to the tools your team already uses.",
+          },
+          {
+            name: "A ranked next list",
+            body: "What to automate now, what to improve later, and what should stay human.",
+          },
+        ],
       },
       {
-        when: "Week 6",
-        title: "Measure and decide",
-        body: "Before-and-after numbers on the real workflow, and a ranked list of what to do next.",
+        kind: "aside",
+        title: "Some work should stay human.",
+        body: [
+          "Good automation removes repetition and gives people more time for judgment.",
+          "We keep people involved where context, trust, approval, or a final decision matters. The goal is to improve the work without making it harder to understand or control.",
+        ],
+      },
+      {
+        kind: "grid",
+        id: "examples",
+        tone: "light",
+        eyebrow: "Where automation helps",
+        title: "The work that quietly eats the week.",
+        cols: 3,
+        items: [
+          {
+            name: "Lead handling",
+            body: "Research, qualify, route, and follow up without losing good leads in an inbox.",
+          },
+          {
+            name: "Customer support",
+            body: "Sort requests, answer routine questions, and send difficult cases to the right person.",
+          },
+          {
+            name: "Operations",
+            body: "Move information between tools, update records, trigger approvals, and keep people informed.",
+          },
+          {
+            name: "Reporting",
+            body: "Pull numbers from different systems and send the report without someone rebuilding it by hand.",
+          },
+          {
+            name: "Onboarding",
+            body: "Collect information, create accounts, assign tasks, and follow up when something is missing.",
+          },
+          {
+            name: "Scheduling",
+            body: "Manage bookings, confirmations, reminders, and changes without repeated messages.",
+          },
+        ],
       },
     ],
-    deliverables: [
-      {
-        label: "Diagnosis",
-        name: "A scored workflow map",
-        body: "Every task in the function, scored and ranked. Usually 30–60 tasks, of which 5–10 are worth touching.",
+    final: {
+      title: "Bring us one workflow.",
+      body: "We will show you where time is being lost, what is worth automating first, and what the build will take.",
+      button: { label: "Talk through a workflow", href: CONTACT },
+      call: {
+        eyebrow: "A good starting point",
+        items: [
+          "One process that happens repeatedly",
+          "Someone who understands it from start to finish",
+          "Access to the tools involved",
+          "An outcome we can measure",
+        ],
       },
-      {
-        label: "Working software",
-        name: "Two live automations",
-        body: "Running against real data, with a before-and-after measurement on hours or error rate.",
-      },
-      {
-        label: "Roadmap",
-        name: "The next five, ranked",
-        body: "What to build next, in order, with the reasoning attached so you can argue with it.",
-      },
-    ],
-    ladder: [
-      {
-        rung: "01",
-        name: "Manual and invisible",
-        body: "The work happens in inboxes and spreadsheets. Nobody can say how many hours it takes.",
-      },
-      {
-        rung: "02",
-        name: "Measured",
-        body: "You know which tasks cost the most and roughly what they're worth.",
-      },
-      {
-        rung: "03",
-        name: "Partly automated",
-        body: "The top workflows run themselves, with a human checking the output.",
-      },
-      {
-        rung: "04",
-        name: "Agentic",
-        body: "Agents run the process end to end and escalate only the genuinely ambiguous cases.",
-      },
-    ],
-    fit: {
-      title: "Is this right for you?",
-      body: "Built for operations, finance, and support teams where the same work repeats weekly. Not a fit for one-off creative work or anything that changes shape every time.",
-      requires: [
-        "A function with repeatable, high-volume work",
-        "Two to three hours a week from someone who does the work",
-        "Access to the systems the work already runs through",
-      ],
     },
   },
+
   {
     slug: "ai-transformation-planning",
+    nav: "AI planning",
+    menuDescription:
+      "Decide where AI fits, what to do first, and who owns it.",
     hero: "/images/hero/bronze.webp",
-    bloom: "iris",
-    nav: "AI transformation planning",
-    eyebrow: "Plan the rollout",
-    h1: "Plan first. Then transform.",
-    lead: "Most companies either buy a licence for everyone and call it a strategy, or spend a year writing a plan nobody reads. We get you a clear read on where you stand and a concrete twelve months.",
-    problem: {
-      title: "Everyone has a tool. Almost nobody has a plan.",
-      body: "Seats get bought, a pilot runs, a deck gets presented, and six months later usage has flatlined and nobody wants to say so. The missing piece is never enthusiasm. It's an honest baseline and a sequence someone owns.",
-    },
-    steps: [
+    eyebrow: "AI planning for organizations",
+    h1: ["Decide where AI fits.", "Then make it work."],
+    lead: "We help leadership teams see where AI improves real work, choose the first use cases, set clear rules, and give people a plan they can follow.",
+    primary: { label: "Plan your AI rollout", href: CONTACT },
+    secondary: { label: "See what you leave with", href: "#deliverables" },
+    supporting: "Use cases. Ownership. Training. Risk. Measures.",
+    blocks: [
       {
-        when: "Week 1–2",
-        title: "Baseline",
-        body: "We measure actual usage, proficiency, and where the real blockers sit — not what the survey says, what the data says.",
+        kind: "opening",
+        tone: "light",
+        title: [
+          "Most companies already have AI activity.",
+          "They just cannot see it clearly.",
+        ],
+        body: [
+          "One team is paying for several tools. Another is using ChatGPT quietly. Someone built a bot no one owns. Leaders hear updates but still cannot tell what is useful, safe, or worth funding.",
+          "We bring the work into one view so you can decide what happens next.",
+        ],
+      },
+      { kind: "showcase", tone: "paper", variant: "roadmap" },
+      {
+        kind: "process",
+        eyebrow: "How we work",
+        title: "Three questions before the roadmap.",
+        numbered: true,
+        steps: [
+          {
+            title: "Where can AI change the work?",
+            body: "We look for repeated work, slow decisions, missed opportunities, and tasks people already want help with.",
+          },
+          {
+            title: "What should happen first?",
+            body: "We rank use cases by value, effort, risk, and whether the company is ready to support them.",
+          },
+          {
+            title: "What needs to be true for it to work?",
+            body: "We define ownership, training, data access, tools, rules, and the measures that will show whether it worked.",
+          },
+        ],
       },
       {
-        when: "Week 3–5",
-        title: "Find the barriers",
-        body: "Interviews across levels to work out what's stopping adoption: skill, permission, tooling, or incentives.",
+        kind: "deliverables",
+        id: "deliverables",
+        tone: "paper",
+        eyebrow: "You walk away with",
+        title: "Go in with scattered activity.",
+        muted: "Walk away with a plan.",
+        items: [
+          {
+            name: "A clear baseline",
+            body: "What people are already using, where the strongest opportunities are, and where the company may be exposed.",
+          },
+          {
+            name: "A ranked AI roadmap",
+            body: "The first use cases, the order to tackle them, and why each one deserves attention.",
+          },
+          {
+            name: "A 90-day action plan",
+            body: "Owners, dates, budgets, training, and the work required to get started.",
+          },
+        ],
       },
       {
-        when: "Week 6–8",
-        title: "Write the twelve months",
-        body: "A sequenced plan with owners, dates, and the number each phase is supposed to move.",
+        kind: "aside",
+        title: "Train people for the work they actually do.",
+        body: [
+          "Generic AI training gets forgotten.",
+          "We teach teams using their roles, tools, and workflows, so they can apply what they learn when they return to work. The training follows the roadmap instead of sitting beside it as a separate activity.",
+        ],
+      },
+      {
+        kind: "grid",
+        tone: "light",
+        eyebrow: "What the plan covers",
+        title: "One plan for the whole company.",
+        cols: 3,
+        items: [
+          {
+            name: "Work",
+            body: "Where AI could save time, improve decisions, or create a better customer experience.",
+          },
+          {
+            name: "People",
+            body: "Who needs training, who owns each use case, and who makes the final decisions.",
+          },
+          {
+            name: "Tools",
+            body: "What the company already has, what it may need, and what it should stop paying for.",
+          },
+          {
+            name: "Data",
+            body: "What information each use case needs and who should have access to it.",
+          },
+          {
+            name: "Rules",
+            body: "How people can use AI safely and what requires review or approval.",
+          },
+          {
+            name: "Measures",
+            body: "What success looks like and how the company will track it.",
+          },
+        ],
       },
     ],
-    deliverables: [
-      {
-        label: "Maturity",
-        name: "An AI readiness baseline",
-        body: "Where you sit today on usage, proficiency, and capacity — scored, with the evidence attached.",
+    final: {
+      title: "Need an answer to “What are we doing with AI?”",
+      body: "We will help you move from scattered experiments to a plan leadership can fund and teams can run.",
+      button: { label: "Plan the next 90 days", href: CONTACT },
+      call: {
+        eyebrow: "What we will cover on the call",
+        items: [
+          "What people are already using",
+          "Where work is slow or expensive",
+          "What leadership wants AI to change",
+          "What could happen in the next 90 days",
+        ],
       },
-      {
-        label: "Barriers",
-        name: "A blocker map",
-        body: "What's actually stopping adoption, ranked, separated into skill, tooling, permission, and incentive.",
-      },
-      {
-        label: "Roadmap",
-        name: "A twelve-month sequence",
-        body: "Phased, with named owners and a target number per phase. A to-do list, not a slide deck.",
-      },
-    ],
-    ladder: [
-      {
-        rung: "01",
-        name: "Curious",
-        body: "Individuals experiment on their own. Leadership has opinions but no numbers.",
-      },
-      {
-        rung: "02",
-        name: "Piloting",
-        body: "A team has a licence and a use case. Nobody can tell you the ROI.",
-      },
-      {
-        rung: "03",
-        name: "Adopted",
-        body: "Usage is measured, training is routine, and specific workflows have changed shape.",
-      },
-      {
-        rung: "04",
-        name: "Operating",
-        body: "AI is in how the work is designed, not bolted onto it. New hires learn it in week one.",
-      },
-    ],
-    fit: {
-      title: "Is this right for you?",
-      body: "Built for companies past the experimentation phase who need a defensible plan. Not a fit if you want a strategy deck to put in a drawer.",
-      requires: [
-        "An executive sponsor who will own the outcome",
-        "Access to usage data and to people at every level",
-        "Willingness to hear an unflattering baseline",
-      ],
     },
   },
+
   {
     slug: "ai-strategy-support",
+    nav: "Ongoing AI support",
+    menuDescription:
+      "Experienced help as your AI plan becomes working systems.",
     hero: "/images/hero/plum.webp",
-    bloom: "peony",
-    nav: "AI strategy support",
-    eyebrow: "Embedded help",
-    h1: "The plan is written. Now someone has to run it.",
-    lead: "Most rollouts stall in month three, when the consultants have left and the plan meets an actual calendar. We stay embedded until the habit holds.",
-    problem: {
-      title: "Strategy is cheap. Follow-through is the whole job.",
-      body: "The gap between a good plan and a changed company is a hundred small decisions made under time pressure by people with other jobs. That's where momentum dies — not in the strategy, in the third month of execution.",
-    },
-    steps: [
+    eyebrow: "Ongoing AI support",
+    h1: ["You have the plan.", "We help you keep it moving."],
+    lead: "We work alongside your team as tools are tested, people are trained, and systems go live. Experienced support without hiring a full AI function.",
+    primary: { label: "Talk about ongoing support", href: CONTACT },
+    secondary: { label: "See how it works", href: "#support" },
+    supporting: "Weekly guidance. Build reviews. Team support. Leadership updates.",
+    blocks: [
       {
-        when: "Month 1",
-        title: "Take the plan over",
-        body: "We inherit whatever plan exists, pressure-test it against reality, and cut it to what can actually ship this quarter.",
+        kind: "opening",
+        tone: "light",
+        title: ["The work usually slows down between meetings."],
+        body: [
+          "Priorities change. A pilot has no owner. A tool stops fitting. The team doing the work needs an answer before the next leadership meeting.",
+          "We stay close enough to help with the decisions that keep the rollout moving.",
+        ],
+      },
+      { kind: "showcase", tone: "paper", variant: "cadence" },
+      {
+        kind: "process",
+        id: "support",
+        eyebrow: "How we work with your team",
+        title: "One team beside yours.",
+        numbered: false,
+        steps: [
+          {
+            title: "Decide what happens next",
+            body: "We help rank requests, choose tools, set scope, and keep the work focused on outcomes the company cares about.",
+          },
+          {
+            title: "Support the people doing the work",
+            body: "Your team gets working sessions, office hours, build reviews, and help when a project gets stuck.",
+          },
+          {
+            title: "Show leadership what is changing",
+            body: "We report on adoption, results, risks, and the decisions leadership needs to make next.",
+          },
+        ],
       },
       {
-        when: "Month 2–5",
-        title: "Run the cadence",
-        body: "Weekly working sessions with the owners, unblocking the specific thing that's stuck that week.",
+        kind: "list",
+        tone: "light",
+        eyebrow: "What we support",
+        title: "Help where the work is happening.",
+        intro: "We can help your team run:",
+        items: [
+          {
+            title: "The AI use case pipeline",
+            body: "A running list of what your teams want AI to do, scored and ordered so you always know what to build next.",
+            image: "/images/support/printed-cards.png",
+            alt: "A hand holding a fanned deck of pastel gradient printed cards",
+          },
+          {
+            title: "Tool and vendor reviews",
+            body: "A straight read on the tool your team is being sold: what it does, what it costs, and whether you already own something that does the job.",
+            image: "/images/support/phone-screen.png",
+            alt: "A hand holding a phone showing pastel gradient artwork",
+          },
+          {
+            title: "Pilot planning",
+            body: "A small test with a clear question behind it and a date it ends, so you learn something real before the budget goes out.",
+            image: "/images/support/open-booklet.png",
+            alt: "A hand holding an open booklet printed with pastel gradient shapes",
+          },
+          {
+            title: "Product and automation reviews",
+            body: "We look at what has been built, where it breaks, and what it takes to make it something your team can rely on Monday.",
+            image: "/images/support/phone-screen.png",
+            alt: "A hand holding a phone showing pastel gradient artwork",
+          },
+          {
+            title: "Team training and office hours",
+            body: "Working sessions and open hours where people bring the task they are stuck on and leave knowing how to finish it.",
+            image: "/images/support/open-booklet.png",
+            alt: "A hand holding an open booklet printed with pastel gradient shapes",
+          },
+          {
+            title: "AI policy and responsible use",
+            body: "Plain rules on what staff can put into which tool, who approves what, and where the limits sit. No legal filler.",
+            image: "/images/support/printed-cards.png",
+            alt: "A hand holding a fanned deck of pastel gradient printed cards",
+          },
+          {
+            title: "Leadership reporting",
+            body: "A monthly read on adoption, results, and risk, written for the people making the budget decisions.",
+            image: "/images/support/open-booklet.png",
+            alt: "A hand holding an open booklet printed with pastel gradient shapes",
+          },
+          {
+            title: "Internal AI communication",
+            body: "Updates your teams actually read, so people know what is changing, what it means for them, and what happens next.",
+            image: "/images/support/printed-cards.png",
+            alt: "A hand holding a fanned deck of pastel gradient printed cards",
+          },
+        ],
       },
       {
-        when: "Month 6",
-        title: "Hand back",
-        body: "Your team runs the cadence without us, and we write down how it works so it survives a reorg.",
+        kind: "rhythm",
+        tone: "paper",
+        title: "Clear support.",
+        muted: "A clear rhythm.",
+        items: [
+          {
+            title: "Every week",
+            body: "Review priorities, unblock teams, and decide what happens next.",
+          },
+          {
+            title: "Every month",
+            body: "Review results, risks, adoption, and the next set of priorities with leadership.",
+          },
+          {
+            title: "When needed",
+            body: "Review a new tool, help scope a pilot, check a build, or run a session with the team.",
+          },
+        ],
+      },
+      {
+        kind: "aside",
+        title: "The goal is for your team to need us less.",
+        body: [
+          "Outside support should build ability inside the company.",
+          "We help your people develop the judgment, habits, and systems to keep the work moving without us. When the company is ready to own the function fully, we hand it over properly.",
+        ],
       },
     ],
-    deliverables: [
-      {
-        label: "Cadence",
-        name: "A running operating rhythm",
-        body: "A weekly session your team keeps holding after we stop attending.",
+    final: {
+      title: "Need an AI lead before you are ready to hire one?",
+      body: "We can work with your team for a defined period, help put the first systems and habits in place, and hand over when the capability lives inside the company.",
+      button: { label: "Talk about support", href: CONTACT },
+      call: {
+        eyebrow: "What we will cover on the call",
+        items: [
+          "What is already in motion",
+          "Where the rollout is getting stuck",
+          "Who owns AI today",
+          "What kind of support would help",
+        ],
       },
-      {
-        label: "People",
-        name: "Named internal owners",
-        body: "Two to four people who can run this without us, trained on the job rather than in a classroom.",
-      },
-      {
-        label: "Record",
-        name: "Decisions written down",
-        body: "What was tried, what worked, what was killed and why — so the next team doesn't relitigate it.",
-      },
-    ],
-    ladder: [
-      {
-        rung: "01",
-        name: "Consultant-dependent",
-        body: "Progress happens when an outside firm is in the building, and stops when they leave.",
-      },
-      {
-        rung: "02",
-        name: "Sponsored",
-        body: "An executive cares, but delivery still depends on one or two heroes.",
-      },
-      {
-        rung: "03",
-        name: "Owned",
-        body: "Named people run the cadence and report real numbers without being asked.",
-      },
-      {
-        rung: "04",
-        name: "Self-sustaining",
-        body: "The rhythm survives people leaving. It's how the company works now.",
-      },
-    ],
-    fit: {
-      title: "Is this right for you?",
-      body: "Built for companies with a plan already in hand and no one with the time to run it. Not a fit if you're looking for a body to fill a seat.",
-      requires: [
-        "An existing plan or roadmap, however rough",
-        "Two internal people who will eventually own this",
-        "A six-month horizon, minimum",
-      ],
     },
   },
 ];

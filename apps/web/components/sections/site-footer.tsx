@@ -11,17 +11,17 @@ const columns: { label: string; items: FooterLink[] }[] = [
   {
     label: "Services",
     items: [
-      { label: "Software building", href: "/v2/services/software-building" },
+      { label: "Software development", href: "/v2/services/software-building" },
       {
         label: "Workflow automation",
         href: "/v2/services/workflow-automation",
       },
       {
-        label: "AI transformation planning",
+        label: "AI planning",
         href: "/v2/services/ai-transformation-planning",
       },
       {
-        label: "AI strategy support",
+        label: "Ongoing AI support",
         href: "/v2/services/ai-strategy-support",
       },
       { label: "Organization training", href: "/v2/organizations" },
@@ -30,7 +30,7 @@ const columns: { label: string; items: FooterLink[] }[] = [
   {
     label: "University",
     items: [
-      { label: "Courses", href: `${APP_URL}/courses` },
+      { label: "Courses", href: "/v2/courses" },
       { label: "Membership", href: `${APP_URL}/membership` },
       { label: "Weekends of AI", href: WOA_URL },
     ],

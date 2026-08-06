@@ -9,53 +9,71 @@ import { cn } from "@/lib/utils";
 type Testimonial = {
   quote: string;
   name: string;
-  role: string;
-  portrait: string;
+  role?: string;
+  /** What they shipped afterwards. Rendered under the quote when present. */
+  result?: string;
+  /**
+   * Real headshot only. Left undefined until the person's own photo is in
+   * `public/v2/team/` — the stock portraits in that folder belong to other
+   * companies, and pairing one with a named participant would misattribute it.
+   */
+  portrait?: string;
 };
 
 const testimonials: Testimonial[] = [
   {
     quote:
-      "Reevo has cut down the tool sprawl that used to slow us down. We can finally get rid of a dozen other apps, everything we need is finally in one place.",
-    name: "Adlon",
-    role: "COO, Casca",
-    portrait: "/v2/team/portrait-vercel.jpg",
+      "Before the bootcamp, I understood AI in theory. I could talk about it, but I couldn't actually ship anything. Since then, I've built and launched websites, apps, AI agents, and my own digital product. I don't just talk about AI anymore. I build it and ship it, for myself and for real clients.",
+    name: "Oladapo Ijaola",
+    role: "Attention Factory bootcamp participant",
+    result:
+      "Built a voice AI agent, a WhatsApp assistant, a workforce management app, websites, an AI video campaign, and a digital product.",
   },
   {
     quote:
-      "We closed a deal two weeks faster because Reevo auto-generated follow-ups we hadn't even thought of. That's the kind of impact that shows up in the numbers, not just my calendar.",
-    name: "Leslie",
-    role: "Founder, Stealth Co.",
-    portrait: "/v2/team/portrait-notion.jpg",
+      "Before the mentorship, I was overwhelmed and lacked direction. I was sorting through too much information and constantly second-guessing my work. The mentorship gave me clear guidance, practical systems, and hands-on skills. I stopped guessing, saved hours of trial and error, and became more confident and intentional with my content.",
+    name: "A Sonia Omashaye",
+    role: "Business Manager, Soniacraft LLC",
+    // TODO: add her submitted headshot to public/v2/team/ and set `portrait`.
   },
   {
     quote:
-      "Any team member can just open Reevo, ask it a question in plain English, and instantly get the context they need; from call notes to next steps. I don't have to repeat myself in Slack or email, and nothing slips through the cracks.",
-    name: "Ed",
-    role: "Head of Sales, GenieAI",
-    portrait: "/v2/team/portrait-replit.jpg",
+      "I wasn't sure I would get enough value from the program. I left with practical, hands-on skills and built and deployed apps using Claude Code, Lovable, Replit, and Emergent. I would definitely recommend it.",
+    name: "Anonymous",
   },
 ];
 
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
     <article className="flex min-w-0 shrink-0 basis-[82%] snap-start flex-col bg-white sm:basis-[60%] md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]">
-      {/* Square portrait, flush to the top-left corner of the card */}
-      <Image
-        src={item.portrait}
-        alt=""
-        width={64}
-        height={64}
-        className="size-16 shrink-0 object-cover grayscale"
-      />
+      {/* Square portrait, flush to the top-left corner of the card. Without a
+          real headshot the corner stays a flat swatch so the card keeps its
+          shape and nothing is misattributed. */}
+      {item.portrait ? (
+        <Image
+          src={item.portrait}
+          alt=""
+          width={64}
+          height={64}
+          className="size-16 shrink-0 object-cover grayscale"
+        />
+      ) : (
+        <div aria-hidden className="size-16 shrink-0 bg-[#e4e3de]" />
+      )}
 
       <p className="mt-7 px-6 text-[13px] leading-[1.55] font-semibold tracking-[-0.005em] text-[#1a1a1a]">
         &ldquo;{item.quote}&rdquo;
       </p>
 
-      <div className="mt-auto px-6 pt-10 pb-6 font-mono text-[10px] leading-[1.7] tracking-[0.12em] uppercase">
+      {item.result ? (
+        <p className="mt-5 px-6 text-[13px] leading-[1.55] tracking-[-0.005em] text-[#5a5a5a]">
+          {item.result}
+        </p>
+      ) : null}
+
+      <div className="mt-auto px-6 pt-10 pb-6 text-[13px] leading-[1.6] tracking-[-0.02em]">
         <p className="text-[#1a1a1a]">{item.name}</p>
-        <p className="text-[#8c8a84]">{item.role}</p>
+        {item.role ? <p className="text-[#8c8a84]">{item.role}</p> : null}
       </div>
     </article>
   );

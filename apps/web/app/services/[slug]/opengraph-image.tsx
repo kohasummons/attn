@@ -7,46 +7,7 @@ export const size = {
 };
 export const contentType = "image/png";
 
-const services: Record<string, { title: string; subtitle: string }> = {
-  "video-ads": {
-    title: "AI Video Ads at Scale",
-    subtitle: "Generate hundreds of variations in days, not months.",
-  },
-  chatbots: {
-    title: "Custom Chatbots & AI Assistants",
-    subtitle: "AI assistants trained on your brand, deployed anywhere.",
-  },
-  "seo-content": {
-    title: "Programmatic SEO Content",
-    subtitle: "Thousands of SEO-optimized pages, generated intelligently.",
-  },
-  "voice-cloning": {
-    title: "Voice Cloning for Brands",
-    subtitle: "Your brand voice, infinitely scalable.",
-  },
-  "ai-spokespersons": {
-    title: "AI Spokesperson Videos",
-    subtitle: "Photorealistic AI presenters for your brand.",
-  },
-  "music-videos": {
-    title: "Music Video Production",
-    subtitle: "AI-powered visuals for artists and labels.",
-  },
-  "social-media": {
-    title: "Social Media Content Automation",
-    subtitle: "Endless content, zero burnout.",
-  },
-  partnerships: {
-    title: "Partnerships",
-    subtitle: "We become your AI team.",
-  },
-  training: {
-    title: "Training & Skill Transfer",
-    subtitle: "Gen AI training, prompt engineering, and corporate workshops.",
-  },
-};
-
-export default function Image({ params }: { params: { slug: string } }) {
+export default function Image() {
   return new ImageResponse(
     <div
       style={{

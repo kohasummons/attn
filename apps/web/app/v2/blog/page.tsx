@@ -91,7 +91,7 @@ export default function BlogPage() {
       <main>
         <PageHero
           eyebrow="Blog"
-          title="What we shipped. What broke. What it cost."
+          title={["What we shipped. What broke.", "What it cost."]}
           lead="Field notes from the builds, the training rooms and the budget meetings. Our read on where AI is actually going, minus the hype."
         />
 
@@ -110,10 +110,10 @@ export default function BlogPage() {
                   className="group grid grid-cols-1 gap-4 border-b border-[#e4e3de] py-10 transition-colors hover:bg-[#f9f9f9] md:grid-cols-[220px_1fr] md:gap-10"
                 >
                   <div className="flex items-baseline gap-4 md:flex-col md:gap-3">
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                    <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                       {post.category}
                     </p>
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-[#c4c4c0] uppercase">
+                    <p className="text-[13px] tracking-[-0.02em] text-[#c4c4c0]">
                       {post.readTime}
                     </p>
                   </div>

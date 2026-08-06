@@ -153,10 +153,10 @@ function ArticleCard({ article }: { article: Article }) {
       className="group flex flex-col bg-white p-8 transition-colors hover:bg-[#f9f9f9]"
     >
       <div className="flex items-baseline gap-4">
-        <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+        <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
           {article.format}
         </p>
-        <p className="font-mono text-[10px] tracking-[0.16em] text-[#c4c4c0] uppercase">
+        <p className="text-[13px] tracking-[-0.02em] text-[#c4c4c0]">
           {article.readTime}
         </p>
       </div>
@@ -180,7 +180,7 @@ export default function IntelligencePage() {
         <PageHero
           eyebrow="Attention Factory Intelligence"
           title="For the person who has to decide by Monday."
-          lead="You do not need another newsletter about what a model can write. You need to know what is worth funding this quarter, what to stall, and what your board is about to ask you. Our read on where AI is actually going, minus the hype."
+          lead="Not another newsletter about what a model can write. What is worth funding this quarter, what to stall, and what your board is about to ask you."
         />
 
         {/* Featured — six equal-weight cards, no hero card */}
@@ -216,10 +216,10 @@ export default function IntelligencePage() {
                   className="group grid grid-cols-1 gap-4 border-b border-white/10 py-10 transition-colors hover:bg-white/[0.03] md:grid-cols-[220px_1fr] md:gap-10"
                 >
                   <div className="flex items-baseline gap-4 md:flex-col md:gap-3">
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-white/45 uppercase">
+                    <p className="text-[13px] tracking-[-0.02em] text-white/45">
                       {briefing.number}
                     </p>
-                    <p className="font-mono text-[10px] tracking-[0.16em] text-white/30 uppercase">
+                    <p className="text-[13px] tracking-[-0.02em] text-white/30">
                       {briefing.readTime}
                     </p>
                   </div>
@@ -248,7 +248,7 @@ export default function IntelligencePage() {
             <div className="mt-16 grid grid-cols-1 gap-px bg-[#e4e3de] md:grid-cols-2">
               {programs.map((program) => (
                 <div key={program.name} className="bg-[#f9f9f9] p-8">
-                  <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                  <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                     {program.label}
                   </p>
                   <h3 className="mt-6 text-[clamp(22px,2.5vw,28px)] leading-[1.1] font-medium tracking-[-0.04em] text-[#121313]">

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
@@ -76,7 +77,7 @@ export default function AboutPage() {
       <main>
         <PageHero
           eyebrow="About"
-          title="The tools got good. The habits did not."
+          title={["The tools got good.", "The habits did not."]}
           lead="Attention Factory is a two-person studio that has trained 3,000+ people and teams to build with AI, then stayed to build the first thing with them."
         >
           <ButtonLink href="/v2/contact">Talk to us</ButtonLink>
@@ -176,7 +177,7 @@ export default function AboutPage() {
                     <h3 className="text-[clamp(22px,2.5vw,28px)] leading-[1.05] font-semibold tracking-[-0.04em] text-[#121313]">
                       {founder.name}
                     </h3>
-                    <p className="mt-2 font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                    <p className="mt-2 text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                       {founder.role}
                     </p>
                     <div className="mt-6 space-y-4 text-[16px] leading-[1.55] text-[#5a5a5a]">
@@ -236,28 +237,28 @@ export default function AboutPage() {
                 <Eyebrow tone="dark">Where to go next</Eyebrow>
                 <ul className="mt-7 border-t border-white/10">
                   <li className="border-b border-white/10">
-                    <a
+                    <Link
                       href="/v2/organizations"
                       className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
                     >
                       Train your team
-                    </a>
+                    </Link>
                   </li>
                   <li className="border-b border-white/10">
-                    <a
+                    <Link
                       href="/v2/services/software-building"
                       className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
                     >
                       Build software with us
-                    </a>
+                    </Link>
                   </li>
                   <li className="border-b border-white/10">
-                    <a
+                    <Link
                       href="/v2"
                       className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
                     >
                       be inevitable with ai
-                    </a>
+                    </Link>
                   </li>
                 </ul>
               </div>

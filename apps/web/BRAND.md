@@ -37,7 +37,14 @@ Headings are fluid. Pick the tier, don't invent a clamp.
 | Lead | `text-[clamp(15px,1.8vw,19px)]` | hero sublines, section intros |
 | Body | `text-[16px]` | paragraphs |
 | Small | `text-[14px]` | secondary detail |
-| Micro | `text-[10px]` / `text-[11px]` | eyebrows, mono labels |
+| Micro | `text-[12px]` / `text-[13px]` | card labels, meta lines |
+
+**No letter-spaced mono capitals.** `font-mono … tracking-[0.16em] uppercase`
+micro-labels (`PROGRAM 01`, `FIELD NOTES`, `COO, CASCA`) are banned as content
+labels — they read as generated filler. Write the label in sentence case at
+`text-[13px] tracking-[-0.02em]` in a muted tone instead. The only exception is
+text *inside* a mock interface in an illustration, where it is imitating UI
+chrome rather than labelling our own content.
 
 **Headings always carry `tracking-[-0.04em]` and `leading-[1.05]`.** That tight negative tracking is the most recognisable thing about our type. Body copy uses `tracking-[-0.02em]` and `leading-[1.4]–[1.55]`.
 
@@ -100,6 +107,11 @@ We write like someone who has actually shipped the thing, talking to a peer who 
 - Two-beat stance — *"Plan first. Then build."*
 - Two-line stack, second line muted (`#6a7282`) — *"Multipliying your results" / "From zero to scale"*
 
+**Hero length limits.** A page hero H1 is **two lines, ~32 characters each** — at
+`clamp(36px,6vw,64px)` inside `max-w-[900px]`, a longer line wraps and the stack
+becomes three ragged lines. Hero leads are **two lines, ~155 characters** inside
+`max-w-[620px]`. Cut the sentence, do not widen the measure.
+
 ### CTA labels
 
 Verb + object, no filler. "Train your team", "Find your archetype", "Talk to us".
@@ -125,6 +137,32 @@ Use these. Do not re-implement them inline.
 **Dark tile** (services grid) — `bg-black`, `border border-white/10`, eyebrow top-left in uppercase micro, arrow top-right, title and subline anchored bottom, flower image revealed on hover.
 
 **Light quote card** (testimonials) — `bg-white`, square portrait flush to the top-left corner, small semibold quote, name and role in uppercase mono at the bottom.
+
+### Carousels
+
+Two live in `components/sections/service-interactive.tsx`. Both share the same
+chrome: a pair of square `size-10` bordered arrow buttons in the **top right**
+(never circular, never overlaid on the cards), a snap-scrolling strip with the
+scrollbar hidden, and card widths that leave a partial card visible at the edge
+so the strip reads as slidable.
+
+**`WorkCarousel`** — arrow-driven only. For a short, finite set the visitor
+browses at their own pace.
+
+**`ListCarousel`** — advances one card every 3.6s on its own. For a list long
+enough that a static grid reads as a wall. Each card is a centred title, one
+line of copy, and a 4:3 image flush to the bottom edge — no index number, no
+corner arrow. Rules for anything that moves by itself: pause on hover and on
+focus, honour `prefers-reduced-motion`, and render the set twice with the second
+copy `aria-hidden` so the loop never shows an empty edge.
+
+### Photography
+
+One exception to the black-and-white rule: the support-strip art is soft daylight
+product photography on white — a hand holding printed matter whose surface carries
+grainy risograph pastel gradients. Colour lives **inside the photographed object**,
+never in type, borders, or backgrounds, and never near the `#ff4100` accent.
+Images live in `public/images/support/`, 880×660 webp.
 
 ---
 

@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { ArrowButton } from "@/components/ui/arrow-button";
-import { EyebrowLabel } from "@/components/ui/eyebrow-label";
 
 export function CTABanner() {
   return (
@@ -17,8 +16,7 @@ export function CTABanner() {
 
       <div className="relative mx-auto min-h-[600px] max-w-[1166px] px-6 py-24">
         <div className="max-w-[535px]">
-          <EyebrowLabel className="text-white">Intelligence</EyebrowLabel>
-          <h2 className="mt-3 text-[clamp(36px,6vw,64px)] font-medium leading-[1.05] tracking-[-0.04em] text-white">
+          <h2 className="text-[clamp(36px,6vw,64px)] font-medium leading-[1.05] tracking-[-0.04em] text-white">
             What kind of AI user are you?
           </h2>
           <p className="mt-5 text-[clamp(15px,1.8vw,19px)] leading-[1.45] tracking-[-0.01em] text-white">

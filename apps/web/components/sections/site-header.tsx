@@ -21,26 +21,25 @@ type MenuItem = {
 
 const servicesMenu: MenuItem[] = [
   {
-    title: "Software building",
-    description: "Ship production-ready AI applications and platforms.",
+    title: "Software development",
+    description:
+      "Apps, internal tools, platforms, and AI products, from first brief to launch.",
     href: "/v2/services/software-building",
   },
   {
     title: "Workflow automation",
     description:
-      "Build the agents and automations that kill your team's repetitive work.",
+      "Find the repetitive work slowing your team down, then automate the right parts.",
     href: "/v2/services/workflow-automation",
   },
   {
-    title: "AI transformation planning",
-    description:
-      "Build a clear roadmap and training for AI across your company.",
+    title: "AI planning",
+    description: "Decide where AI fits, what to do first, and who owns it.",
     href: "/v2/services/ai-transformation-planning",
   },
   {
-    title: "AI strategy support",
-    description:
-      "Get integrated experts driving your rollout from plan to launch.",
+    title: "Ongoing AI support",
+    description: "Experienced help as your AI plan becomes working systems.",
     href: "/v2/services/ai-strategy-support",
   },
 ];
@@ -49,7 +48,7 @@ const universityMenu: MenuItem[] = [
   {
     title: "Courses",
     description: "Browse the courses we offer.",
-    href: "https://app.attentionfactory.io/courses",
+    href: "/v2/courses",
   },
   {
     title: "Membership",
@@ -212,7 +211,7 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-6">
           <a
-            href="https://platform.attentionfactory.io"
+            href="https://app.attentionfactory.io/signin"
             className={cn(
               "hidden text-[16px] font-medium transition-colors sm:inline",
               scrolled

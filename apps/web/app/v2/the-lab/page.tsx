@@ -101,7 +101,7 @@ function ProductCard({ product }: { product: Product }) {
   return (
     <div className="flex flex-col bg-[#f9f9f9] p-8">
       <span
-        className={`inline-flex w-fit items-center border px-3 py-1.5 font-mono text-[10px] leading-none tracking-[0.16em] uppercase ${statusStyles[product.status]}`}
+        className={`inline-flex w-fit items-center border px-3 py-1.5 text-[12px] leading-none tracking-[-0.02em] ${statusStyles[product.status]}`}
       >
         {product.status}
       </span>
@@ -125,8 +125,8 @@ export default function TheLabPage() {
       <main>
         <PageHero
           eyebrow="The Lab"
-          title="We build our own software. Then we tell you what it cost."
-          lead="The Lab is where Attention Factory ships products, not decks. Some run in production. Some are experiments we keep in public because the failures are the useful part."
+          title={["We build our own software.", "Then we tell you what it cost."]}
+          lead="The Lab is where we ship products, not decks. Some run in production. Some are experiments we keep in public because the failures are useful."
         >
           <ButtonLink href="/v2/contact">Talk to us</ButtonLink>
         </PageHero>
@@ -141,7 +141,7 @@ export default function TheLabPage() {
             />
             <div className="mt-14 grid grid-cols-1 gap-10 border-t border-[#e4e3de] pt-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
               <div>
-                <span className="inline-flex w-fit items-center border border-[#121313] px-3 py-1.5 font-mono text-[10px] leading-none tracking-[0.16em] text-[#121313] uppercase">
+                <span className="inline-flex w-fit items-center border border-[#121313] px-3 py-1.5 text-[12px] leading-none tracking-[-0.02em] text-[#121313]">
                   {flagship.status}
                 </span>
                 <p className="mt-8 text-[clamp(22px,2.5vw,28px)] leading-[1.15] font-medium tracking-[-0.04em] text-[#121313]">
@@ -187,7 +187,7 @@ export default function TheLabPage() {
             <div className="mt-16 grid grid-cols-1 gap-px bg-white/10 md:grid-cols-3">
               {reasons.map((reason) => (
                 <div key={reason.title} className="bg-black p-8">
-                  <p className="font-mono text-[10px] tracking-[0.16em] text-white/45 uppercase">
+                  <p className="text-[13px] tracking-[-0.02em] text-white/45">
                     {reason.label}
                   </p>
                   <h3 className="mt-6 text-[22px] leading-[1.15] font-medium tracking-[-0.03em] text-white">

@@ -37,7 +37,7 @@ export default function TermsOfServicePage() {
           <Container>
             <div className="max-w-[720px]">
               <div className="border border-[#e4e3de] border-l-2 border-l-[#ff4100] p-6">
-                <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                   Template — pending legal review
                 </p>
                 <p className="mt-4 text-[15px] leading-[1.5] tracking-[-0.02em] text-[#5a5a5a]">

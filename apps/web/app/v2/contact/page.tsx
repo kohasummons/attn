@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Contact — Attention Factory",
   description:
-    "Tell us what your team is trying to build. One inbox, a reply from a founder, and a straight answer on whether this is work we should take.",
+    "Tell us what your team is trying to build. One inbox, a reply from our team, and a straight answer on whether this is work we should take.",
 };
 
 const steps = [
@@ -25,8 +25,8 @@ const steps = [
   },
   {
     when: "Step two",
-    title: "Mercy or Joshua reads it.",
-    body: "One of the two founders answers you directly, usually inside the same week, and says what they would do first.",
+    title: "We read it.",
+    body: "Someone on our team answers you directly, usually inside the same week, and says what we would do first.",
   },
   {
     when: "Step three",
@@ -40,7 +40,7 @@ const routes = [
     label: "Email",
     value: "hello@attentionfactory.io",
     href: "mailto:hello@attentionfactory.io",
-    body: "The fastest way in. Both founders read it.",
+    body: "The fastest way in. Our team reads it.",
   },
   {
     label: "Teams",
@@ -75,7 +75,7 @@ export default function ContactPage() {
         <PageHero
           eyebrow="Contact"
           title="Tell us what your team keeps working around."
-          lead="One inbox, a reply from a founder, and a straight read on whether this is work we should take."
+          lead="One inbox, a reply from our team, and a straight read on whether this is work we should take."
         />
 
         {/* What happens next + routes */}
@@ -94,7 +94,7 @@ export default function ContactPage() {
                       key={step.title}
                       className="border-b border-[#e4e3de] py-8"
                     >
-                      <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                      <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                         {step.when}
                       </p>
                       <h3 className="mt-5 text-[20px] leading-[1.2] font-medium tracking-[-0.03em] text-[#121313]">
@@ -116,7 +116,7 @@ export default function ContactPage() {
                       key={route.value}
                       className="border-b border-[#e4e3de] py-8"
                     >
-                      <p className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase">
+                      <p className="text-[13px] tracking-[-0.02em] text-[#8a8a86]">
                         {route.label}
                       </p>
                       <a
@@ -157,7 +157,7 @@ export default function ContactPage() {
                     <div key={field.id}>
                       <label
                         htmlFor={field.id}
-                        className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase"
+                        className="text-[13px] tracking-[-0.02em] text-[#8a8a86]"
                       >
                         {field.label}
                       </label>
@@ -174,7 +174,7 @@ export default function ContactPage() {
                   <div>
                     <label
                       htmlFor="message"
-                      className="font-mono text-[10px] tracking-[0.16em] text-[#8a8a86] uppercase"
+                      className="text-[13px] tracking-[-0.02em] text-[#8a8a86]"
                     >
                       Message
                     </label>
@@ -219,8 +219,8 @@ export default function ContactPage() {
               </h2>
               <div className="max-w-[520px]">
                 <p className="text-[16px] leading-[1.55] text-white/60">
-                  We are two people, so we answer honestly and we answer fast.
-                  If you are still reading the site,{" "}
+                  We answer honestly, and we answer fast. If you are still
+                  reading the site,{" "}
                   <a
                     href="/v2/about"
                     className="text-white underline underline-offset-4"

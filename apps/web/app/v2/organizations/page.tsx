@@ -66,8 +66,8 @@ export default function OrganizationsPage() {
       <main>
         <PageHero
           eyebrow="For your whole team"
-          title="Your team is already using AI. Badly."
-          lead="Most companies buy the tools and skip the training, so nothing changes. We train your people to use AI on their actual work, then leave you with systems that hold up after we go."
+          title={["Your team is already using AI.", "Badly."]}
+          lead="Most companies buy the tools and skip the training, so nothing changes. We train your people on their actual work, then leave systems that hold up."
         >
           <ButtonLink href="/v2/contact">Train your team</ButtonLink>
         </PageHero>
@@ -100,7 +100,7 @@ export default function OrganizationsPage() {
             <div className="mt-16 grid grid-cols-1 gap-px bg-white/10 md:grid-cols-3">
               {audiences.map((a) => (
                 <div key={a.title} className="bg-black p-8">
-                  <p className="font-mono text-[10px] tracking-[0.16em] text-white/40 uppercase">
+                  <p className="text-[13px] tracking-[-0.02em] text-white/40">
                     {a.label}
                   </p>
                   <h3 className="mt-6 text-[22px] leading-[1.15] font-medium tracking-[-0.03em] text-white">
@@ -127,7 +127,7 @@ export default function OrganizationsPage() {
                   key={f.title}
                   className="grid grid-cols-1 gap-4 border-b border-[#e4e3de] py-8 md:grid-cols-[140px_260px_1fr] md:items-baseline md:gap-10"
                 >
-                  <p className="font-mono text-[11px] tracking-[0.14em] text-[#ff4100] uppercase">
+                  <p className="text-[13px] tracking-[-0.02em] text-[#ff4100]">
                     {f.when}
                   </p>
                   <p className="text-[20px] leading-[1.2] font-medium tracking-[-0.03em] text-[#121313]">

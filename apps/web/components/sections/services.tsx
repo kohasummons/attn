@@ -80,7 +80,7 @@ function DarkTile({ card }: { card: ServiceCard }) {
       />
 
       <div className="relative flex items-start justify-between gap-4">
-        <p className="text-[11px] leading-none font-medium tracking-[0.18em] text-white/45 uppercase transition-colors duration-500 group-hover:text-white/75">
+        <p className="text-[13px] leading-none font-medium tracking-[-0.02em] text-white/45 transition-colors duration-500 group-hover:text-white/75">
           {card.eyebrow}
         </p>
         <ArrowUpRight
@@ -111,7 +111,7 @@ function WideTile({ card }: { card: ServiceCard }) {
       className="group relative flex flex-col justify-between overflow-hidden bg-white p-8 transition-transform duration-500 ease-out hover:-translate-y-1 md:col-span-2"
     >
       <div className="flex items-start justify-between gap-4">
-        <p className="text-[11px] leading-none font-medium tracking-[0.18em] text-black/45 uppercase transition-colors duration-500 group-hover:text-black/70">
+        <p className="text-[13px] leading-none font-medium tracking-[-0.02em] text-black/45 transition-colors duration-500 group-hover:text-black/70">
           {card.eyebrow}
         </p>
         <ArrowUpRight

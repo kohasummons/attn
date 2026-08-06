@@ -36,32 +36,25 @@ export function Section({
   );
 }
 
-export function Eyebrow({
-  tone = "light",
-  className,
-  ...props
-}: ComponentProps<"p"> & { tone?: "light" | "dark" }) {
-  return (
-    <p
-      className={cn(
-        "text-[11px] leading-none font-medium tracking-[0.18em] uppercase",
-        tone === "dark" ? "text-white/45" : "text-[#8a8a86]",
-        className,
-      )}
-      {...props}
-    />
-  );
+/**
+ * Section kickers (the small uppercase labels above a heading) were removed
+ * site-wide. Kept as a no-op so existing call sites and prop shapes stay valid.
+ */
+export function Eyebrow(
+  _props: ComponentProps<"p"> & { tone?: "light" | "dark" },
+) {
+  return null;
 }
 
 /** Section heading: optional eyebrow, a title, an optional muted second line. */
 export function SectionHeading({
-  eyebrow,
   title,
   muted,
   lead,
   tone = "light",
   className,
 }: {
+  /** Accepted for call-site compatibility; kickers are no longer rendered. */
   eyebrow?: string;
   title: ReactNode;
   muted?: ReactNode;
@@ -71,11 +64,9 @@ export function SectionHeading({
 }) {
   return (
     <div className={className}>
-      {eyebrow ? <Eyebrow tone={tone}>{eyebrow}</Eyebrow> : null}
       <h2
         className={cn(
           "text-[clamp(28px,5vw,48px)] leading-[1.05] font-medium tracking-[-0.04em]",
-          eyebrow && "mt-4",
           tone === "dark" ? "text-white" : "text-[#121313]",
         )}
       >
@@ -104,22 +95,34 @@ export function SectionHeading({
  * flower on the right instead, matching the services grid.
  */
 export function PageHero({
-  eyebrow,
   title,
   lead,
   image = "/images/bg-atf2.webp",
   bloom,
   children,
 }: {
+  /** Accepted for call-site compatibility; kickers are no longer rendered. */
   eyebrow?: string;
-  title: ReactNode;
+  /** A string[] is rendered as a line stack with every line after the first muted. */
+  title: ReactNode | string[];
   lead?: ReactNode;
   image?: string | null;
   bloom?: string;
   children?: ReactNode;
 }) {
+  const lines = Array.isArray(title)
+    ? title.map((line) => (
+        <span key={line} className="block">
+          {line}
+        </span>
+      ))
+    : title;
+  // Full original image height, but the copy is anchored to the top instead of
+  // the bottom — bottom-anchoring is what put ~300px of dead space under the
+  // header on short heroes. The spare height now falls below the text, where it
+  // reads as image.
   return (
-    <section className="relative isolate flex min-h-[620px] flex-col justify-end overflow-hidden bg-[#121313] pt-[168px] pb-20 text-[#fdfdfd] md:min-h-[720px] md:pt-[220px] md:pb-28">
+    <section className="relative isolate flex min-h-[620px] flex-col justify-start overflow-hidden bg-[#121313] pt-[144px] pb-14 text-[#fdfdfd] md:min-h-[720px] md:pt-[200px] md:pb-20">
       {image ? (
         <Image
           src={image}
@@ -150,18 +153,15 @@ export function PageHero({
       />
       <div
         aria-hidden
-        className="absolute inset-x-0 bottom-0 -z-10 h-1/2 bg-gradient-to-t from-[#0b0c0c] to-transparent"
+        className="absolute inset-x-0 bottom-0 -z-10 h-1/3 bg-gradient-to-t from-[#0b0c0c] to-transparent"
       />
 
       <Container>
-        {eyebrow ? <Eyebrow tone="dark">{eyebrow}</Eyebrow> : null}
-        <h1
-          className={cn(
-            "max-w-[900px] text-[clamp(36px,6vw,64px)] leading-[1.05] font-medium tracking-[-0.04em] text-[#fdfdfd]",
-            eyebrow && "mt-5",
-          )}
-        >
-          {title}
+        {/* Two-line stack, second line muted (BRAND.md §2). Titles passed as a
+            single string stay one colour; titles broken into <span className="block">
+            lines get the hierarchy automatically. */}
+        <h1 className="max-w-[900px] text-[clamp(36px,6vw,64px)] leading-[1.05] font-medium tracking-[-0.04em] text-[#fdfdfd] [&>span:not(:first-child)]:text-[#6a7282]">
+          {lines}
         </h1>
         {lead ? (
           <p className="mt-6 max-w-[620px] text-[clamp(15px,1.8vw,19px)] leading-[1.45] tracking-[-0.02em] text-white/70">

@@ -17,7 +17,7 @@ export default function VoiceCloningPage() {
       <section className="mb-12">
         <h2 className="text-base font-medium text-black mb-4">What we do</h2>
         <p className="text-gray-600 leading-relaxed mb-4">
-          We clone your founder's voice, your spokesperson, or create a unique brand voice from scratch. Use it for ads, podcasts, IVR, audiobooks — anywhere.
+          We clone your founder&apos;s voice, your spokesperson, or create a unique brand voice from scratch. Use it for ads, podcasts, IVR, audiobooks — anywhere.
         </p>
         <ul className="space-y-2 text-gray-600">
           <li>→ Founder/CEO voice for authentic content</li>
