@@ -1,6 +1,10 @@
 {
   "extends": "@repo/typescript-config/nextjs.json",
   "compilerOptions": {
+    // Ported guide components (components/guides/*) were authored without
+    // noUncheckedIndexedAccess. Relaxing just this flag for the web app keeps
+    // the rest of the codebase's strictness intact.
+    "noUncheckedIndexedAccess": false,
     "paths": {
       "@/*": ["./*"]
     },

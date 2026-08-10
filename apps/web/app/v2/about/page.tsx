@@ -1,73 +1,88 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 
 import { SiteFooter } from "@/components/sections/site-footer";
 import { SiteHeader } from "@/components/sections/site-header";
 import { Container } from "@/components/ui/container";
-import {
-  ButtonLink,
-  Eyebrow,
-  PageHero,
-  Section,
-  SectionHeading,
-} from "@/components/ui/page-shell";
+import { ButtonLink, PageHero, Section } from "@/components/ui/page-shell";
 
 export const metadata: Metadata = {
-  title: "About — Attention Factory",
+  title: "About Attention Factory",
   description:
-    "Attention Factory has trained 3,000+ people and teams to build with AI. Two founders, one method: you leave with something running.",
+    "Attention Factory helps people learn AI, trains teams, and builds software and workflow automations for organizations.",
 };
 
-const principles = [
+const waysToWork = [
   {
-    title: "You learn it by building it.",
-    body: "Every session ends with something running in your own account, not a certificate in your inbox.",
+    title: "Learn with us",
+    body: "Weekends of AI gives people a free place to begin. Attention University offers structured courses, practical projects, and a community for people who want to keep going.",
+    label: "Explore learning",
+    href: "/v2/courses",
+    flower: "peony",
   },
   {
-    title: "The bottleneck is never the model.",
-    body: "It is the approval, the handoff, and the person waiting on a reply, so that is where we start.",
+    title: "Train your team",
+    body: "We build training around your team's roles, tools, and daily work, so the learning shows up in what people do next.",
+    label: "Train your team",
+    href: "/v2/organizations",
+    flower: "iris",
   },
   {
-    title: "We tell you what we do not know.",
-    body: "When the honest answer is that a thing is not ready yet, you hear it from us before you spend a quarter on it.",
+    title: "Plan your use of AI",
+    body: "We help organizations choose the right starting points, decide who owns the work, and turn the plan into clear next steps.",
+    label: "Plan your AI rollout",
+    href: "/v2/services/ai-transformation-planning",
+    flower: "dahlia",
+  },
+  {
+    title: "Build with us",
+    body: "We design and build apps, internal tools, AI products, and workflow automations that solve a real problem.",
+    label: "See our services",
+    href: "/v2/services",
+    flower: "rose",
   },
 ];
 
 const founders = [
   {
     name: "Mercy Thaddeus",
-    role: "Co-founder",
+    role: "Cofounder",
     photo: "/images/team-mercy.jpg",
-    bio: [
-      "Mercy runs the build side. She takes the problem your team keeps working around and turns it into an app, an agent, or an automation that ships in weeks.",
-      "She has taught in rooms of forty and in calls of four, and she writes the curriculum the same way she writes software: cut it until only the part that works is left.",
-    ],
+    bio: "Mercy started her career as a software engineer and now works across AI education, product building, and business adoption. She created the free content that grew into Attention Factory and still teaches, builds, and works directly with organizations.",
   },
   {
-    name: "Joshua Phyl",
-    role: "Co-founder",
+    name: "Joshua Omobola",
+    role: "Cofounder",
     photo: "/images/team-joshua.jpg",
-    bio: [
-      "Joshua runs the training side. He sits with your team, watches how the work actually moves, and rebuilds the session around what he sees rather than what the brief said.",
-      "He is the one who will tell you a pilot is not worth running. That answer has saved more quarters than any workshop he has led.",
-    ],
+    bio: "Joshua works across Attention Factory's training and organizational projects. He helps turn broad goals into clear programs, working sessions, and systems that teams can keep using after the engagement.",
   },
 ];
 
-const proof = [
+const impact = [
   {
-    figure: "3,000+",
-    body: "People and teams trained, in person and online.",
+    figure: "250,000+",
+    body: "People reached through our educational content.",
   },
   {
-    figure: "Two",
-    body: "Founders. The people you meet are the people who do the work.",
+    figure: "3,200+",
+    body: "Learners trained through Weekends of AI.",
   },
   {
-    figure: "Monday",
-    body: "The test for every session. If you cannot use it Monday, we cut it.",
+    figure: "160+",
+    body: "Learners who have completed our intensive bootcamp.",
   },
+];
+
+const paths = [
+  { label: "Join Weekends of AI", href: "https://weekendsofai.com" },
+  {
+    label: "Explore Attention University",
+    href: "https://app.attentionfactory.io",
+  },
+  { label: "Train your team", href: "/v2/organizations" },
+  { label: "Build with us", href: "/v2/services" },
 ];
 
 export default function AboutPage() {
@@ -75,196 +90,251 @@ export default function AboutPage() {
     <>
       <SiteHeader />
       <main>
+        {/* Hero */}
         <PageHero
-          eyebrow="About"
-          title={["The tools got good.", "The habits did not."]}
-          lead="Attention Factory is a two-person studio that has trained 3,000+ people and teams to build with AI, then stayed to build the first thing with them."
+          image="/images/bg-atf2.webp"
+          title={[
+            "We help people learn AI,",
+            "use it at work, and build with it.",
+          ]}
+          lead="Attention Factory is an AI education and technology company. What started as free online content has grown into learning programs for individuals, training for teams, and software and automation for organizations."
         >
-          <ButtonLink href="/v2/contact">Talk to us</ButtonLink>
+          <ButtonLink href="#what-we-do">See what we do</ButtonLink>
         </PageHero>
 
-        {/* Origin, told as a moment */}
-        <Section tone="light">
-          <Container>
-            <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_1.1fr] lg:gap-20">
-              <h2 className="text-[clamp(28px,4vw,44px)] leading-[1.08] font-medium tracking-[-0.04em] text-[#121313]">
-                The moment.
-              </h2>
-              <div className="max-w-[560px] space-y-6 text-[clamp(16px,1.8vw,19px)] leading-[1.55] tracking-[-0.01em] text-[#5a5a5a]">
+        {/* Our story */}
+        <section className="mx-auto max-w-[1738px] border-x border-[#e4e3de] bg-white">
+          <Container className="py-24 md:py-36">
+            <div className="grid grid-cols-1 border-y border-[#e4e3de] lg:grid-cols-2">
+              <div className="py-10 lg:border-r lg:border-[#e4e3de] lg:py-16 lg:pr-16">
+                <h2 className="max-w-[470px] text-[clamp(32px,5vw,52px)] leading-[1.05] font-medium tracking-[-0.04em]">
+                  <span className="block text-[#121313]">It started with</span>
+                  <span className="block text-[#6a7282]">free content.</span>
+                </h2>
+              </div>
+              <div className="max-w-[650px] space-y-7 py-10 text-[16px] leading-[1.7] tracking-[-0.01em] text-[#505050] lg:py-16 lg:pl-16 md:text-[18px]">
                 <p>
-                  In 2023 the cost of building software fell off a cliff. A
-                  model could draft the plan, write the code, and run the
-                  analysis, and every company on earth found this out in the
-                  same quarter. What did not change was the room. The same
-                  meetings, the same approvals, the same one person who owns the
-                  spreadsheet.
+                  Attention Factory began with free online content that showed
+                  people how to use AI for real work. As the audience grew,
+                  people asked for deeper classes, more structure, and help
+                  applying AI to their own work.
                 </p>
                 <p>
-                  Mercy and Joshua were teaching in those rooms when the gap
-                  showed up. People had the tools open and no idea what to do
-                  with the next hour. So they stopped shipping decks and started
-                  shipping builds: one team, one real problem, one working thing
-                  by Friday. Three thousand people later, the question that
-                  opened all of it is still open. What would your team do if
-                  building were free?
+                  That led to free masterclasses, Weekends of AI, bootcamps, and
+                  Attention University. Businesses began coming to us with
+                  another set of needs: team training, software development,
+                  workflow automation, and help deciding where AI fits.
+                </p>
+                <p>
+                  Because the work began online, the audience and client base
+                  crossed borders from the start. Some of our earliest clients
+                  were in the UK and Canada. Today, we work with learners and
+                  organizations across Africa and beyond.
                 </p>
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
 
-        {/* Principles */}
-        <Section tone="black">
+        {/* What we do */}
+        <Section id="what-we-do" tone="black" className="scroll-mt-20">
           <Container>
-            <SectionHeading
-              tone="dark"
-              eyebrow="What we hold to"
-              title="Three principles."
-              muted="They decide what we say no to."
-            />
-            <div className="mt-16 grid grid-cols-1 gap-px bg-white/10 md:grid-cols-3">
-              {principles.map((principle) => (
-                <div key={principle.title} className="bg-black p-8">
-                  <h3 className="text-[22px] leading-[1.15] font-medium tracking-[-0.03em] text-white">
-                    {principle.title}
-                  </h3>
-                  <p className="mt-4 text-[15px] leading-[1.5] text-white/60">
-                    {principle.body}
-                  </p>
-                </div>
+            <h2 className="text-[clamp(32px,5vw,52px)] leading-[1.05] font-medium tracking-[-0.04em]">
+              <span className="block text-white">Four ways to</span>
+              <span className="block text-[#6a7282]">work with us.</span>
+            </h2>
+            <p className="mt-6 max-w-[680px] text-[16px] leading-[1.65] text-white/65 md:text-[18px]">
+              People come to Attention Factory to learn, train their teams, plan
+              how AI should be used, or build something that solves a real
+              problem.
+            </p>
+            <div className="mt-12 grid auto-rows-[400px] grid-cols-1 gap-2 md:grid-cols-2">
+              {waysToWork.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="group relative flex flex-col justify-between overflow-hidden border border-white/10 bg-black p-8 transition-[transform,border-color] duration-500 ease-out hover:-translate-y-1 hover:border-white/30"
+                >
+                  <div
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 scale-[1.06] bg-[length:auto_62%] bg-no-repeat opacity-0 transition-[opacity,transform] duration-[700ms] ease-out group-hover:scale-100 group-hover:opacity-100"
+                    style={{
+                      backgroundImage: `url('/images/flowers/${item.flower}.webp')`,
+                      backgroundPosition: "82% 45%",
+                    }}
+                  />
+                  <div className="relative flex justify-end">
+                    <ArrowUpRight
+                      aria-hidden
+                      className="size-5 text-white/40 transition-colors group-hover:text-white"
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <div className="relative max-w-[470px]">
+                    <h3 className="text-[clamp(26px,3vw,34px)] leading-[1.08] font-medium tracking-[-0.04em] text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 max-w-[430px] text-[16px] leading-[1.55] text-white/68 md:text-[17px]">
+                      {item.body}
+                    </p>
+                  </div>
+                  <span
+                    aria-hidden
+                    className="relative text-[16px] text-white/60 transition-colors group-hover:text-white"
+                  >
+                    {item.label} →
+                  </span>
+                </Link>
               ))}
             </div>
           </Container>
         </Section>
 
-        {/* Positioning */}
-        <Section tone="paper" size="sm">
-          <Container>
-            <p className="max-w-[900px] text-[clamp(28px,5vw,48px)] leading-[1.05] font-medium tracking-[-0.04em] text-[#121313]">
-              No pilots that die in committee.{" "}
+        {/* Company statement */}
+        <section className="mx-auto flex min-h-[56svh] max-w-[1738px] items-center border-x border-[#e4e3de] bg-white">
+          <Container className="py-24 text-center md:py-36">
+            <p className="text-[20px] leading-none tracking-[0.18em] text-[#121313]">
+              * * * *
+            </p>
+            <h2 className="mx-auto mt-8 max-w-[1100px] text-[clamp(34px,6vw,64px)] leading-[1.03] font-medium tracking-[-0.05em] text-[#121313]">
+              People should leave Attention Factory{" "}
               <span className="text-[#6a7282]">
-                No forty-slide readouts. Just a working thing your team can run
-                on Monday.
+                able to do something they could not do before.
               </span>
+            </h2>
+            <p className="mx-auto mt-8 max-w-[650px] text-[16px] leading-[1.65] text-[#5a5a5a] md:text-[18px]">
+              That could mean building an app, automating a workflow, using AI
+              better at work, or starting a new career.
             </p>
           </Container>
-        </Section>
+        </section>
 
-        {/* Founders as full-width rows */}
-        <Section tone="light">
+        {/* Founders */}
+        <Section tone="paper">
           <Container>
-            <SectionHeading
-              eyebrow="Who you work with"
-              title="Two founders."
-              muted="No bench, no handover."
-            />
-            <div className="mt-16 border-t border-[#e4e3de]">
+            <h2 className="text-[clamp(32px,5vw,52px)] leading-[1.05] font-medium tracking-[-0.04em]">
+              <span className="block text-[#121313]">Meet the founders</span>
+              <span className="block text-[#6a7282]">Mercy &amp; Joshua</span>
+            </h2>
+            <div className="mt-12 grid grid-cols-1 gap-2 md:grid-cols-2">
               {founders.map((founder) => (
-                <div
+                <article
                   key={founder.name}
-                  className="grid grid-cols-1 gap-8 border-b border-[#e4e3de] py-12 md:grid-cols-[220px_1fr] md:gap-14"
+                  className="flex flex-col bg-white"
                 >
-                  <div className="relative aspect-square w-full max-w-[220px] overflow-hidden bg-[#f9f9f9]">
+                  <div className="relative aspect-[4/3] w-full overflow-hidden bg-[#e4e3de]">
                     <Image
                       src={founder.photo}
                       alt={founder.name}
                       fill
-                      sizes="220px"
-                      className="object-cover"
+                      sizes="(min-width: 768px) 50vw, 100vw"
+                      className="object-cover object-center"
                     />
                   </div>
-                  <div className="max-w-[620px]">
-                    <h3 className="text-[clamp(22px,2.5vw,28px)] leading-[1.05] font-semibold tracking-[-0.04em] text-[#121313]">
-                      {founder.name}
-                    </h3>
-                    <p className="mt-2 text-[13px] tracking-[-0.02em] text-[#8a8a86]">
+                  <div className="flex flex-1 flex-col p-8 md:p-10">
+                    <p className="text-[15px] tracking-[-0.01em] text-[#8a8a86]">
                       {founder.role}
                     </p>
-                    <div className="mt-6 space-y-4 text-[16px] leading-[1.55] text-[#5a5a5a]">
-                      {founder.bio.map((line) => (
-                        <p key={line}>{line}</p>
-                      ))}
-                    </div>
+                    <h3 className="mt-4 text-[clamp(26px,3vw,34px)] leading-[1.05] font-medium tracking-[-0.04em] text-[#121313]">
+                      {founder.name}
+                    </h3>
+                    <p className="mt-6 max-w-[540px] text-[16px] leading-[1.65] text-[#555] md:text-[17px]">
+                      {founder.bio}
+                    </p>
                   </div>
-                </div>
+                </article>
               ))}
             </div>
           </Container>
         </Section>
 
-        {/* Proof */}
-        <Section tone="paper">
-          <Container>
-            <SectionHeading
-              eyebrow="The record"
-              title="Three things we can prove."
-              muted="Everything else is a claim."
-            />
-            <div className="mt-16 grid grid-cols-1 gap-px bg-[#e4e3de] md:grid-cols-3">
-              {proof.map((item) => (
-                <div key={item.figure} className="bg-[#f9f9f9] p-8">
-                  <p className="text-[clamp(28px,5vw,48px)] leading-[1.05] font-medium tracking-[-0.04em] text-[#121313]">
+        {/* Impact */}
+        <section className="mx-auto max-w-[1738px] border-x border-[#e4e3de] bg-white">
+          <Container className="py-24 md:py-36">
+            <h2 className="text-[clamp(32px,5vw,52px)] leading-[1.05] font-medium tracking-[-0.04em]">
+              <span className="block text-[#121313]">A few numbers</span>
+              <span className="block text-[#6a7282]">from the work.</span>
+            </h2>
+            <div className="mt-12 grid grid-cols-1 gap-2 md:grid-cols-3">
+              {impact.map((item) => (
+                <div
+                  key={item.figure}
+                  className="flex min-h-[250px] flex-col justify-between border border-[#e4e3de] bg-[#f9f9f9] p-8 md:p-10"
+                >
+                  <p className="mt-auto text-[clamp(42px,6vw,64px)] leading-none font-medium tracking-[-0.055em] text-[#121313]">
                     {item.figure}
                   </p>
-                  <p className="mt-4 text-[15px] leading-[1.5] text-[#5a5a5a]">
+                  <p className="mt-5 max-w-[270px] text-[16px] leading-[1.55] text-[#5a5a5a] md:text-[17px]">
                     {item.body}
                   </p>
                 </div>
               ))}
             </div>
+            <p className="mt-10 max-w-[680px] text-[16px] leading-[1.7] text-[#505050] md:text-[18px]">
+              The better part is what people do next. Learners have launched
+              products, built systems for their employers, started businesses,
+              earned promotions, and created new sources of income.
+            </p>
           </Container>
-        </Section>
+        </section>
 
-        {/* Closing CTA */}
-        <Section tone="dark">
-          <Container>
-            <div className="grid grid-cols-1 gap-14 lg:grid-cols-2 lg:gap-20">
+        {/* Final CTA */}
+        <section className="relative isolate min-h-[650px] overflow-hidden bg-[#121313] text-white">
+          <Image
+            src="/v2/cta-bg.png"
+            alt=""
+            fill
+            sizes="100vw"
+            className="-z-20 object-cover object-center"
+          />
+          <div aria-hidden className="absolute inset-0 -z-10 bg-black/55" />
+          <Container className="py-24 md:py-36">
+            <div className="grid grid-cols-1 gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:gap-24">
               <div>
-                <h2 className="text-[clamp(28px,4vw,44px)] leading-[1.08] font-medium tracking-[-0.04em] text-white">
-                  Bring us the problem your team keeps working around.
+                <h2 className="max-w-[620px] text-[clamp(36px,6vw,64px)] leading-[1.05] font-medium tracking-[-0.04em] text-white">
+                  Choose where you want to begin.
                 </h2>
-                <p className="mt-6 max-w-[520px] text-[16px] leading-[1.55] text-white/60">
-                  Tell us what it is and who it slows down. You get an answer
-                  from a founder, and a straight read on whether this is work we
-                  should take.
+                <p className="mt-6 max-w-[560px] text-[16px] leading-[1.65] text-white/65 md:text-[18px]">
+                  Join a free session, take a structured course, train your team,
+                  or bring us a product or workflow you want built.
                 </p>
-                <div className="mt-10">
-                  <ButtonLink href="/v2/contact">Talk to us</ButtonLink>
+                <div className="mt-10 flex flex-wrap gap-4">
+                  <ButtonLink href="/v2/courses">Explore learning</ButtonLink>
+                  <ButtonLink href="/v2/services" variant="light">
+                    Work with us
+                  </ButtonLink>
                 </div>
               </div>
 
               <div>
-                <Eyebrow tone="dark">Where to go next</Eyebrow>
+                <h3 className="text-[22px] leading-[1.1] font-medium tracking-[-0.03em] text-white">
+                  Choose a path
+                </h3>
                 <ul className="mt-7 border-t border-white/10">
-                  <li className="border-b border-white/10">
-                    <Link
-                      href="/v2/organizations"
-                      className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
-                    >
-                      Train your team
-                    </Link>
-                  </li>
-                  <li className="border-b border-white/10">
-                    <Link
-                      href="/v2/services/software-building"
-                      className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
-                    >
-                      Build software with us
-                    </Link>
-                  </li>
-                  <li className="border-b border-white/10">
-                    <Link
-                      href="/v2"
-                      className="block py-5 text-[16px] leading-[1.45] text-white/80 transition-colors hover:text-white"
-                    >
-                      be inevitable with ai
-                    </Link>
-                  </li>
+                  {paths.map((path) => (
+                    <li key={path.label} className="border-b border-white/10">
+                      <a
+                        href={path.href}
+                        {...(path.href.startsWith("http")
+                          ? {
+                              target: "_blank",
+                              rel: "noopener noreferrer",
+                            }
+                          : {})}
+                        className="flex items-center justify-between py-5 text-[16px] leading-[1.45] text-white/78 transition-colors hover:text-white md:text-[17px]"
+                      >
+                        {path.label}
+                        <span aria-hidden className="text-white/40">
+                          →
+                        </span>
+                      </a>
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
           </Container>
-        </Section>
+        </section>
       </main>
       <SiteFooter />
     </>

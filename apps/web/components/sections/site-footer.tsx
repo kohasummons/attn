@@ -38,14 +38,15 @@ const columns: { label: string; items: FooterLink[] }[] = [
   {
     label: "Resources",
     items: [
-      { label: "Blog", href: "/v2/blog" },
+      // Temporarily hidden — routes still exist, just off the menu.
+      // { label: "Blog", href: "/v2/blog" },
       { label: "Playbooks, guides and tools", href: "/v2/playbooks" },
       { label: "AI archetype", href: "/v2/ai-archetype" },
-      {
-        label: "Attention Factory Intelligence",
-        href: "/v2/intelligence",
-      },
-      { label: "The Lab", href: "/v2/the-lab" },
+      // {
+      //   label: "Attention Factory Intelligence",
+      //   href: "/v2/intelligence",
+      // },
+      // { label: "The Lab", href: "/v2/the-lab" },
       { label: "About", href: "/v2/about" },
     ],
   },
@@ -83,8 +84,8 @@ export function SiteFooter() {
             <p className="text-[30px] font-extrabold leading-none tracking-[-0.07em] text-white">
               attn.
             </p>
-            <p className="mt-3 text-[16px] tracking-[-0.02em] text-[#b3b7b9]">
-              be inevitable with ai
+            <p className="mt-3 max-w-[280px] text-[16px] leading-[1.5] tracking-[-0.02em] text-[#b3b7b9]">
+              We help people and organizations learn, use, and build with AI.
             </p>
           </div>
 

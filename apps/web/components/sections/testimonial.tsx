@@ -194,7 +194,7 @@ export function Testimonial() {
  *   {
  *     quote:
  *       "We completely rebuilt our GTM stack with Attio in under 90 days while growing pipeline",
- *     name: "Joshua Phyl",
+ *     name: "Joshua Omobola",
  *     company: "BB Capital",
  *     portrait: "/v2/testimonial-portrait.png",
  *     logo: "/v2/testimonial-logo.svg",

@@ -44,19 +44,22 @@ const servicesMenu: MenuItem[] = [
   },
 ];
 
-const universityMenu: MenuItem[] = [
-  {
-    title: "Courses",
-    description: "Browse the courses we offer.",
-    href: "/v2/courses",
-  },
-  {
-    title: "Membership",
-    description:
-      "Join Attention University, our full learning platform and community.",
-    href: "https://app.attentionfactory.io/membership",
-  },
-];
+// University now links straight to the LMS — dropdown kept here for easy restore.
+// const universityMenu: MenuItem[] = [
+//   {
+//     title: "Courses",
+//     description: "Browse the courses we offer.",
+//     href: "/v2/courses",
+//   },
+//   {
+//     title: "Membership",
+//     description:
+//       "Join Attention University, our full learning platform and community.",
+//     href: "https://app.attentionfactory.io/membership",
+//   },
+// ];
+
+const UNIVERSITY_URL = "https://app.attentionfactory.io";
 
 const resourcesMenu: MenuItem[] = [
   {
@@ -74,21 +77,22 @@ const resourcesMenu: MenuItem[] = [
     description: "Take the quiz to find your AI archetype.",
     href: "/v2/ai-archetype",
   },
-  {
-    title: "Blog",
-    description: "Insights and updates from Attention Factory.",
-    href: "/v2/blog",
-  },
-  {
-    title: "Attention Factory Intelligence",
-    description: "Our read on where AI is actually going, minus the hype.",
-    href: "/v2/intelligence",
-  },
-  {
-    title: "The Lab",
-    description: "The products and experiments we ship.",
-    href: "/v2/the-lab",
-  },
+  // Temporarily hidden — routes still exist, just off the menu.
+  // {
+  //   title: "Blog",
+  //   description: "Insights and updates from Attention Factory.",
+  //   href: "/v2/blog",
+  // },
+  // {
+  //   title: "Attention Factory Intelligence",
+  //   description: "Our read on where AI is actually going, minus the hype.",
+  //   href: "/v2/intelligence",
+  // },
+  // {
+  //   title: "The Lab",
+  //   description: "The products and experiments we ship.",
+  //   href: "/v2/the-lab",
+  // },
   {
     title: "About",
     description: "Why we started, and who builds this.",
@@ -96,10 +100,7 @@ const resourcesMenu: MenuItem[] = [
   },
 ];
 
-const dropdowns = [
-  { label: "Services", items: servicesMenu },
-  { label: "University", items: universityMenu },
-] as const;
+const dropdowns = [{ label: "Services", items: servicesMenu }] as const;
 
 function MenuPanel({ items }: { items: MenuItem[] }) {
   return (
@@ -188,6 +189,15 @@ export function SiteHeader() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             ))}
+
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                href={UNIVERSITY_URL}
+                className={cn("inline-flex rounded-lg", triggerClasses)}
+              >
+                University
+              </NavigationMenuLink>
+            </NavigationMenuItem>
 
             <NavigationMenuItem>
               <NavigationMenuLink

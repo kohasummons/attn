@@ -45,13 +45,19 @@ export default function V2Page() {
             </div>
 
             <div className="mt-5 flex justify-center">
-              <ArrowButton
-                variant="light"
-                showArrow={false}
-                className="bg-white text-[#121313] hover:bg-white/90 hover:text-[#121313]"
+              <a
+                href="https://ai-archetype-pied.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                Find your AI Archetype
-              </ArrowButton>
+                <ArrowButton
+                  variant="light"
+                  showArrow={false}
+                  className="bg-white text-[#121313] hover:bg-white/90 hover:text-[#121313]"
+                >
+                  Find your AI Archetype
+                </ArrowButton>
+              </a>
             </div>
           </div>
 {/* 
