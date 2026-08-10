@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-import { ArrowButton } from "@/components/ui/arrow-button";
+import { ButtonLink } from "@/components/ui/page-shell";
 
 export function CTABanner() {
   return (
@@ -25,9 +25,12 @@ export function CTABanner() {
             plus what to learn next.
           </p>
           <div className="mt-10">
-            <ArrowButton variant="light" showArrow={false}>
+            <ButtonLink
+              href="https://ai-archetype-pied.vercel.app/"
+              variant="light"
+            >
               Find your archetype
-            </ArrowButton>
+            </ButtonLink>
           </div>
         </div>
       </div>

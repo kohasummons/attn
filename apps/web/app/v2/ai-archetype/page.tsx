@@ -57,8 +57,9 @@ export default function AiArchetypePage() {
           title="What kind of AI user are you?"
           lead="Most people use AI in a way that doesn't match how they actually work. Answer a few questions and find out what fits you, plus what to learn next."
         >
-          {/* TODO: point at the quiz route once the quiz app ships. */}
-          <ButtonLink href="/v2/contact">Find your archetype</ButtonLink>
+          <ButtonLink href="https://ai-archetype-pied.vercel.app/">
+            Find your archetype
+          </ButtonLink>
         </PageHero>
 
         <Section tone="light">
@@ -109,7 +110,9 @@ export default function AiArchetypePage() {
                   muted="Five minutes, no signup."
                 />
                 <div className="mt-10">
-                  <ButtonLink href="/v2/contact">Find your archetype</ButtonLink>
+                  <ButtonLink href="https://ai-archetype-pied.vercel.app/">
+                    Find your archetype
+                  </ButtonLink>
                 </div>
               </div>
               <div>

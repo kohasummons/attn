@@ -75,7 +75,7 @@ const resourcesMenu: MenuItem[] = [
   {
     title: "AI archetype",
     description: "Take the quiz to find your AI archetype.",
-    href: "/v2/ai-archetype",
+    href: "https://ai-archetype-pied.vercel.app/",
   },
   // Temporarily hidden — routes still exist, just off the menu.
   // {

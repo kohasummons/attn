@@ -238,7 +238,10 @@ export default function BrandPage() {
             <Row label="Buttons">
               <div className="flex flex-wrap items-center gap-4">
                 <ButtonLink href="/v2/brand">Train your team</ButtonLink>
-                <ButtonLink href="/v2/brand" variant="dark">
+                <ButtonLink
+                  href="https://ai-archetype-pied.vercel.app/"
+                  variant="dark"
+                >
                   Find your archetype
                 </ButtonLink>
               </div>
