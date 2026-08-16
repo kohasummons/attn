@@ -14,7 +14,7 @@ import {
 export const metadata: Metadata = {
   title: "Intelligence — Attention Factory",
   description:
-    "Our read on where AI is actually going, minus the hype. Reports, essays and briefings for the person who has to make the call.",
+    "Our read on where AI is actually going.",
 };
 
 /**

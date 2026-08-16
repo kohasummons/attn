@@ -24,22 +24,22 @@ const testimonials: Testimonial[] = [
   {
     quote:
       "Before the bootcamp, I understood AI in theory. I could talk about it, but I couldn't actually ship anything. Since then, I've built and launched websites, apps, AI agents, and my own digital product. I don't just talk about AI anymore. I build it and ship it, for myself and for real clients.",
-    name: "Oladapo Ijaola",
-    role: "Attention Factory bootcamp participant",
-    result:
-      "Built a voice AI agent, a WhatsApp assistant, a workforce management app, websites, an AI video campaign, and a digital product.",
+    name: "Anonymous",
+    role: "AI Fellow - Alpha",
+    result:"",
   },
   {
     quote:
       "Before the mentorship, I was overwhelmed and lacked direction. I was sorting through too much information and constantly second-guessing my work. The mentorship gave me clear guidance, practical systems, and hands-on skills. I stopped guessing, saved hours of trial and error, and became more confident and intentional with my content.",
-    name: "A Sonia Omashaye",
-    role: "Business Manager, Soniacraft LLC",
-    // TODO: add her submitted headshot to public/v2/team/ and set `portrait`.
+    name: "Anonymous",
+    role: "Business Manager",
+    portrait: "/v2/team/portrait-business-manager.png",
   },
   {
     quote:
       "I wasn't sure I would get enough value from the program. I left with practical, hands-on skills and built and deployed apps using Claude Code, Lovable, Replit, and Emergent. I would definitely recommend it.",
     name: "Anonymous",
+    role: "AI Fellow - Bravo",
   },
 ];
 

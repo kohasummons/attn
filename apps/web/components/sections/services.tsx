@@ -17,13 +17,13 @@ const cards: ServiceCard[] = [
     eyebrow: "Learn and build",
     title: "Attention University",
     subline:
-      "Courses, community, and membership that take you from beginner to builder.",
+      "THe AI University that take you from beginner to builder.",
     href: "https://app.attentionfactory.io",
     flower: "peony",
   },
   {
     eyebrow: "For your whole team",
-    title: "Organization Training",
+    title: "Team Enablement",
     subline:
       "AI transformation, coaching, and strategy that stick past the pilot.",
     href: "/v2/organizations",
@@ -37,7 +37,7 @@ const cards: ServiceCard[] = [
     flower: "rose",
   },
   {
-    eyebrow: "Free, live",
+    eyebrow: "Community Program",
     title: "Weekends of AI",
     subline:
       "Live sessions that turn AI curiosity into skills you can use Monday.",
@@ -47,7 +47,7 @@ const cards: ServiceCard[] = [
   {
     eyebrow: "Research & writing",
     title: "Attention Factory Intelligence",
-    subline: "Our read on where AI is actually going, minus the hype.",
+    subline: "Our read on where AI is actually going.",
     href: "/v2/intelligence",
     flower: "dahlia",
   },
@@ -72,7 +72,7 @@ function DarkTile({ card }: { card: ServiceCard }) {
           no overlay. Hidden at rest, fades in on hover. */}
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 scale-[1.06] bg-[length:auto_58%] bg-no-repeat opacity-0 transition-[opacity,transform] duration-[700ms] ease-out group-hover:scale-100 group-hover:opacity-100"
+        className="pointer-events-none absolute inset-0 scale-[1.06] bg-[length:auto_58%] bg-no-repeat opacity-10 transition-[opacity,transform] duration-[700ms] ease-out group-hover:scale-100 group-hover:opacity-100"
         style={{
           backgroundImage: `url('/images/flowers/${card.flower}.webp')`,
           backgroundPosition: "80% 42%",

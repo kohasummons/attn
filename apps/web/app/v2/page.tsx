@@ -32,9 +32,7 @@ export default function V2Page() {
             </h1>
 
             <p className="mt-5 md:mt-7 max-w-[846px] text-[clamp(14px,2vw,20px)] leading-[1.2] tracking-[-0.02em] text-[#fdfdfd]">
-              Attention Factory has trained more than 3,000 individuals and
-              teams to use the power of artificial intelligence for better
-              results and as a real advantage.
+              Attention Factory has trained more than 3,000+ people to use the power of AI as a real advantage.
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
@@ -44,7 +42,7 @@ export default function V2Page() {
               </ArrowButton>
             </div>
 
-            <div className="mt-5 flex justify-center">
+            {/* <div className="mt-5 flex justify-center">
               <a
                 href="https://ai-archetype-pied.vercel.app/"
                 target="_blank"
@@ -58,7 +56,7 @@ export default function V2Page() {
                   Find your AI Archetype
                 </ArrowButton>
               </a>
-            </div>
+            </div> */}
           </div>
 {/* 
           <div className="absolute right-0 bottom-0 left-0">
