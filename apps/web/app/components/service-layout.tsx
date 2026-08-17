@@ -1,6 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// Aliased: this file also uses the DOM `new Image()` constructor to preload.
+import NextImage from "next/image";
 import Link from "next/link";
 
 interface ServiceLayoutProps {
@@ -101,9 +103,14 @@ export function ServiceLayout({ title, subtitle, carouselItems, children }: Serv
                     }`}
                     aria-hidden={index >= items.length}
                   >
-                    <img
+                    <NextImage
                       src={item.src}
                       alt={item.alt}
+                      width={220}
+                      height={155}
+                      // These are static SVGs; the image optimizer rejects SVG
+                      // unless `dangerouslyAllowSVG` is on, so serve them as-is.
+                      unoptimized
                       className={`service-carousel__image w-full h-full object-cover ${
                         loadedImages[item.src] ? "is-loaded" : ""
                       }`}
@@ -125,7 +132,7 @@ export function ServiceLayout({ title, subtitle, carouselItems, children }: Serv
         {/* CTA */}
         <section className="mt-16 pt-8 border-t border-gray-100">
           <h3 className="text-base font-medium text-black mb-3">Ready to get started?</h3>
-          <p className="text-gray-600 mb-6">Let's talk about your project.</p>
+          <p className="text-gray-600 mb-6">Let&apos;s talk about your project.</p>
           <a
             href="mailto:hello@attentionfactory.io"
             className="inline-flex items-center gap-2 text-[#5B6EF7] hover:underline"

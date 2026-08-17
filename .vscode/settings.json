@@ -3,5 +3,10 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  // Our type and layout scale is defined in explicit px in BRAND.md
+  // (`max-w-[1166px]`, `leading-[1.05]`), and most of those values have no
+  // canonical Tailwind equivalent. Converting only the ones that do would
+  // leave the codebase half-converted, so the suggestion is off.
+  "tailwindCSS.lint.suggestCanonicalClasses": "ignore"
 }
