@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { CTABanner } from "@/components/sections/cta-banner";
 import { Business } from "@/components/sections/business";
@@ -36,10 +37,14 @@ export default function V2Page() {
             </p>
 
             <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
-              <ArrowButton variant="dark">Train Yourself</ArrowButton>
-              <ArrowButton variant="light" showArrow={false}>
-                Train your team
-              </ArrowButton>
+              <a href="https://dub.sh/attn-university">
+                <ArrowButton variant="dark">Train Yourself</ArrowButton>
+              </a>
+              <Link href="/v2/organizations">
+                <ArrowButton variant="light" showArrow={false}>
+                  Train your team
+                </ArrowButton>
+              </Link>
             </div>
 
             {/* <div className="mt-5 flex justify-center">
