@@ -83,9 +83,12 @@ export default function HomePage() {
           >
             home
           </Link>
-          {/* <a className="text-[#0099ff] underline underline-offset-2" href="/team">
-              team
-            </a> */}
+          <Link
+            className="text-[#0099ff] underline underline-offset-2"
+            href="/team"
+          >
+            team
+          </Link>
           {/* <a className="text-[#0099ff] underline underline-offset-2" href="/contact">
               work with us
             </a> */}
