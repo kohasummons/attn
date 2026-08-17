@@ -2,6 +2,7 @@ import Link from "next/link";
 
 import { EmailSignupForm } from "../components/email-signup-form";
 import { PhotoCarousel } from "../components/photo-carousel";
+import { V2Banner } from "../components/v2-banner";
 
 const photos = [
   {
@@ -63,17 +64,7 @@ const photos = [
 export default function HomePage() {
   return (
     <main className="min-h-dvh bg-background text-foreground relative p-0">
-      <Link
-        href="/v2"
-        className="group flex w-full items-center justify-center gap-2 bg-[#ff4100] px-5 py-3 text-center text-[14px] font-medium tracking-[-0.01em] text-white transition-colors hover:bg-[#121313] sm:text-[15px]"
-      >
-        <span>
-          Our new site is here — take a look at the v2.
-        </span>
-        <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-          →
-        </span>
-      </Link>
+      <V2Banner />
       <div className="fixed bottom-0 w-full left-0 h-32 bg-linear-to-t from-[#fefefe] from-10% via-50% via-[#fefefe]/50 to-transparent pointer-events-none isolate" />
       <div className="w-full max-w-[600px] px-5 py-8 text-[18px] font-medium leading-[1.55] tracking-[-0.7px] text-[#888888] sm:p-14 sm:text-[20px]">
         <nav className="mb-4 flex flex-wrap gap-x-3 gap-y-1 text-[18px] font-medium sm:text-[20px]">

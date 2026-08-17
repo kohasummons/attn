@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 
+import { V2Banner } from "../../components/v2-banner";
+
 const team = [
   {
     name: "Mercy Thaddeus",
@@ -23,6 +25,7 @@ const team = [
 export default function TeamPage() {
   return (
     <main className="relative min-h-dvh bg-background p-0 text-foreground">
+      <V2Banner />
       <div className="pointer-events-none fixed bottom-0 left-0 isolate h-32 w-full bg-linear-to-t from-[#fefefe] from-10% via-[#fefefe]/50 via-50% to-transparent" />
       <div className="w-full max-w-[600px] px-5 py-8 text-[18px] font-medium leading-[1.55] tracking-[-0.7px] text-[#888888] sm:p-14 sm:text-[20px]">
         <nav className="mb-4 flex flex-wrap gap-x-3 gap-y-1 text-[18px] font-medium sm:text-[20px]">
