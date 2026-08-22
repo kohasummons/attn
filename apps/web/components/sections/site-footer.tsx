@@ -59,8 +59,8 @@ const columns: { label: string; items: FooterLink[] }[] = [
       { label: "About us", href: "/v2/about" },
       { label: "Contact us", href: "/v2/contact" },
       { label: "Talk to us", href: "/v2/contact" },
-      { label: "Privacy Policy", href: "/v2/privacy-policy" },
-      { label: "Terms of Service", href: "/v2/terms-of-service" },
+      { label: "Privacy Policy", href: "/legal/privacy" },
+      { label: "Terms of Use", href: "/legal/tos" },
     ],
   },
 ];
