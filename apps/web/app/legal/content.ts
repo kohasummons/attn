@@ -5,7 +5,7 @@ const LAST_UPDATED = "22 August 2026";
 export const privacyPolicy: LegalDoc = {
   eyebrow: "Legal",
   title: "Privacy policy.",
-  lead: "How Attention Factory collects, uses, stores, and protects your Personal Data.",
+  lead: "",
   lastUpdated: LAST_UPDATED,
   intro: [
     {
@@ -527,7 +527,7 @@ export const privacyPolicy: LegalDoc = {
 export const termsOfUse: LegalDoc = {
   eyebrow: "Legal",
   title: "Terms of use.",
-  lead: "The terms that govern your access to and use of Attention Factory's Services.",
+  lead: "",
   lastUpdated: LAST_UPDATED,
   intro: [
     { type: "p", text: "Welcome to Attention Factory." },
@@ -943,7 +943,7 @@ export const termsOfUse: LegalDoc = {
           type: "link",
           text: "Your use of the Services is also governed by the Attention Factory",
           linkLabel: "Privacy Policy",
-          href: "/legal/privacy",
+          href: "/legal/privacy-policy",
         },
       ],
     },
