@@ -1,0 +1,79 @@
+/* SuperRad Challenge — scoped styles.
+   Display faces (SansPlomb, Greed Condensed, PP Neue Montreal) are loaded as
+   local fonts in app/superrad/layout.tsx and exposed via the CSS variables
+   below. DM Sans is the body/UI face. */
+
+.superrad-root {
+  --sr-sansplomb: var(--font-sansplomb), "Arial Narrow", sans-serif;
+  --sr-greed: var(--font-greed), "Arial Narrow", sans-serif;
+  --sr-ppneue: var(--font-ppneue), var(--font-dm-sans), system-ui, sans-serif;
+  --sr-dmsans: var(--font-dm-sans), system-ui, sans-serif;
+  --sr-rubik: var(--font-rubik), var(--font-dm-sans), system-ui, sans-serif;
+  --sr-inter: var(--font-inter), system-ui, sans-serif;
+  --sr-hedvig: var(--font-hedvig), Georgia, serif;
+  --sr-instrument: var(--font-instrument), var(--font-dm-sans), system-ui, sans-serif;
+  --sr-greed-normal: var(--font-greed-normal), var(--font-greed), sans-serif;
+  --sr-archivo: var(--font-archivo), var(--font-dm-sans), system-ui, sans-serif;
+  --sr-nimbus: "Helvetica Neue", Helvetica, Arial, var(--font-dm-sans), sans-serif;
+  /* Cabinet Grotesk is not committed; falls back to DM Sans until added. */
+  --sr-cabinet: "Cabinet Grotesk", var(--font-dm-sans), system-ui, sans-serif;
+
+  font-family: var(--sr-dmsans);
+  color: #000;
+  background: #ffffff;
+}
+
+.sr-sansplomb {
+  font-family: var(--sr-sansplomb);
+}
+.sr-greed {
+  font-family: var(--sr-greed);
+}
+.sr-ppneue {
+  font-family: var(--sr-ppneue);
+}
+.sr-dmsans {
+  font-family: var(--sr-dmsans);
+}
+.sr-rubik {
+  font-family: var(--sr-rubik);
+}
+.sr-inter {
+  font-family: var(--sr-inter);
+}
+.sr-hedvig {
+  font-family: var(--sr-hedvig);
+}
+.sr-instrument {
+  font-family: var(--sr-instrument);
+}
+.sr-greed-normal {
+  font-family: var(--sr-greed-normal);
+}
+.sr-archivo {
+  font-family: var(--sr-archivo);
+}
+.sr-nimbus {
+  font-family: var(--sr-nimbus);
+}
+.sr-cabinet {
+  font-family: var(--sr-cabinet);
+}
+
+/* Continuous logo/brand marquee */
+@keyframes sr-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.sr-marquee-track {
+  animation: sr-marquee 32s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sr-marquee-track {
+    animation: none;
+  }
+}
