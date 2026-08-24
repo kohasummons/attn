@@ -18,16 +18,17 @@ function Cross() {
 
 const forYou = [
   "You want a real path and proper training, and skip the guess",
-  "Business teams own deployment",
-  "Agents live in days to weeks",
-  "Full team plus infrastructure costs",
+  "You’re can follow along and implement from a ready made guide",
+  "You can commit for three days to get results",
+  "You want eyes on your work and people to ask the moment you are stuck",
 ];
 
 const notForYou = [
   "You want the money without doing the reps",
   "You are looking for a magic button instead of a skill",
   "You will collect modules and never create anything",
-  "Full team plus infrastructure costs",
+  "You prefer watching tutorials instead of executing and implementing",
+  "You don't like honest feedback and you want to be spoon fed"
 ];
 
 export function Fit() {
