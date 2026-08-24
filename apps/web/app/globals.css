@@ -307,8 +307,11 @@ body {
   }
 }
 
-*,
-*::before,
-*::after {
+/* Brand rule: square corners site-wide — except the /superrad page, a 1:1
+   design clone that uses its own border radii. :where() keeps specificity at 0
+   so it behaves exactly like the original reset everywhere else. */
+:where(:not(.superrad-root, .superrad-root *)),
+:where(:not(.superrad-root, .superrad-root *))::before,
+:where(:not(.superrad-root, .superrad-root *))::after {
   border-radius: 0 !important;
 }
