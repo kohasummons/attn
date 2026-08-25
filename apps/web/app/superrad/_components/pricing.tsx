@@ -27,7 +27,7 @@ const plans: Plan[] = [
   {
     name: "Silver",
     emoji: "🥈",
-    desc: "Perfect for solo founders and first growth hires",
+    desc: "For beginners ready to complete their first cinematic AI commercial. ",
     price: "$99.99",
     features: [
       "All three live sessions",
@@ -43,7 +43,7 @@ const plans: Plan[] = [
   {
     name: "Gold",
     emoji: "🥇",
-    desc: "Built for lean marketing and sales teams",
+    desc: "For creators who want extended access, feedback and additional support.",
     price: "$149.99",
     features: [
       "Everything in Silver",
@@ -60,7 +60,7 @@ const plans: Plan[] = [
   {
     name: "Diamond",
     emoji: "💎",
-    desc: "Help your teams scale faster with agentic collaboration",
+    desc: "For professionals who want personal review and deeper feedback.",
     price: "$199.99",
     features: [
       "Everything in Gold",

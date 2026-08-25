@@ -18,7 +18,7 @@ function Cross() {
 
 const forYou = [
   "You want a real path and proper training, and skip the guess",
-  "You’re can follow along and implement from a ready made guide",
+  "You can follow along and implement from a ready made guide",
   "You can commit for three days to get results",
   "You want eyes on your work and people to ask the moment you are stuck",
 ];

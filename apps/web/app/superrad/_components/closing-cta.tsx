@@ -3,7 +3,7 @@ export function ClosingCta() {
     <section className="w-full bg-[#1a0000] px-6 pt-[104px] pb-[150px]">
       <div className="mx-auto flex max-w-[720px] flex-col items-center text-center">
         <h2 className="sr-greed max-w-[695px] font-semibold leading-[1.05] text-white text-[clamp(38px,5vw,60px)]">
-          A Week from now, one of two things will happened...
+          A Week from now, one of two things will have happened...
         </h2>
 
         <div className="sr-ppneue mt-[40px] max-w-[612px] space-y-[1.2em] font-medium leading-[1.4] text-[#c0bfb7] text-[clamp(16px,1.6vw,20px)]">

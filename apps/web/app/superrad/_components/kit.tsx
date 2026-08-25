@@ -75,7 +75,7 @@ export function Kit() {
           What you get
         </h2>
         <p className="sr-archivo max-w-[600px] text-center font-medium leading-[23px] text-[#737373] text-[16px] mt-6">
-          The SuperRad kit. Our Workflow, Prompts and Skills engineered to skip the grunt work and create Cinimatic Content + Videos with GenAI faster than ever before.
+          The SuperRad kit. Our Workflow, Prompts and Skills engineered to skip the grunt work and create Cinematic Content + Videos with GenAI faster than ever before.
         </p>
       </div>
 
