@@ -31,7 +31,7 @@ const cells = [
     aInset: { top: "15.63%", right: "15.63%", bottom: "15.63%", left: "6.25%" },
     bInset: { top: "12.5%", right: "12.5%", bottom: "12.5%", left: "3.13%" },
     title: "The SuperRad Framework",
-    body: "Our Proved System that will make you a Master of Cinematic Content Creation with AI.",
+    body: "Our Proven System that will make you a Master of Cinematic Content Creation with AI.",
     bodyWeight: 500,
   },
   {
@@ -58,7 +58,7 @@ const cells = [
     aInset: { top: "15.63%", right: "15.64%", bottom: "25%", left: "15.64%" },
     bInset: { top: "6.25%", right: "10.81%", bottom: "9.36%", left: "10.83%" },
     title: "Editing and sound design",
-    body: "How to bring your scenes + assests together with music, sound effects, dialogue, transitions and more.",
+    body: "How to bring your scenes + assets together with music, sound effects, dialogue, transitions and more.",
     bodyWeight: 500,
   },
   {
