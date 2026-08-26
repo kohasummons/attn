@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
 
-const CTA_URL = "https://nestuge.com/attn-superad-optin";
+const CTA_URL = "https://dub.sh/attn-superad-optin";
 
 type Tier = "vip" | "diamond";
 
