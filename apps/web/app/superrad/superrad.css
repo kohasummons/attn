@@ -148,3 +148,45 @@
     animation: none;
   }
 }
+
+/* Perk-card header stripes — the .sr-stripes-hover look, but driven by the
+   CARD's hover (Tailwind `group`) instead of the element's own :hover, so the
+   moving stripes ride in with the pink header layer. Put on the pink overlay;
+   the card root must carry Tailwind's `group` class. */
+.sr-card-stripes {
+  overflow: hidden;
+  isolation: isolate;
+}
+.sr-card-stripes::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40px;
+  height: 100%;
+  width: calc(100% + 80px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 0px,
+    rgba(255, 255, 255, 0.14) 12px,
+    transparent 12px,
+    transparent 25px
+  );
+  pointer-events: none;
+}
+.sr-card-stripes::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, #fff0 12%, #ffffff40 50%, #fff0 88%);
+  pointer-events: none;
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .sr-card-stripes::before {
+    animation: sr-stripes-move 1s linear infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .group:hover .sr-card-stripes::before {
+    animation: none;
+  }
+}
