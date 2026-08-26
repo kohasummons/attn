@@ -25,7 +25,7 @@ type Plan = {
 
 const plans: Plan[] = [
   {
-    name: "Silver",
+    name: "General Access",
     emoji: "🥈",
     desc: "For beginners ready to complete their first cinematic AI commercial. ",
     price: "$99.99",
@@ -81,7 +81,7 @@ function PlanCard({ plan }: { plan: Plan }) {
   return (
     <motion.div
       variants={item}
-      className={`relative flex min-h-[815px] w-full max-w-[458px] flex-col rounded-[30px] px-[45px] pt-[90px] pb-[45px] ${plan.bg} ${plan.border}`}
+      className={`relative flex min-h-[800px] w-full max-w-[458px] flex-col rounded-[30px] px-[45px] pt-[90px] pb-[45px] ${plan.bg} ${plan.border}`}
     >
       {plan.popular && (
         <span className="sr-inter absolute -top-[21px] left-1/2 flex h-[42px] -translate-x-1/2 items-center rounded-[12px] bg-[#2a2a2a] px-[24px] font-medium leading-none tracking-[-0.72px] text-white text-[18px]">
@@ -94,10 +94,10 @@ function PlanCard({ plan }: { plan: Plan }) {
       >
         {plan.emoji}
       </span>
-      <h3 className="sr-inter leading-[48px] tracking-[-1.92px] text-black text-[48px]">
+      <h3 className="sr-inter leading-[48px] tracking-[-1.92px] text-black text-[32px]">
         {plan.name}
       </h3>
-      <p className="sr-inter mt-[18px] max-w-[315px] font-medium leading-[29px] tracking-[-0.84px] text-[#8a8a8a] text-[21px]">
+      <p className="sr-inter mt-[8px] max-w-[315px] font-medium leading-[20px] tracking-[-0.84px] text-[#8a8a8a] text-[20px]">
         {plan.desc}
       </p>
       <p className="sr-inter mt-[51px] font-medium leading-[54px] tracking-[-3.24px] text-black text-[54px]">
@@ -119,9 +119,9 @@ function PlanCard({ plan }: { plan: Plan }) {
         data-posthog-property="plan"
         data-posthog-value={plan.name}
         href={`https://nestuge.com/attn-superad?ref=${plan.name.toLowerCase()}`}
-        className="sr-inter sr-stripes sr-stripes-hover mt-[20px] flex h-[65px] items-center justify-center rounded-[12px] bg-[#750af9] font-bold leading-none tracking-[-0.48px] text-white text-[24px] transition hover:brightness-110"
+        className="sr-inter sr-stripes-hover mt-[20px] flex h-[65px] items-center justify-center rounded-[12px] bg-[#750af9] font-bold leading-none tracking-[-0.48px] text-white text-[24px] transition hover:brightness-110"
       >
-        {plan.cta}
+        <span className="relative z-10">{plan.cta}</span>
       </a>
     </motion.div>
   );

@@ -92,24 +92,59 @@
     );
 }
 
-/* Opt-in: also add `sr-stripes-hover` to make the stripes march left→right
-   while hovered. Omit it to keep them static.
-   e.g. <div class="bg-[#750af9] sr-stripes sr-stripes-hover">
-   35.355px = one full stripe period measured horizontally (25px / cos45°),
-   so the loop is seamless. */
+/* Opt-in animated variant — use ON ITS OWN (not alongside .sr-stripes), and
+   wrap the element's text in a `relative z-10` span so it stays above the
+   stripes: diagonal stripes slide left→right on hover, with a static center
+   highlight. The stripes sit on an oversized ::before that is transform-
+   translated by exactly one horizontal stripe period — GPU-smooth, seamless,
+   and never bares an edge (the host clips the overflow, like the reference).
+   e.g. <a class="bg-[#750af9] sr-stripes-hover"><span class="relative z-10">…</span></a> */
+.sr-stripes-hover {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.sr-stripes-hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -40px;
+  height: 100%;
+  /* one stripe period wider than the box, so sliding never bares an edge */
+  width: calc(100% + 80px);
+  background-image: repeating-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.14) 0px,
+    rgba(255, 255, 255, 0.14) 12px,
+    transparent 12px,
+    transparent 25px
+  );
+  pointer-events: none;
+}
+.sr-stripes-hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  /* static center highlight — sits above the stripes and does not move */
+  background-image: linear-gradient(90deg, #fff0 12%, #ffffff40 50%, #fff0 88%);
+  pointer-events: none;
+}
 @keyframes sr-stripes-move {
+  from {
+    transform: translateX(0);
+  }
   to {
-    /* Per layer: highlight (layer 1) stays put; only the stripes (layer 2) slide. */
-    background-position: 0 0, 35.355px 0;
+    /* one horizontal stripe period (25px / cos45°) → seamless loop */
+    transform: translateX(35.355px);
   }
 }
 @media (hover: hover) and (pointer: fine) {
-  .sr-stripes-hover:hover {
+  .sr-stripes-hover:hover::before {
     animation: sr-stripes-move 1s linear infinite;
   }
 }
 @media (prefers-reduced-motion: reduce) {
-  .sr-stripes-hover:hover {
+  .sr-stripes-hover:hover::before {
     animation: none;
   }
 }
