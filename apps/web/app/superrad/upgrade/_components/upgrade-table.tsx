@@ -87,13 +87,13 @@ export function UpgradeTable() {
             {/* CTAs */}
             <div className="flex w-full items-start justify-center gap-[21px] p-[20px]">
               <a
-                href="https://nestuge.com/attn-superad-optin?ref=gold"
+                href="https://dub.sh/attn-superad-optin?ref=gold"
                 className="sr-inter sr-stripes-hover flex h-[67px] flex-1 cursor-pointer items-center justify-center rounded-[8px] bg-[#96139f] font-bold leading-[19.2px] tracking-[-0.4px] text-white text-[24px]"
               >
                 <span className="relative z-10">Claim the VIP Access</span>
               </a>
               <a
-                href="https://nestuge.com/attn-superad-optin?ref=diamond"
+                href="https://dub.sh/attn-superad-optin?ref=diamond"
                 className="sr-inter sr-stripes-hover flex h-[67px] flex-1 cursor-pointer items-center justify-center rounded-[8px] bg-[#b5620f] font-bold leading-[19.2px] tracking-[-0.4px] text-white text-[24px]"
               >
                 <span className="relative z-10">Claim the Diamond Access</span>
