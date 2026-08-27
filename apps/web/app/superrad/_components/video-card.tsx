@@ -70,6 +70,7 @@ export function VideoCard() {
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const [muted, setMuted] = useState(true);
   const [fullscreen, setFullscreen] = useState(false);
+  const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
     const onChange = () => {
@@ -118,10 +119,28 @@ export function VideoCard() {
         src={SRC}
         loading="lazy"
         title="SuperRad preview"
+        onLoad={() => setLoaded(true)}
         className="absolute inset-0 h-full w-full rounded-[37px] border-0"
         allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;fullscreen;"
         allowFullScreen
       />
+
+      {/* Thumbnail + loader shown until the player is ready, then fades away. */}
+      <div
+        aria-hidden
+        className={`pointer-events-none absolute inset-0 z-[5] rounded-[37px] transition-opacity duration-500 ${
+          loaded ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <img
+          src="/images/bg-offer-one-two.jpg"
+          alt=""
+          className="absolute inset-0 h-full w-full rounded-[37px] object-cover"
+        />
+        <div className="absolute inset-0 rounded-[37px] bg-black/25" />
+        <div className="absolute left-1/2 top-1/2 size-[42px] -translate-x-1/2 -translate-y-1/2 animate-spin rounded-full border-[3px] border-white/30 border-t-white" />
+      </div>
+
       <div className="absolute bottom-[16px] right-[16px] z-10 flex items-center gap-[8px]">
         <button
           type="button"

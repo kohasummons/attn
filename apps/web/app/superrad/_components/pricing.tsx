@@ -151,6 +151,14 @@ export function Pricing() {
           <PlanCard key={plan.name} plan={plan} />
         ))}
       </motion.div>
+
+      <a
+        data-posthog-event="pricing_installment_clicked"
+        href={`https://nestuge.com/attn-superad?ref=${plans[0].name.toLowerCase()}`}
+        className="sr-dmsans -mt-[40px] text-center leading-[1.4] text-[#4f4d4d] text-[clamp(16px,1.8vw,20px)] underline decoration-[#c9c9c9] underline-offset-4 transition hover:text-black"
+      >
+        Invest Installmentally ($49.99 in two parts)
+      </a>
     </section>
   );
 }
