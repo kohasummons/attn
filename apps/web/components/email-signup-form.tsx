@@ -28,7 +28,8 @@ declare global {
 let confettiScriptPromise: Promise<void> | undefined;
 
 function loadConfettiScript() {
-  if (window.confetti) {
+  // Loaded async from a CDN, so it may not be present yet despite the global type.
+  if (typeof window.confetti === "function") {
     return Promise.resolve();
   }
 
