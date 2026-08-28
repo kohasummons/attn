@@ -2,9 +2,9 @@
 
 import { useEffect, useState } from "react";
 
-// SuperRad kicks off August 28, 2026 at 6PM WAT. WAT is UTC+1 (no DST), so
+// SuperRad kicks off September 4, 2026 at 6PM WAT. WAT is UTC+1 (no DST), so
 // 18:00 WAT = 17:00 UTC. Fixed target, identical for every viewer's timezone.
-const TARGET_MS = Date.UTC(2026, 7, 28, 17, 0, 0); // month 7 = August
+const TARGET_MS = Date.UTC(2026, 8, 4, 17, 0, 0); // month 8 = September
 
 type TimeLeft = { days: number; hours: number; minutes: number; seconds: number };
 
