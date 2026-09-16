@@ -7,7 +7,7 @@ export function LogoCloud() {
     <section className="relative bg-white">
       <Container className="flex h-[247px] items-center justify-center">
         <Image
-          src="/v2/logo-cloud.png"
+          src="/images/logos/logo-cloud.png"
           alt="Featured partners"
           width={1166}
           height={83}

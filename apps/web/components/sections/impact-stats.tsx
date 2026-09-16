@@ -14,27 +14,27 @@ const cards: ImpactCard[] = [
   {
     label: "Education",
     sublabel: "Membership for individuals & teams",
-    image: "/v2/impact-education.png",
+    image: "/images/impact/impact-education.png",
   },
   {
     label: "MVPs",
     sublabel: "Membership for individuals & teams",
-    image: "/v2/impact-mvps-1.png",
+    image: "/images/impact/impact-mvps-1.png",
   },
   {
     label: "MVPs",
     sublabel: "Membership for individuals & teams",
-    image: "/v2/impact-mvps-2.png",
+    image: "/images/impact/impact-mvps-2.png",
   },
   {
     label: "MVPs",
     sublabel: "Membership for individuals & teams",
-    image: "/v2/impact-mvps-2.png",
+    image: "/images/impact/impact-mvps-2.png",
   },
   {
     label: "MVPs",
     sublabel: "Membership for individuals & teams",
-    image: "/v2/impact-mvps-2.png",
+    image: "/images/impact/impact-mvps-2.png",
   },
 ];
 

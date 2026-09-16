@@ -19,7 +19,7 @@ import type {
   Block,
   ServiceContent,
   ShowcaseVariant,
-} from "@/app/v2/services/_data";
+} from "@/app/services/_data";
 
 const pad = (n: number) => String(n + 1).padStart(2, "0");
 
@@ -609,7 +609,7 @@ function FinalSection({ final }: { final: ServiceContent["final"] }) {
   return (
     <section className="relative overflow-hidden bg-[#0b0c0c]">
       <Image
-        src="/v2/cta-bg.png"
+        src="/images/backgrounds/cta-bg.png"
         alt=""
         fill
         sizes="100vw"

@@ -1,160 +1,124 @@
+import { withCanonical } from "@/lib/site-metadata";
+import Image from "next/image";
 import Link from "next/link";
+import localFont from "next/font/local";
 
-import { EmailSignupForm } from "../components/email-signup-form";
-import { PhotoCarousel } from "../components/photo-carousel";
+import { CTABanner } from "@/components/sections/cta-banner";
+import { Business } from "@/components/sections/business";
+import { FAQ } from "@/components/sections/faq";
+import { Services } from "@/components/sections/services";
+import { SiteFooter } from "@/components/sections/site-footer";
+import { SiteHeader } from "@/components/sections/site-header";
+import { Testimonial } from "@/components/sections/testimonial";
+import { ArrowButton } from "@/components/ui/arrow-button";
 
-const photos = [
-  {
-    alt: "AttentionHQ",
-    height: 800,
-    src: "/images/attn-hq.png",
-    width: 800,
-  },
-  {
-    alt: "AttentionHQ",
-    height: 800,
-    src: "/images/attn-hq.png",
-    width: 800,
-  },
-  {
-    alt: "AttentionHQ",
-    height: 800,
-    src: "/images/attn-hq.png",
-    width: 800,
-  },
-  {
-    alt: "AttentionHQ",
-    height: 800,
-    src: "/images/attn-hq.png",
-    width: 800,
-  },
-  // {
-  //   alt: "Attention Factory",
-  //   height: 1586,
-  //   src: "/images/3.png",
-  //   width: 1186,
-  // },
-  // {
-  //   alt: "Mercy from Attention Factory",
-  //   height: 800,
-  //   src: "/images/2.png",
-  //   width: 800,
-  // },
-  // {
-  //   alt: "Mercy from Attention Factory",
-  //   height: 800,
-  //   src: "/images/6.png",
-  //   width: 800,
-  // },
-  // {
-  //   alt: "Mercy from Attention Factory",
-  //   height: 800,
-  //   src: "/images/7.png",
-  //   width: 800,
-  // },
-  // {
-  //   alt: "Mercy from Attention Factory",
-  //   height: 800,
-  //   src: "/images/8.png",
-  //   width: 800,
-  // },
-];
+import { LogoMarquee } from "./_components/logo-marquee";
 
-export default function HomePage() {
+const greedCondensed = localFont({
+  src: "./fonts/greed/GreedCondensed-TRIAL-Medium.otf",
+  weight: "500",
+  style: "normal",
+  variable: "--font-home-heading",
+  display: "swap",
+});
+
+export const metadata = withCanonical("/");
+
+export default function V2Page() {
   return (
-    <main className="min-h-dvh bg-background text-foreground relative p-0">
-      <Link
-        href="/v2"
-        className="group flex w-full items-center justify-center gap-2 bg-[#ff4100] px-5 py-3 text-center text-[14px] font-medium tracking-[-0.01em] text-white transition-colors hover:bg-[#121313] sm:text-[15px]"
-      >
-        <span>
-          Our new site is here — take a look at the v2.
-        </span>
-        <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-          →
-        </span>
-      </Link>
-      <div className="fixed bottom-0 w-full left-0 h-32 bg-linear-to-t from-[#fefefe] from-10% via-50% via-[#fefefe]/50 to-transparent pointer-events-none isolate" />
-      <div className="w-full max-w-[600px] px-5 py-8 text-[18px] font-medium leading-[1.55] tracking-[-0.7px] text-[#888888] sm:p-14 sm:text-[20px]">
-        <nav className="mb-4 flex flex-wrap gap-x-3 gap-y-1 text-[18px] font-medium sm:text-[20px]">
-          <Link
-            className="text-[#0099ff] underline underline-offset-2"
-            href="/"
-          >
-            home
-          </Link>
-          <Link
-            className="text-[#0099ff] underline underline-offset-2"
-            href="/team"
-          >
-            team
-          </Link>
-          {/* <a className="text-[#0099ff] underline underline-offset-2" href="/contact">
-              work with us
-            </a> */}
-        </nav>
-
-        <h1 className="mb-4 text-[38px] font-bold leading-[1.05] tracking-[-0.04em] text-neutral-950 sm:text-[50px]">
-          attention factory.
-        </h1>
-
-        <p className="mb-4">something is coming.</p>
-
-        {/* <p className="mb-4">
-          we help brands, founders, and teams turn fuzzy ideas into things people can
-          actually see, use, share, and remember.
-        </p> */}
-
-        {/* <p className="mb-4">
-          sometimes that means ai videos, spokespeople, ads, chatbots, launch content,
-          prototypes, or full creative systems. mostly, it means making the internet
-          feel a little less boring.
-        </p> */}
-
-        <p className="mb-8">
-          for people who would rather leverage AI than talk about leveraging AI.
-        </p>
-
-        <p className="mb-4">for leaders, builders & creators</p>
-
-        {/* <div className="mb-8">
-          <div
-            aria-label="Attention Factory signature"
-            className="mt-2 h-[25px] w-32 bg-[#888888] sm:h-[31px] sm:w-40"
-            role="img"
-            style={{
-              WebkitMask: "url('/images/signature-attn.png') left center / contain no-repeat",
-              mask: "url('/images/signature-attn.png') left center / contain no-repeat",
-            }}
+    <>
+      <SiteHeader />
+      <main className={`${greedCondensed.variable} home-page bg-background text-foreground`}>
+        <section className="relative flex h-[85svh] flex-col overflow-hidden bg-[#121313] md:h-[min(100svh,1000px)] md:min-h-[640px]">
+          <Image
+            src="/images/backgrounds/hero-figma-outdoors-v2.webp"
+            unoptimized
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center"
           />
-        </div> */}
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-black/40" />
+          <div className="relative mx-auto flex max-w-[1166px] flex-1 flex-col items-center justify-start px-6 pt-[240px] pb-20 text-center md:justify-center md:pt-20 md:pb-28">
+            <h1 className={`${greedCondensed.className} font-medium tracking-[-1.5px] text-[#fdfdfd] text-[clamp(30px,9.5vw,64px)] leading-[1.02] md:text-[clamp(64px,10vw,120px)]`}>
+              <span className="block">AI is a multiplier</span>
+              <span className="block whitespace-nowrap md:whitespace-normal">We make it work for you</span>
+            </h1>
 
-        <section className="mt-10">
-          {/* <p className="mb-5">
-            we can send you a reminder when it&apos;s live. drop your email
-            below.
-          </p> */}
+            <p className="mt-5 md:mt-7 max-w-[846px] text-[clamp(14px,2vw,20px)] leading-[1.2] tracking-[-0.02em] text-[#fdfdfd]">
+              Getting value from AI is a different job. We help you do that.
+            </p>
 
-          <EmailSignupForm />
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-5">
+              <a href="https://dub.sh/attn-university">
+                <ArrowButton variant="dark">Train Yourself</ArrowButton>
+              </a>
+              <Link href="/organizations">
+                <ArrowButton variant="light" showArrow={false}>
+                  Train your team
+                </ArrowButton>
+              </Link>
+            </div>
 
-          <PhotoCarousel photos={photos} />
-
-          {/* <div className="my-4">
-            <MembershipModalButton />
+            {/* <div className="mt-5 flex justify-center">
+              <a
+                href="https://ai-archetype-pied.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <ArrowButton
+                  variant="light"
+                  showArrow={false}
+                  className="bg-white text-[#121313] hover:bg-white/90 hover:text-[#121313]"
+                >
+                  Find your AI Archetype
+                </ArrowButton>
+              </a>
+            </div> */}
+          </div>
+{/*
+          <div className="absolute right-0 bottom-0 left-0">
+            <div
+              className="mt-5 relative mx-auto flex h-[60px] bg-white items-center justify-center rounded-t-[40px]`
+                before:absolute before:bottom-0 before:-right-[26px] before:h-[26px] before:w-[42px] before:scale-x-[-1] before:bg-no-repeat before:content-[''] before:[background-image:var(--bl-fillet)]
+                after:absolute after:bottom-0 after:-left-[26px] after:h-[26px] after:w-[42px] after:bg-no-repeat after:content-[''] after:[background-image:var(--bl-fillet)]"
+              // style={
+              //   {
+              //     "--bl-fillet": `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 26'%3E%3Cpath d='M42 0L42 26L0 26C14.359 26 26 14.359 26 0L42 0Z' fill='white'/%3E%3C/svg%3E")`,
+              //   } as React.CSSProperties
+              // }
+            />
           </div> */}
-
-          {/* <p className="mt-5">
-            p.s. if you wanna contact us, ping{" "}
-            <a
-              className="text-sky-600 underline underline-offset-2"
-              href="mailto:hello@attentionfactory.io"
-            >
-              hello@attentionfactory.io
-            </a>
-            . we generally respond fastest to short emails with a clear ask.
-          </p> */}
         </section>
-      </div>
-    </main>
+
+        <section className="flex flex-col h-[50svh] max-w-[1738px] mx-auto items-center justify-center bg-white px-6">
+          <p className="max-w-[600px] text-center font-medium tracking-[-0.02em] text-[clamp(28px,4vw,40px)] leading-[1.2] text-neutral-900">
+            * * * *
+          </p>
+          <h2 style={{ fontFamily: "inherit", letterSpacing: "-0.02em" }} className="max-w-[600px] text-center font-medium text-[clamp(28px,4vw,40px)] leading-[1.2] text-neutral-900">
+            We help people and organizations learn AI, put it to work, and build what comes next.
+          </h2>
+        </section>
+
+        <section
+          aria-label="Trusted by leading organizations"
+          className="w-full"
+        >
+          <LogoMarquee />
+        </section>
+
+        {/* <ImpactStats /> */}
+        <Services />
+        {/* <MembershipsIntro /> */}
+        {/* <MembershipsBento /> */}
+        {/* <Intelligence /> */}
+        <Testimonial />
+        <FAQ />
+        <CTABanner />
+        <Business />
+      </main>
+      <SiteFooter />
+    </>
   );
 }

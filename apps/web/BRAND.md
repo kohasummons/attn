@@ -3,7 +3,7 @@
 The single source of truth for how attentionfactory.io looks and sounds.
 Read this before building any page. If a decision isn't covered here, add it here first.
 
-Live reference: **`/v2/brand`** — renders every token and pattern below.
+Live reference: **`/brand`** — renders every token and pattern below.
 
 ---
 
