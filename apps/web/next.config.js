@@ -1,11 +1,14 @@
+import { legacyPageRedirects, legacyAssetRewrites } from "./route-migration.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
     return [
-      { source: "/guide", destination: "/v2/playbooks", permanent: false },
+      ...legacyPageRedirects,
+      { source: "/guide", destination: "/playbooks", permanent: false },
       {
         source: "/guide/:slug",
-        destination: "/v2/playbooks/:slug",
+        destination: "/playbooks/:slug",
         permanent: false,
       },
       {
@@ -19,6 +22,9 @@ const nextConfig = {
         permanent: true,
       },
     ];
+  },
+  async rewrites() {
+    return legacyAssetRewrites;
   },
   images: {
     remotePatterns: [

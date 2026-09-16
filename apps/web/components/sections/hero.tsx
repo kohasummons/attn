@@ -6,7 +6,7 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-[#121313]">
       <Image
-        src="/v2/background-hero.png"
+        src="/images/backgrounds/background-hero.png"
         alt=""
         fill
         priority

@@ -63,20 +63,20 @@ function BioCard({ name, bio }: { name: string; bio: string[] }) {
   );
 }
 
-// Reuses the v2 index "Trusted by" logo set (public/v2/brands).
+// Reuses the homepage "Trusted by" logo set (public/images/brands).
 const logos: { name: string; src?: string }[] = [
-  { name: "Meta", src: "/v2/brands/meta.png" },
-  { name: "Google Labs", src: "/v2/brands/google-labs.png" },
+  { name: "Meta", src: "/images/brands/meta.png" },
+  { name: "Google Labs", src: "/images/brands/google-labs.png" },
   { name: "Higgsfield" },
-  { name: "Kimi", src: "/v2/brands/kimi.png" },
-  { name: "Relume", src: "/v2/brands/relume.png" },
-  { name: "Gamma", src: "/v2/brands/gamma.png" },
-  { name: "Speak French Fast", src: "/v2/brands/speak-french-fast.png" },
-  { name: "Abacus", src: "/v2/brands/abacus.png" },
-  { name: "Red Bull", src: "/v2/brands/red-bull.png" },
+  { name: "Kimi", src: "/images/brands/kimi.png" },
+  { name: "Relume", src: "/images/brands/relume.png" },
+  { name: "Gamma", src: "/images/brands/gamma.png" },
+  { name: "Speak French Fast", src: "/images/brands/speak-french-fast.png" },
+  { name: "Abacus", src: "/images/brands/abacus.png" },
+  { name: "Red Bull", src: "/images/brands/red-bull.png" },
   { name: "Liners" },
-  { name: "Recall", src: "/v2/brands/recall.png" },
-  { name: "KaneAI", src: "/v2/brands/kaneai.png" },
+  { name: "Recall", src: "/images/brands/recall.png" },
+  { name: "KaneAI", src: "/images/brands/kaneai.png" },
 ];
 
 function BrandMarquee() {
