@@ -4,17 +4,11 @@ const baseUrl = "https://www.attentionfactory.io";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/team`,
-      lastModified: new Date(),
-      changeFrequency: "monthly",
+    { url: baseUrl, changeFrequency: "weekly", priority: 1 },
+    ...["/about", "/labs", "/team"].map((path) => ({
+      url: `${baseUrl}${path}`,
+      changeFrequency: "monthly" as const,
       priority: 0.6,
-    },
+    })),
   ];
 }

@@ -1,3 +1,11 @@
+# September 2026 Figma redesign
+
+The `components/marketing` pages at `/`, `/about`, and `/labs` follow the approved Figma Designs page (copy `CiNSnG4vaNPINEChZUYVz1`). Its Inter typography, Google Sans Code labels, orange pill controls, dashed rules, and original landscape artwork supersede the legacy rules below **within those pages and their dialogs**. Reuse the existing shadcn primitives first. The legacy rules remain applicable to pages awaiting design migration.
+
+See `docs/redesign.md` for component boundaries, source frames, and verification.
+
+---
+
 # Attention Factory — Brand & UI System
 
 The single source of truth for how attentionfactory.io looks and sounds.

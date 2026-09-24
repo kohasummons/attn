@@ -7,6 +7,9 @@ export const Dialog = DialogPrimitive.Root;
 export const DialogTrigger = DialogPrimitive.Trigger;
 export const DialogClose = DialogPrimitive.Close;
 
+/** Unstyled surface for compositions that supply their own portal and motion. */
+export const DialogSurface = DialogPrimitive.Content;
+
 export function DialogPortal(props: DialogPrimitive.DialogPortalProps) {
   return <DialogPrimitive.Portal {...props} />;
 }
