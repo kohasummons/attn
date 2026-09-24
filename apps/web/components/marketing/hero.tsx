@@ -10,8 +10,20 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
   return (
     <section className={`af-hero${labs ? " af-hero-compact" : ""}`}>
       <Artwork
-        name={page === "home" ? "hero-painting.png" : "about-painting.png"}
-        mobileName={page === "home" ? "hero-mobile-bg.png" : undefined}
+        name={
+          page === "home"
+            ? "hero-desktop-bg.png"
+            : labs
+              ? "labs-desktop-bg.png"
+              : "about-desktop-bg.png"
+        }
+        mobileName={
+          page === "home"
+            ? "hero-mobile-bg.png"
+            : about
+              ? "about-mobile-bg.png"
+              : undefined
+        }
         priority
       />
       <div className="af-hero-fade" aria-hidden="true" />
@@ -21,7 +33,6 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
         {labs ? (
           <>
             <h1>Attention Factory Labs</h1>
-            <p>Our Products and Experimentation</p>
           </>
         ) : (
           <>
@@ -39,7 +50,7 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
                 height={18}
               />
               <span className="af-desktop-copy">
-                Attention HQ · Opens 5 October 2026
+                Attention HQ Opens in 12 Days
               </span>
               <span className="af-mobile-copy">
                 Attention HQ Opens in 12 Days

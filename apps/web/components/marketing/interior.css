@@ -1,0 +1,159 @@
+/* Page-specific mobile compositions. Labs has no separate mobile Figma frame;
+   it follows the same mobile type, spacing, and reusable sections. */
+@media (max-width: 600px) {
+  .af-mobile-layout .af-section-rails picture {
+    top: -73px;
+    left: 24px;
+  }
+  .af-mobile-layout .af-section-rails picture + picture {
+    right: 24px;
+    left: auto;
+    top: -73px;
+  }
+  .af-mobile-layout .af-section-rails img {
+    width: 32px;
+    height: 250px;
+  }
+  .af-trust .af-section-rails {
+    display: none;
+  }
+  .af-about .af-hero-content {
+    padding-bottom: 118px;
+  }
+  .af-about .af-story {
+    min-height: 655px;
+    overflow: hidden;
+  }
+  .af-about .af-story .af-artwork {
+    inset: auto;
+    left: calc(50% - 220px);
+    top: 215px;
+    width: 440px;
+    height: 440px;
+  }
+  .af-about .af-story-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .af-about .af-story h2 {
+    margin-bottom: 16px;
+  }
+  .af-about .af-story h2 span + span {
+    margin-top: 26px;
+  }
+  .af-about .af-story-summary {
+    margin-bottom: 16px;
+  }
+  .af-about .af-story-note {
+    margin: 0 0 16px !important;
+    max-width: none;
+  }
+  .af-about .af-story-note p + p {
+    margin-top: 22px;
+  }
+  .af-mobile-layout .af-services-intro {
+    margin-top: 16px !important;
+  }
+  .af-about .af-services {
+    min-height: 1223px;
+  }
+  .af-about .af-services-list article {
+    min-height: 0;
+  }
+  .af-about .af-metrics {
+    min-height: 655px;
+  }
+  .af-about .af-metrics h2 {
+    max-width: 270px;
+    margin-inline: auto;
+    text-align: left;
+  }
+  .af-about .af-metrics .af-section-heading {
+    margin-bottom: 50px;
+  }
+  .af-about .af-metrics dl {
+    gap: 0;
+    border-inline: 16px solid #f0f0f0;
+    text-align: left;
+  }
+  .af-about .af-metrics dl > div {
+    border: 1px dashed #e3e3e3;
+    padding: 16px;
+    min-height: 157px;
+  }
+  .af-about .af-metrics dt {
+    color: #e85626;
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 35px;
+    letter-spacing: -0.02em;
+  }
+  .af-about .af-metrics dd {
+    max-width: none;
+    margin: 40px 0 0;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 600;
+  }
+  .af-labs .af-hero-compact {
+    min-height: 330px;
+  }
+  .af-labs .af-hero-compact .af-hero-content {
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+  .af-labs .af-hero-compact h1 {
+    margin: 0;
+  }
+  .af-labs .af-projects {
+    padding-bottom: 24px;
+  }
+  .af-labs .af-labs-heading {
+    margin-bottom: 24px !important;
+  }
+  .af-labs .af-product-art {
+    height: 276px;
+    padding: 13px 11px;
+    background-size: cover;
+  }
+  .af-labs .af-product-screen {
+    height: 250px;
+  }
+  .af-labs .af-product:first-child .af-product-art {
+    background-image: url("/redesign/product-1-desktop-bg.png") !important;
+  }
+  .af-labs .af-product:nth-child(2) .af-product-art {
+    background-image: url("/redesign/product-2-desktop-bg.png") !important;
+  }
+  .af-labs .af-product-status {
+    font-size: 14px;
+    color: white;
+  }
+  .af-labs .af-product-pending {
+    font-size: 14px;
+    margin-top: 8px;
+  }
+  .af-labs .af-redacted h3 {
+    font-size: 22px;
+    line-height: 24px;
+    margin: 24px 0 8px;
+  }
+}
+@media (max-width: 600px) {
+  .af-about .af-services .af-split {
+    gap: 24px;
+  }
+  .af-about .af-metrics {
+    overflow: hidden;
+  }
+}
+
+@media (max-width: 600px) {
+  .af-labs.af-mobile-layout .af-product .af-product-screen {
+    height: 250px;
+  }
+  .af-labs .af-product-pending img {
+    display: none;
+  }
+}

@@ -29,7 +29,7 @@ export function EventSection() {
 
   return (
     <section id="events" className="af-event" aria-labelledby="event-title">
-      <Artwork name="event-painting.png" mobileName="event-mobile-bg.png" />
+      <Artwork name="event-desktop-bg.png" mobileName="event-mobile-bg.png" />
       <div className="af-event-fade" aria-hidden="true" />
       <PageContainer>
         <Eyebrow>Weekends of AI</Eyebrow>

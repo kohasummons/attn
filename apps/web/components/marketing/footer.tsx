@@ -96,7 +96,10 @@ export function SiteFooter() {
         </picture>
       </PageContainer>
       <div className="af-footer-body">
-        <Artwork name="footer-painting.png" mobileName="footer-mobile-bg.png" />
+        <Artwork
+          name="footer-desktop-bg.png"
+          mobileName="footer-mobile-bg.png"
+        />
         <div className="af-footer-fade" aria-hidden="true" />
         <PageContainer>
           <div className="af-footer-top">

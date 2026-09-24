@@ -15,7 +15,9 @@ import {
   TrustSection,
 } from "./sections";
 import "./styles.css";
+import "./desktop.css";
 import "./mobile.css";
+import "./interior.css";
 
 const interDisplay = localFont({
   src: [
@@ -42,7 +44,9 @@ const interDisplay = localFont({
 
 export function HomePage() {
   return (
-    <div className={`af-site af-home ${interDisplay.variable}`}>
+    <div
+      className={`af-site af-home af-mobile-layout ${interDisplay.variable}`}
+    >
       <a href="#main" className="af-skip-link">
         Skip to content
       </a>
@@ -65,14 +69,16 @@ export function HomePage() {
 
 export function AboutPage() {
   return (
-    <div className="af-site">
+    <div
+      className={`af-site af-about af-mobile-layout ${interDisplay.variable}`}
+    >
       <a href="#main" className="af-skip-link">
         Skip to content
       </a>
       <Hero page="about" />
       <main id="main">
         <StorySection />
-        <ServicesSection />
+        <ServicesSection about />
         <CoursesSection mission />
         <MetricsSection />
         <FrequentlyAskedQuestions />
@@ -85,7 +91,9 @@ export function AboutPage() {
 
 export function LabsPage() {
   return (
-    <div className="af-site">
+    <div
+      className={`af-site af-labs af-mobile-layout ${interDisplay.variable}`}
+    >
       <a href="#main" className="af-skip-link">
         Skip to content
       </a>

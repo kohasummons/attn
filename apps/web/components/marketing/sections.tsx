@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, FlaskConical } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { GUIDE_ENTRIES } from "@/app/v2/playbooks/guides-data";
 import { ContactDialog } from "./contact-dialog";
 import {
@@ -8,6 +8,7 @@ import {
   labProducts,
   links,
   services,
+  partnerships,
   type Product,
 } from "./content";
 import {
@@ -18,9 +19,48 @@ import {
   PageContainer,
 } from "./primitives";
 
+function SectionRails({ trust = false }: { trust?: boolean }) {
+  return (
+    <div
+      className={`af-section-rails${trust ? " af-section-rails-trust" : ""}`}
+      aria-hidden="true"
+    >
+      <picture>
+        <source
+          media="(max-width: 600px)"
+          srcSet={asset("trust-decor-left.png")}
+        />
+        <Image
+          src={asset(
+            trust ? "trust-desktop-left.png" : "metrics-desktop-left.png",
+          )}
+          alt=""
+          width={64}
+          height={251}
+        />
+      </picture>
+      <picture>
+        <source
+          media="(max-width: 600px)"
+          srcSet={asset("trust-decor-right.png")}
+        />
+        <Image
+          src={asset(
+            trust ? "trust-desktop-right.png" : "metrics-desktop-right.png",
+          )}
+          alt=""
+          width={64}
+          height={251}
+        />
+      </picture>
+    </div>
+  );
+}
+
 export function TrustSection() {
   return (
     <section className="af-trust af-section">
+      <SectionRails trust />
       <Image
         className="af-mobile-only af-trust-decor af-trust-decor-left"
         src={asset("trust-decor-left.png")}
@@ -71,8 +111,8 @@ export function CoursesSection({ mission = false }: { mission?: boolean }) {
   return (
     <section className="af-landscape-section af-section">
       <Artwork
-        name={mission ? "mission-painting.png" : "courses-painting.png"}
-        mobileName={mission ? undefined : "courses-mobile-bg.png"}
+        name={mission ? "mission-desktop-bg.png" : "courses-desktop-bg.png"}
+        mobileName={mission ? "mission-mobile-bg.png" : "courses-mobile-bg.png"}
       />
       <div className="af-landscape-fade" aria-hidden="true" />
       <PageContainer className="af-split">
@@ -131,6 +171,17 @@ function ProductCard({
             }
           />
         </div>
+        {!featured && (
+          <span
+            className={
+              product.href
+                ? "af-live af-product-status"
+                : "af-preview af-product-status"
+            }
+          >
+            {product.href ? "Live" : "Preview"}
+          </span>
+        )}
         {featured && product.metric && (
           <div className="af-product-metric">
             <Image src={asset("411d5.svg")} alt="" fill sizes="130px" />
@@ -156,34 +207,32 @@ function ProductCard({
             <span className="sr-only">: {product.name}</span>
           </Link>
         )}
+        {!product.href && (
+          <span className="af-text-link af-product-visit af-product-pending">
+            Website coming soon
+            <ArrowUpRight
+              className="af-desktop-copy"
+              size={20}
+              aria-hidden="true"
+            />
+            <Image
+              className="af-mobile-only"
+              src={asset("arrow-orange.svg")}
+              alt=""
+              width={18}
+              height={18}
+            />
+          </span>
+        )}
       </div>
       <div className="af-product-heading">
         <h3>{product.name}</h3>
-        {!featured &&
-          (product.href ? (
-            <span className="af-live">Live</span>
-          ) : (
-            <span className="af-preview">Preview</span>
-          ))}
       </div>
-      <p>{product.description}</p>
-      {!product.href && (
-        <span className="af-text-link af-muted">
-          Website coming soon
-          <ArrowUpRight
-            className="af-desktop-copy"
-            size={20}
-            aria-hidden="true"
-          />
-          <Image
-            className="af-mobile-only"
-            src={asset("arrow-orange.svg")}
-            alt=""
-            width={18}
-            height={18}
-          />
-        </span>
-      )}
+      <p>
+        {featured
+          ? product.description
+          : "Get instant transcripts for all your videos and some description of the product"}
+      </p>
     </article>
   );
 }
@@ -194,6 +243,9 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
       className={`af-projects af-section${labs ? " af-lab-projects" : ""}`}
     >
       <PageContainer>
+        {labs && (
+          <h2 className="af-labs-heading">Our Products and Experimentation</h2>
+        )}
         {!labs && (
           <div className="af-projects-heading">
             <Eyebrow>We are always tinkering</Eyebrow>
@@ -220,7 +272,9 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
               <article className="af-product af-redacted" key={id}>
                 <div
                   className="af-product-art"
-                  style={{ backgroundImage: `url(${asset("8aabf.png")})` }}
+                  style={{
+                    backgroundImage: `url(${asset("product-2-desktop-bg.png")})`,
+                  }}
                 >
                   <div className="af-product-screen">
                     <Image
@@ -230,10 +284,18 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
                       sizes="360px"
                     />
                   </div>
+                  <Image
+                    unoptimized
+                    className="af-product-lock"
+                    src={asset("product-lock.png")}
+                    alt=""
+                    width={80}
+                    height={80}
+                  />
+                  <span className="af-redacted-label">REDACTED</span>
                 </div>
-                <h3>[Redacted]</h3>
-                <p>Something new is taking shape.</p>
-                <span className="af-preview">Coming soon</span>
+                <h3>[Readacted]</h3>
+                <p>[Readacted]</p>
               </article>
             ))}
         </div>
@@ -243,8 +305,13 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
           <span className="sr-only">Visit Our Lab</span>
           {Array.from({ length: 12 }, (_, i) => (
             <span key={i} aria-hidden="true">
-              <FlaskConical size={14} /> Visit Our Lab{" "}
-              <ArrowUpRight size={14} />
+              <Image
+                src={asset("lab-flask.svg")}
+                alt=""
+                width={18}
+                height={18}
+              />{" "}
+              Visit Our Lab <i className="af-ribbon-separator" />
             </span>
           ))}
         </Link>
@@ -256,7 +323,27 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
 export function HeadquartersSection() {
   return (
     <section className="af-hq af-section" id="headquarters">
-      <Artwork name="hq-illustration.png" mobileName="hq-mobile.png" />
+      <Artwork name="hq-desktop.png" mobileName="hq-mobile.png" />
+      <div className="af-desktop-art af-hq-rails" aria-hidden="true">
+        <Image
+          src={asset("hq-decor-left.png")}
+          alt=""
+          width={219}
+          height={16}
+        />
+        <Image
+          src={asset("hq-decor-right-high.png")}
+          alt=""
+          width={219}
+          height={16}
+        />
+        <Image
+          src={asset("hq-decor-right-low.png")}
+          alt=""
+          width={219}
+          height={16}
+        />
+      </div>
       <Image
         className="af-mobile-only af-hq-decor"
         src={asset("mobile-hq-decor.png")}
@@ -284,31 +371,58 @@ export function HeadquartersSection() {
           </p>
         </div>
         <p className="af-hq-note af-lead">
-          Join us on 5/10/2026 as we being a new cohort of AI Fellows that will
-          change the worldo out and build anything with AI
+          <span className="af-desktop-copy">
+            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
+            will change the world
+          </span>
+          <span className="af-mobile-copy">
+            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
+            will change the worldo out and build anything with AI
+          </span>
         </p>
       </PageContainer>
     </section>
   );
 }
 
-export function ServicesSection() {
+export function ServicesSection({ about = false }: { about?: boolean }) {
+  const entries = about ? partnerships : services;
   return (
     <section className="af-services af-section" id="services">
       <PageContainer className="af-split">
         <div>
-          <Eyebrow>Trainings, workshops and more</Eyebrow>
+          <Eyebrow>
+            {about ? "Work With Us" : "Trainings, workshops and more"}
+          </Eyebrow>
           <h2>
-            At attention factory provide the best services and trainings for you
-            or your team
+            {about
+              ? "Here are some ways to partner with us"
+              : "At attention factory provide the best services and trainings for you or your team"}
           </h2>
-          <p className="af-mobile-only af-services-intro">
-            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
-            will change the worldo out and build anything with AI
+          <p className="af-services-intro af-lead">
+            {about ? (
+              "People come to Attention Factory to learn, train their teams, plan how AI should be used, or build something that solves a real problem."
+            ) : (
+              <>
+                <span className="af-desktop-copy">
+                  Join us on 5/10/2026 as we being a new cohort of AI Fellows
+                  that will change the world
+                </span>
+                <span className="af-mobile-copy">
+                  Join us on 5/10/2026 as we being a new cohort of AI Fellows
+                  that will change the worldo out and build anything with AI
+                </span>
+              </>
+            )}
           </p>
         </div>
-        <div className="af-services-list">
-          {services.map((service) => (
+        <div
+          className="af-services-list"
+          tabIndex={0}
+          role="region"
+          aria-label={about ? "Ways to partner with us" : "Services"}
+        >
+          {entries.map((service) => (
             <article key={service.title}>
               <picture className="af-service-icon">
                 <source
@@ -316,7 +430,7 @@ export function ServicesSection() {
                   srcSet={asset(service.mobileIcon)}
                 />
                 <Image
-                  src={asset(service.icon)}
+                  src={asset(service.mobileIcon)}
                   alt=""
                   width={40}
                   height={40}
@@ -327,8 +441,9 @@ export function ServicesSection() {
                 <p>
                   <span className="af-desktop-copy">{service.description}</span>
                   <span className="af-mobile-copy">
-                    Training for you and your team, to get the best of AI
-                    knowledge to implement it
+                    {about
+                      ? service.description
+                      : "Training for you and your team, to get the best of AI knowledge to implement it"}
                   </span>
                 </p>
                 {service.href ? (
@@ -374,6 +489,7 @@ export function ServicesSection() {
 export function TestimonialsSection() {
   return (
     <section className="af-testimonials af-section">
+      <SectionRails />
       <PageContainer>
         <div className="af-section-heading">
           <Eyebrow>Feedback from our AI fellows</Eyebrow>
@@ -433,9 +549,7 @@ export function ArticlesSection() {
                       srcSet={asset(`article-${index + 1}-mobile.png`)}
                     />
                     <Image
-                      src={asset(
-                        ["9db56.png", "c91ac.png", "468cc.png"][index]!,
-                      )}
+                      src={asset(`article-${index + 1}-desktop.png`)}
                       alt=""
                       fill
                       sizes="(max-width: 700px) 90vw, 380px"
@@ -444,11 +558,14 @@ export function ArticlesSection() {
                 </div>
               </Link>
               <h3>
-                <span className="af-desktop-copy">{guide.title}</span>
+                <span className="af-desktop-copy">AI Roundup For February</span>
                 <span className="af-mobile-copy">AI Roundup For February</span>
               </h3>
               <p>
-                <span className="af-desktop-copy">{guide.excerpt}</span>
+                <span className="af-desktop-copy">
+                  See what happened in the AI space in this month and how you
+                  can gain leverage with the updates
+                </span>
                 <span className="af-mobile-copy">
                   See what happened in the AI space in this month and how you
                   can gain leverage with the updates
@@ -484,27 +601,49 @@ export function ArticlesSection() {
 export function StorySection() {
   return (
     <section className="af-story af-section">
-      <Artwork name="story-illustration.png" />
-      <PageContainer className="af-split">
-        <div>
-          <Eyebrow>Humble beginnings</Eyebrow>
-          <h2>
-            It started with free content with the purpose of informing and
-            educating.
-          </h2>
-          <p className="af-lead af-story-note">
+      <Artwork name="story-desktop.png" mobileName="story-mobile.png" />
+      <div className="af-desktop-art af-story-rails" aria-hidden="true">
+        <Image
+          src={asset("story-decor-vertical.png")}
+          alt=""
+          width={16}
+          height={609}
+        />
+        <Image
+          src={asset("story-decor-horizontal.png")}
+          alt=""
+          width={251}
+          height={64}
+        />
+      </div>
+      <PageContainer className="af-story-content">
+        <Eyebrow>Humble beginnings</Eyebrow>
+        <h2>
+          <span>
+            Attention Factory began with free online content that showed people
+            how to use AI for real work.
+          </span>
+          <span>
+            As the audience grew, people asked for deeper classes, more
+            structure, and help applying AI to their own work.
+          </span>
+        </h2>
+        <p className="af-lead af-story-summary">
+          It started with free content with the purpose of informing and
+          educating.
+        </p>
+        <div className="af-lead af-story-note">
+          <p>
+            We now have free masterclasses, Weekends of AI, bootcamps, and
+            Attention University.
+          </p>
+          <p>
             Businesses began coming to us with another set of needs: team
             training, software development, workflow automation, and help
             deciding where AI fits.
           </p>
         </div>
-        <div>
-          <p className="af-lead">
-            As the audience grew, people asked for deeper classes, more
-            structure, and help applying AI to their own work.
-          </p>
-          <ActionLink href={links.university}>View Our Courses</ActionLink>
-        </div>
+        <ActionLink href={links.university}>View Our Courses</ActionLink>
       </PageContainer>
     </section>
   );
@@ -518,6 +657,7 @@ export function MetricsSection() {
   ];
   return (
     <section className="af-metrics af-section">
+      <SectionRails />
       <PageContainer>
         <div className="af-section-heading">
           <Eyebrow>Metrics</Eyebrow>

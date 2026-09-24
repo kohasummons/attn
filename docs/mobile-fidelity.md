@@ -2,31 +2,31 @@
 
 Reviewed 24 September 2026 on `codex/attention-factory-redesign`.
 
-Source: [Figma mobile homepage, 24123:1055](https://www.figma.com/design/CiNSnG4vaNPINEChZUYVz1/attention-factory--Copy-?node-id=24123-1055), Designs page `10:5`. Scope is the homepage mobile composition, not a new audit of About or Labs.
+Source: [Figma mobile homepage, 24123:1055](https://www.figma.com/design/CiNSnG4vaNPINEChZUYVz1/attention-factory--Copy-?node-id=24123-1055), Designs page `10:5`. This records the homepage mobile composition. The subsequent [responsive audit](responsive-fidelity.md) covers About mobile, Labs responsiveness, and all three desktop pages.
 
 ## Section measurements
 
 Measured live browser content width: **440px**. Figma canvas: **440 × 7708px**. All values below are CSS pixels; source and implementation match each listed start position and height with the first FAQ expanded.
 
-| Section | Source node | Top | Height | Reviewed details |
-| --- | --- | ---: | ---: | --- |
-| Hero | 24123:294 | 0 | 593 | 153 × 20 logo, glass menu, badge, 32/35 typography, italic face, painting crop/fade, button ring |
-| Trust | 24123:1029 | 593 | 278 | Heading, original three-logo strip, dashed frame and side decorations |
-| Courses | 24123:1146 | 871 | 632 | Mobile content order, original painting and gradients, headline, support copy, CTA |
-| Projects | 24142:437 | 1503 | 993 | Product artwork scale, metric starbursts, action arrows, descriptions, repeating orange ribbon |
-| HQ | 24144:561 | 2496 | 569 | Source heading/copy, CTA, architectural artwork scale/position, decorative measurement line |
-| Services | 24146:759 | 3065 | 1147 | Intro copy, four 48px source icons, stacked cards, descriptions, links |
-| FAQ | 24146:856 | 4212 | 550 | First item expanded, text sizes, dashed side rails, orange plus/cross |
-| Articles | 24146:1028 | 4762 | 1154 | Three 328px cards, original dithered paintings, source copy, spacing and corners |
-| Event | 24146:1110 | 5916 | 553 | Original painting, CTA, gradient/stroked timer digits, mobile time labels |
-| Measured wordmark | 24146:1154 | 6469 | 132 | Original 392 × 132 SVG including construction marks and labels |
-| Footer | 24146:1248 | 6601 | 1107 | Brand, status rows, two-column links, original glass SVGs, 392 × 254 agent card |
+| Section           | Source node |  Top | Height | Reviewed details                                                                                 |
+| ----------------- | ----------- | ---: | -----: | ------------------------------------------------------------------------------------------------ |
+| Hero              | 24123:294   |    0 |    593 | 153 × 20 logo, glass menu, badge, 32/35 typography, italic face, painting crop/fade, button ring |
+| Trust             | 24123:1029  |  593 |    278 | Heading, original three-logo strip, dashed frame and side decorations                            |
+| Courses           | 24123:1146  |  871 |    632 | Mobile content order, original painting and gradients, headline, support copy, CTA               |
+| Projects          | 24142:437   | 1503 |    993 | Product artwork scale, metric starbursts, action arrows, descriptions, repeating orange ribbon   |
+| HQ                | 24144:561   | 2496 |    569 | Source heading/copy, CTA, architectural artwork scale/position, decorative measurement line      |
+| Services          | 24146:759   | 3065 |   1147 | Intro copy, four 48px source icons, stacked cards, descriptions, links                           |
+| FAQ               | 24146:856   | 4212 |    550 | First item expanded, text sizes, dashed side rails, orange plus/cross                            |
+| Articles          | 24146:1028  | 4762 |   1154 | Three 328px cards, original dithered paintings, source copy, spacing and corners                 |
+| Event             | 24146:1110  | 5916 |    553 | Original painting, CTA, gradient/stroked timer digits, mobile time labels                        |
+| Measured wordmark | 24146:1154  | 6469 |    132 | Original 392 × 132 SVG including construction marks and labels                                   |
+| Footer            | 24146:1248  | 6601 |   1107 | Brand, status rows, two-column links, original glass SVGs, 392 × 254 agent card                  |
 
 The testimonial rail is absent from the mobile source and is hidden on the mobile homepage. The measured wordmark is inside the semantic footer in HTML; the two separate visual sections above total 1239px.
 
 ## Implementation and assets
 
-Shared React compositions and shadcn controls remain reusable. `mobile.css` scopes the homepage's mobile layout, typography, and decorative positioning below 600px. Inter Display regular, medium, semibold, and light italic are local font files with the upstream OFL license. The existing Motion dialog behavior and reduced-motion support remain in place.
+Shared React compositions and shadcn controls remain reusable. `mobile.css` now shares the source mobile layout, typography, and decorative positioning below 600px across the three pages; `interior.css` supplies page-specific differences. Inter Display regular, medium, semibold, and light italic are local font files with the upstream OFL license. The existing Motion dialog behavior and reduced-motion support remain in place.
 
 Paintings and their original gradients were exported as decorative backgrounds without text or controls. Architectural illustrations, shader-treated article artwork, product textures, trust marks, and service icons are separate source exports. The measured wordmark, glass icons, badge, and action arrows use original SVG exports without rewritten path data. No complete page or section screenshot replaces live text or interactive controls. Temporary export clones were removed from Figma.
 
