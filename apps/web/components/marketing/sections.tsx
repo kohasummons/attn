@@ -21,9 +21,30 @@ import {
 export function TrustSection() {
   return (
     <section className="af-trust af-section">
+      <Image
+        className="af-mobile-only af-trust-decor af-trust-decor-left"
+        src={asset("trust-decor-left.png")}
+        alt=""
+        width={32}
+        height={250}
+      />
+      <Image
+        className="af-mobile-only af-trust-decor af-trust-decor-right"
+        src={asset("trust-decor-right.png")}
+        alt=""
+        width={32}
+        height={250}
+      />
       <PageContainer>
         <Eyebrow>Trusted by the best</Eyebrow>
         <h2>We are trusted by industry leaders</h2>
+        <Image
+          className="af-mobile-only af-logos-mobile"
+          src={asset("trust-strip-mobile.png")}
+          alt="Red Bull, Google Labs, and recall.ai"
+          width={392}
+          height={112}
+        />
         <div className="af-logos">
           {["Relume", "Meta", "Redbull", "Google", "Recall"].map((name) => (
             <Image
@@ -51,11 +72,21 @@ export function CoursesSection({ mission = false }: { mission?: boolean }) {
     <section className="af-landscape-section af-section">
       <Artwork
         name={mission ? "mission-painting.png" : "courses-painting.png"}
+        mobileName={mission ? undefined : "courses-mobile-bg.png"}
       />
       <div className="af-landscape-fade" aria-hidden="true" />
       <PageContainer className="af-split">
         <div>
-          <Eyebrow>{mission ? "Mission" : "The future is now"}</Eyebrow>
+          <Eyebrow>
+            {mission ? (
+              "Mission"
+            ) : (
+              <>
+                <span className="af-desktop-copy">The future is now</span>
+                <span className="af-mobile-copy">Trusted by the best</span>
+              </>
+            )}
+          </Eyebrow>
           <p className="af-lead">
             {mission
               ? "Helping people could mean building an app, automating a workflow, using AI better at work, or starting a new career."
@@ -110,7 +141,18 @@ function ProductCard({
         {product.href && (
           <Link className="af-text-link af-product-visit" href={product.href}>
             Visit Website
-            <ArrowUpRight size={18} aria-hidden="true" />
+            <ArrowUpRight
+              className="af-desktop-copy"
+              size={18}
+              aria-hidden="true"
+            />
+            <Image
+              className="af-mobile-only"
+              src={asset("arrow-white.svg")}
+              alt=""
+              width={18}
+              height={18}
+            />
             <span className="sr-only">: {product.name}</span>
           </Link>
         )}
@@ -128,7 +170,18 @@ function ProductCard({
       {!product.href && (
         <span className="af-text-link af-muted">
           Website coming soon
-          <ArrowUpRight size={20} aria-hidden="true" />
+          <ArrowUpRight
+            className="af-desktop-copy"
+            size={20}
+            aria-hidden="true"
+          />
+          <Image
+            className="af-mobile-only"
+            src={asset("arrow-orange.svg")}
+            alt=""
+            width={18}
+            height={18}
+          />
         </span>
       )}
     </article>
@@ -203,11 +256,23 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
 export function HeadquartersSection() {
   return (
     <section className="af-hq af-section" id="headquarters">
-      <Artwork name="hq-illustration.png" />
+      <Artwork name="hq-illustration.png" mobileName="hq-mobile.png" />
+      <Image
+        className="af-mobile-only af-hq-decor"
+        src={asset("mobile-hq-decor.png")}
+        alt=""
+        width={115}
+        height={16}
+      />
       <PageContainer>
         <div className="af-split af-split-wide-left">
           <div>
-            <Eyebrow>Attention Factory University</Eyebrow>
+            <Eyebrow>
+              <span className="af-desktop-copy">
+                Attention Factory University
+              </span>
+              <span className="af-mobile-copy">We are always tinkering</span>
+            </Eyebrow>
             <h2>
               The power to build is now in your hands, opening 5th October 2026
             </h2>
@@ -219,8 +284,8 @@ export function HeadquartersSection() {
           </p>
         </div>
         <p className="af-hq-note af-lead">
-          Join us on 5/10/2026 as we begin a new cohort of AI Fellows that will
-          change the world
+          Join us on 5/10/2026 as we being a new cohort of AI Fellows that will
+          change the worldo out and build anything with AI
         </p>
       </PageContainer>
     </section>
@@ -234,26 +299,67 @@ export function ServicesSection() {
         <div>
           <Eyebrow>Trainings, workshops and more</Eyebrow>
           <h2>
-            At attention factory we provide the best services and trainings for
-            you or your team
+            At attention factory provide the best services and trainings for you
+            or your team
           </h2>
+          <p className="af-mobile-only af-services-intro">
+            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
+            will change the worldo out and build anything with AI
+          </p>
         </div>
         <div className="af-services-list">
           {services.map((service) => (
             <article key={service.title}>
-              <Image src={asset(service.icon)} alt="" width={40} height={40} />
+              <picture className="af-service-icon">
+                <source
+                  media="(max-width: 600px)"
+                  srcSet={asset(service.mobileIcon)}
+                />
+                <Image
+                  src={asset(service.icon)}
+                  alt=""
+                  width={40}
+                  height={40}
+                />
+              </picture>
               <div>
                 <h3>{service.title}</h3>
-                <p>{service.description}</p>
+                <p>
+                  <span className="af-desktop-copy">{service.description}</span>
+                  <span className="af-mobile-copy">
+                    Training for you and your team, to get the best of AI
+                    knowledge to implement it
+                  </span>
+                </p>
                 {service.href ? (
                   <Link className="af-text-link" href={service.href}>
-                    {service.action}
-                    <ArrowUpRight size={20} />
+                    <span className="af-desktop-copy">{service.action}</span>
+                    <span className="af-mobile-copy">
+                      {service.mobileAction}
+                    </span>
+                    <ArrowUpRight className="af-desktop-copy" size={20} />
+                    <Image
+                      className="af-mobile-only"
+                      src={asset("arrow-ink.svg")}
+                      alt=""
+                      width={18}
+                      height={18}
+                    />
                   </Link>
                 ) : (
                   <ContactDialog className="af-text-link af-text-button">
-                    {service.action}
-                    <ArrowUpRight size={20} />
+                    <span className="af-desktop-copy">{service.action}</span>
+                    <span className="af-mobile-copy">
+                      {service.mobileAction}
+                    </span>
+                    <ArrowUpRight className="af-desktop-copy" size={20} />
+                    <Image
+                      className="af-mobile-only"
+                      src={asset("arrow-ink.svg")}
+                      alt=""
+                      width={18}
+                      height={18}
+                    />
                   </ContactDialog>
                 )}
               </div>
@@ -321,22 +427,50 @@ export function ArticlesSection() {
                 aria-hidden="true"
               >
                 <div className="af-article-image">
-                  <Image
-                    src={asset(["9db56.png", "c91ac.png", "468cc.png"][index]!)}
-                    alt=""
-                    fill
-                    sizes="(max-width: 700px) 90vw, 380px"
-                  />
+                  <picture>
+                    <source
+                      media="(max-width: 600px)"
+                      srcSet={asset(`article-${index + 1}-mobile.png`)}
+                    />
+                    <Image
+                      src={asset(
+                        ["9db56.png", "c91ac.png", "468cc.png"][index]!,
+                      )}
+                      alt=""
+                      fill
+                      sizes="(max-width: 700px) 90vw, 380px"
+                    />
+                  </picture>
                 </div>
               </Link>
-              <h3>{guide.title}</h3>
-              <p>{guide.excerpt}</p>
+              <h3>
+                <span className="af-desktop-copy">{guide.title}</span>
+                <span className="af-mobile-copy">AI Roundup For February</span>
+              </h3>
+              <p>
+                <span className="af-desktop-copy">{guide.excerpt}</span>
+                <span className="af-mobile-copy">
+                  See what happened in the AI space in this month and how you
+                  can gain leverage with the updates
+                </span>
+              </p>
               <Link
                 className="af-text-link"
                 href={`${links.guides}/${guide.slug}`}
               >
                 Read Now
-                <ArrowUpRight size={20} aria-hidden="true" />
+                <ArrowUpRight
+                  className="af-desktop-copy"
+                  size={20}
+                  aria-hidden="true"
+                />
+                <Image
+                  className="af-mobile-only"
+                  src={asset("arrow-orange.svg")}
+                  alt=""
+                  width={18}
+                  height={18}
+                />
                 <span className="sr-only">: {guide.title}</span>
               </Link>
             </article>

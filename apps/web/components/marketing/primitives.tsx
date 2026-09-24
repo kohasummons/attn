@@ -43,16 +43,29 @@ export function ActionLink({
 
 export function Artwork({
   name,
+  mobileName,
   className,
   priority = false,
 }: {
   name: string;
+  mobileName?: string;
   className?: string;
   priority?: boolean;
 }) {
   return (
     <div className={cn("af-artwork", className)} aria-hidden="true">
-      <Image src={asset(name)} alt="" fill sizes="100vw" priority={priority} />
+      <picture>
+        {mobileName && (
+          <source media="(max-width: 600px)" srcSet={asset(mobileName)} />
+        )}
+        <Image
+          src={asset(name)}
+          alt=""
+          fill
+          sizes="100vw"
+          priority={priority}
+        />
+      </picture>
     </div>
   );
 }

@@ -19,11 +19,16 @@ export function FrequentlyAskedQuestions() {
           <h2 id="faq-title">All your questions and more, answered</h2>
           <Image src={asset("6f993.svg")} alt="" width={400} height={240} />
         </div>
-        <Accordion className="af-accordion">
+        <Accordion className="af-accordion" defaultValue={[faqs[0]!.question]}>
           {faqs.map(({ question, answer }) => (
             <AccordionItem key={question} value={question}>
               <AccordionTrigger>
-                {question}
+                <span className="af-desktop-copy">{question}</span>
+                <span className="af-mobile-copy">
+                  {question === faqs[0]!.question
+                    ? "What services do you offfer"
+                    : question}
+                </span>
                 <span className="af-faq-plus" aria-hidden="true" />
               </AccordionTrigger>
               <AccordionContent>

@@ -1,3 +1,4 @@
+import localFont from "next/font/local";
 import { FrequentlyAskedQuestions } from "./faq";
 import { SiteFooter } from "./footer";
 import { Hero } from "./hero";
@@ -14,10 +15,34 @@ import {
   TrustSection,
 } from "./sections";
 import "./styles.css";
+import "./mobile.css";
+
+const interDisplay = localFont({
+  src: [
+    {
+      path: "./fonts/InterDisplay-Regular.ttf",
+      weight: "400",
+      style: "normal",
+    },
+    { path: "./fonts/InterDisplay-Medium.ttf", weight: "500", style: "normal" },
+    {
+      path: "./fonts/InterDisplay-SemiBold.ttf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./fonts/InterDisplay-LightItalic.ttf",
+      weight: "300",
+      style: "italic",
+    },
+  ],
+  variable: "--font-inter-display",
+  display: "swap",
+});
 
 export function HomePage() {
   return (
-    <div className="af-site">
+    <div className={`af-site af-home ${interDisplay.variable}`}>
       <a href="#main" className="af-skip-link">
         Skip to content
       </a>

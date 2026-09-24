@@ -14,6 +14,8 @@ export const services = [
     action: "Visit University",
     href: links.university,
     icon: "7644e.svg",
+    mobileIcon: "mobile-education.png",
+    mobileAction: "Visit University",
   },
   {
     title: "Team Trainings",
@@ -21,6 +23,8 @@ export const services = [
     action: "View Workshops",
     href: "/v2/organizations",
     icon: "518f4.svg",
+    mobileIcon: "mobile-training.png",
+    mobileAction: "View Workshops",
   },
   {
     title: "Distributions",
@@ -29,12 +33,16 @@ export const services = [
     action: "Explore Our Services",
     href: links.services,
     icon: "602b4.svg",
+    mobileIcon: "mobile-distribution.png",
+    mobileAction: "View Workshops",
   },
   {
     title: "Attention Films",
     description: "Explore what happens when creativity meets AI.",
     action: "Talk to Us",
     icon: "6ca45.svg",
+    mobileIcon: "mobile-film.png",
+    mobileAction: "View Our Films",
   },
 ];
 
@@ -84,7 +92,7 @@ export type Product = {
 export const featuredProducts: Product[] = [
   {
     name: "TranscriptX",
-    description: "Get instant transcripts for your videos.",
+    description: "Get instant transcripts for all your videos",
     image: "0110e.png",
     backdrop: "8fb0f.png",
     href: "https://transcriptx.xyz",
@@ -93,12 +101,12 @@ export const featuredProducts: Product[] = [
   },
   {
     name: "Weekends of AI",
-    description: "Practical, free training to help you put AI to work.",
+    description: "Learn one transferable AI skill every week",
     image: "656eb.png",
     backdrop: "8aabf.png",
     href: links.workshops,
     metric: "6.9k",
-    metricLabel: "Attendees",
+    metricLabel: "AI Fellows",
   },
 ];
 

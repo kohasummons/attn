@@ -29,7 +29,7 @@ export function EventSection() {
 
   return (
     <section id="events" className="af-event" aria-labelledby="event-title">
-      <Artwork name="event-painting.png" />
+      <Artwork name="event-painting.png" mobileName="event-mobile-bg.png" />
       <div className="af-event-fade" aria-hidden="true" />
       <PageContainer>
         <Eyebrow>Weekends of AI</Eyebrow>
@@ -49,12 +49,25 @@ export function EventSection() {
         >
           {labels.map((label, index) => (
             <Fragment key={label}>
-              {index > 0 && <b aria-hidden="true">:</b>}
+              {index > 0 && (
+                <b aria-hidden="true" data-value=":">
+                  :
+                </b>
+              )}
               <div>
-                <strong>
+                <strong
+                  data-value={
+                    values ? String(values[index]).padStart(2, "0") : "––"
+                  }
+                >
                   {values ? String(values[index]).padStart(2, "0") : "––"}
                 </strong>
-                <span>{label}</span>
+                <span>
+                  <span className="af-desktop-copy">{label}</span>
+                  <span className="af-mobile-copy">
+                    {["DAYS", "HRS", "MINS", "SECS"][index]}
+                  </span>
+                </span>
               </div>
             </Fragment>
           ))}

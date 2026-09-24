@@ -46,13 +46,17 @@ const agents = [
   { name: "Claude", icon: "agent-claude.svg", href: "https://claude.ai" },
   { name: "Grok", icon: "agent-grok.svg", href: "https://grok.com" },
   { name: "Gemini", icon: "6792f.svg", href: "https://gemini.google.com" },
-  { name: "Perplexity", icon: "agent-perplexity.svg", href: "https://perplexity.ai" },
+  {
+    name: "Perplexity",
+    icon: "agent-perplexity.svg",
+    href: "https://perplexity.ai",
+  },
 ];
 
 function AgentCard() {
   return (
     <div className="af-agent-card">
-      <Artwork name="agent-painting.png" />
+      <Artwork name="agent-painting.png" mobileName="agent-mobile-bg.png" />
       <div className="af-agent-content">
         <div className="af-agent-links">
           {agents.map((agent) => (
@@ -92,7 +96,7 @@ export function SiteFooter() {
         </picture>
       </PageContainer>
       <div className="af-footer-body">
-        <Artwork name="footer-painting.png" />
+        <Artwork name="footer-painting.png" mobileName="footer-mobile-bg.png" />
         <div className="af-footer-fade" aria-hidden="true" />
         <PageContainer>
           <div className="af-footer-top">
@@ -106,7 +110,12 @@ export function SiteFooter() {
                 />
               </Link>
               <p>
-                AI is your multiplier. We make you equipped to become 10x with it
+                AI is your multiplier. We make you equipped to become 10x with
+                it
+              </p>
+              <p className="af-mobile-only af-system-status">
+                <span aria-hidden="true" />
+                All systems operational
               </p>
             </div>
             <div className="af-footer-columns">
@@ -128,6 +137,10 @@ export function SiteFooter() {
               ))}
             </div>
             <AgentCard />
+            <p className="af-mobile-only af-system-status af-footer-status">
+              <span aria-hidden="true" />
+              All systems operational
+            </p>
           </div>
           <div className="af-footer-bottom">
             <span>© {new Date().getFullYear()} Attention Factory</span>

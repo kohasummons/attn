@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -46,13 +46,19 @@ export function SiteHeader() {
     <header className="af-header">
       <PageContainer className="af-header-inner">
         <Link href="/" aria-label="Attention Factory home">
-          <Image
-            src={asset("3357b.png")}
-            alt="Attention Factory"
-            width={199}
-            height={26}
-            priority
-          />
+          <picture>
+            <source
+              media="(max-width: 600px)"
+              srcSet={asset("header-logo-mobile.png")}
+            />
+            <Image
+              src={asset("3357b.png")}
+              alt="Attention Factory"
+              width={199}
+              height={26}
+              priority
+            />
+          </picture>
         </Link>
         <NavigationMenu className="af-desktop-nav" aria-label="Main navigation">
           <NavigationMenuList>
@@ -99,7 +105,11 @@ export function SiteHeader() {
               className="af-mobile-toggle"
               aria-label="Open navigation"
             >
-              <Menu />
+              <span className="af-menu-lines" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
             </Button>
           </DialogTrigger>
           <DialogContent className="af-mobile-menu">
