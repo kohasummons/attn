@@ -35,33 +35,62 @@ const columns = [
     title: "Company",
     items: [
       ["About Us", "/about"],
+      ["Contact Us", null],
       ["Privacy Policy", "/v2/privacy-policy"],
       ["Terms of Usage", "/v2/terms-of-service"],
     ],
   },
 ];
 const agents = [
-  { name: "ChatGPT", icon: "103d9.svg", href: "https://chatgpt.com" },
-  { name: "Claude", icon: "c1e6f.svg", href: "https://claude.ai" },
-  { name: "Grok", icon: "48bb3.svg", href: "https://grok.com" },
+  { name: "ChatGPT", icon: "agent-chatgpt.svg", href: "https://chatgpt.com" },
+  { name: "Claude", icon: "agent-claude.svg", href: "https://claude.ai" },
+  { name: "Grok", icon: "agent-grok.svg", href: "https://grok.com" },
   { name: "Gemini", icon: "6792f.svg", href: "https://gemini.google.com" },
-  { name: "Perplexity", icon: "b264e.svg", href: "https://perplexity.ai" },
+  { name: "Perplexity", icon: "agent-perplexity.svg", href: "https://perplexity.ai" },
 ];
+
+function AgentCard() {
+  return (
+    <div className="af-agent-card">
+      <Artwork name="agent-painting.png" />
+      <div className="af-agent-content">
+        <div className="af-agent-links">
+          {agents.map((agent) => (
+            <a
+              key={agent.name}
+              href={agent.href}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Image src={asset(agent.icon)} alt="" width={32} height={32} />
+              {agent.name}
+              <span className="sr-only"> (opens in a new tab)</span>
+            </a>
+          ))}
+        </div>
+        <p>Ask your favourite agent about attention factory</p>
+      </div>
+    </div>
+  );
+}
 
 export function SiteFooter() {
   return (
     <footer className="af-footer">
-      <div className="af-wordmark" aria-hidden="true">
-        <Image
-          src={asset("180be.png")}
-          alt=""
-          width={1300}
-          height={171}
-          sizes="95vw"
-        />
-        <span className="af-coordinate af-coordinate-left">x</span>
-        <span className="af-coordinate af-coordinate-right">y</span>
-      </div>
+      <PageContainer>
+        <picture className="af-wordmark" aria-hidden="true">
+          <source
+            media="(max-width: 600px)"
+            srcSet={asset("footer-wordmark-mobile.svg")}
+          />
+          <Image
+            src={asset("footer-wordmark.svg")}
+            alt=""
+            width={1160}
+            height={232}
+          />
+        </picture>
+      </PageContainer>
       <div className="af-footer-body">
         <Artwork name="footer-painting.png" />
         <div className="af-footer-fade" aria-hidden="true" />
@@ -70,41 +99,15 @@ export function SiteFooter() {
             <div className="af-footer-brand">
               <Link href="/" aria-label="Attention Factory home">
                 <Image
-                  src={asset("950cb.png")}
+                  src={asset("attention-factory-logo.svg")}
                   alt="Attention Factory"
-                  width={199}
-                  height={26}
+                  width={275}
+                  height={36}
                 />
               </Link>
               <p>
-                AI is your multiplier. We make you equipped to become 10x with
-                it
-              </p>{" "}
-              <div className="af-agent-card">
-                <Artwork name="agent-painting.png" />
-                <div>
-                  <p>Ask your favourite agent about attention factory</p>
-                  <div className="af-agent-links">
-                    {agents.map((agent) => (
-                      <a
-                        key={agent.name}
-                        href={agent.href}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        <Image
-                          src={asset(agent.icon)}
-                          alt=""
-                          width={20}
-                          height={20}
-                        />
-                        {agent.name}
-                        <span className="sr-only"> (opens in a new tab)</span>
-                      </a>
-                    ))}
-                  </div>
-                </div>
-              </div>
+                AI is your multiplier. We make you equipped to become 10x with it
+              </p>
             </div>
             <div className="af-footer-columns">
               {columns.map((column) => (
@@ -113,18 +116,18 @@ export function SiteFooter() {
                   <ul>
                     {column.items.map(([label, href]) => (
                       <li key={label}>
-                        <Link href={href!}>{label}</Link>
+                        {href ? (
+                          <Link href={href}>{label}</Link>
+                        ) : (
+                          <ContactDialog className="af-footer-contact" />
+                        )}
                       </li>
                     ))}
-                    {column.title === "Company" && (
-                      <li>
-                        <ContactDialog className="af-footer-contact" />
-                      </li>
-                    )}
                   </ul>
                 </div>
               ))}
             </div>
+            <AgentCard />
           </div>
           <div className="af-footer-bottom">
             <span>© {new Date().getFullYear()} Attention Factory</span>

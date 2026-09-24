@@ -35,6 +35,12 @@ Motion for React (`motion/react`, the existing Framer Motion package) handles di
 
 `apps/web/public/redesign` contains only referenced local Figma assets. The paintings, architectural illustrations, and partner logos were exported as individual layers. The paintings bake in Figma's original dither effect, avoiding a WebGPU or experimental HTML-in-Canvas requirement. Text, controls, cards, and page layout are HTML, not screenshot overlays. Next Image optimizes raster assets.
 
+### Footer fidelity correction
+
+The complete desktop measured wordmark is `footer-wordmark.svg` (node `24102:320`, 1160 × 232), including construction lines, arrows, and A/B/X/Y labels. `footer-wordmark-mobile.svg` uses Figma's separate mobile composition (`24146:1211`, 392 × 132). The brand logo is `attention-factory-logo.svg` (`24102:383`). These replace the earlier PNG wordmark and CSS measurement approximation.
+
+The circular glass icons are original SVG exports from `24146:1347`, `24146:1353`, `24146:1359`, and `24146:1369`; Gemini retains the original `6792f.svg`. Exporting with `contentsOnly: true` preserves transparency without capturing ancestor backgrounds. The SVGs are unmodified. Interactive pill borders and gradients follow the Figma values, with native links and visible keyboard focus. Desktop card dimensions are 326 × 254; the 440px mobile composition uses a 392 × 254 card below the two-column navigation. Narrow screens allow text to wrap and reduce the horizontal pill gap.
+
 ## Content decisions and follow-up
 
 - Weekends of AI's live website and its countdown implementation were inspected on 24 September 2026. Its schedule is Saturday **17:00 UTC / 18:00 WAT**, with registration at `https://weekendsofai.com/signup`. The counter advances at the same weekly boundary as the source website. The next session at implementation time is **26 September 2026**.
@@ -67,3 +73,5 @@ Ready to sync as a parent issue and implementation checklist:
 6. Responsive, accessibility interaction, type, lint, and production-build checks — complete.
 7. Add final Bazooka/Billa/Tazer URLs — awaiting owner content, temporary state approved.
 8. Publish/deploy — not performed; changes remain on the redesign branch.
+
+9. Footer fidelity correction — complete: original measured SVGs, transparent glass icon exports, three-row agent pills, desktop/mobile placement, and responsive browser review. TypeScript and targeted lint passed.
