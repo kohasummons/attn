@@ -906,7 +906,7 @@ export default async function UniversityPage() {
             <span>with or without you</span>
           </div>
           <h2 className="mb-5 text-[32px] font-bold leading-[1.05] tracking-[-0.035em] text-neutral-950 sm:text-[44px]">
-            the cohort is live. 
+            the cohort is live.
           </h2>
           <p className="mb-8 text-[16px] leading-[1.6]">
             every week without ai is a week your peers are pulling ahead with it. by next month, &ldquo;ai-fluent&rdquo; stops being a differentiator and starts being a baseline. you can be early to that line. or you can be late to it.

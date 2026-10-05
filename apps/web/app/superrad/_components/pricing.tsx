@@ -118,7 +118,7 @@ function PlanCard({ plan }: { plan: Plan }) {
         data-posthog-event="pricing_cta_clicked"
         data-posthog-property="plan"
         data-posthog-value={plan.name}
-        href={`https://nestuge.com/attn-superad?ref=${plan.name.toLowerCase()}`}
+        href={`https://app.attentionfactory.io/attn-superad?ref=${plan.name.toLowerCase()}`}
         className="sr-inter sr-stripes-hover mt-[20px] flex h-[65px] items-center justify-center rounded-[12px] bg-[#750af9] font-bold leading-none tracking-[-0.48px] text-white text-[24px] transition hover:brightness-110"
       >
         <span className="relative z-10">{plan.cta}</span>
@@ -154,7 +154,7 @@ export function Pricing() {
 
       <a
         data-posthog-event="pricing_installment_clicked"
-        href={`https://nestuge.com/attn-superad?ref=${plans[0].name.toLowerCase()}`}
+        href={`https://app.attentionfactory.io/attn-superad?ref=${plans[0].name.toLowerCase()}`}
         className="sr-dmsans -mt-[40px] text-center leading-[1.4] text-[#4f4d4d] text-[clamp(16px,1.8vw,20px)] underline decoration-[#c9c9c9] underline-offset-4 transition hover:text-black"
       >
         Invest Installmentally ($49.99 in two parts)

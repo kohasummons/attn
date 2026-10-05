@@ -1,0 +1,101 @@
+[
+  {
+    "name": "hero",
+    "node": "24017:417",
+    "sourceSha1": "47351d6bdf3abaa558a6a78ae787df4d5ccee83d",
+    "width": 4096,
+    "height": 2731,
+    "originalBytes": 10228763,
+    "deliveryBytes": 2155918
+  },
+  {
+    "name": "courses",
+    "node": "24028:298",
+    "sourceSha1": "0796e5c48e6e67e5e70fb3703780cf50e04e00fb",
+    "width": 4096,
+    "height": 1802,
+    "originalBytes": 8929755,
+    "deliveryBytes": 1693930
+  },
+  {
+    "name": "product-1",
+    "node": "24049:36",
+    "sourceSha1": "35c38737c52432d7b599cceb166da198d5da39d4",
+    "width": 1490,
+    "height": 815,
+    "originalBytes": 138292,
+    "deliveryBytes": 217684
+  },
+  {
+    "name": "product-2",
+    "node": "24050:66",
+    "sourceSha1": "6f5603a8e890743cab14cfada8a67ae93eaf544e",
+    "width": 4096,
+    "height": 3072,
+    "originalBytes": 14227036,
+    "deliveryBytes": 3925812
+  },
+  {
+    "name": "article-1",
+    "node": "24093:694",
+    "sourceSha1": "93871371e729e6a061840df620a7c8e2f6c313cb",
+    "width": 3840,
+    "height": 2160,
+    "originalBytes": 12993031,
+    "deliveryBytes": 1190008
+  },
+  {
+    "name": "article-2",
+    "node": "24093:705",
+    "sourceSha1": "b883ce92c9fd24e47ce19cb95b3588e44766116d",
+    "width": 728,
+    "height": 386,
+    "originalBytes": 534496,
+    "deliveryBytes": 95600
+  },
+  {
+    "name": "article-3",
+    "node": "24093:716",
+    "sourceSha1": "40b46f6d774f3a98873575dd05c7ab7131dc9ac0",
+    "width": 3840,
+    "height": 2160,
+    "originalBytes": 2101760,
+    "deliveryBytes": 3447984
+  },
+  {
+    "name": "event",
+    "node": "24100:205",
+    "sourceSha1": "4a28a2d2be41e72a9a2c35c793141821fd13270c",
+    "width": 1065,
+    "height": 800,
+    "originalBytes": 1454750,
+    "deliveryBytes": 217750
+  },
+  {
+    "name": "agents",
+    "node": "24102:387",
+    "sourceSha1": "cf2db9e517b19abd8fbe424b60c8538b0e9068d8",
+    "width": 3000,
+    "height": 2000,
+    "originalBytes": 1756398,
+    "deliveryBytes": 1059112
+  },
+  {
+    "name": "about",
+    "node": "24214:2263",
+    "sourceSha1": "28a29c37d675ee7058503a9a1a11033a8203c1e6",
+    "width": 1920,
+    "height": 1152,
+    "originalBytes": 3309443,
+    "deliveryBytes": 652006
+  },
+  {
+    "name": "mission",
+    "node": "24214:2684",
+    "sourceSha1": "f1042f299d5fed17be622d82eee5a4847e210a57",
+    "width": 4096,
+    "height": 2767,
+    "originalBytes": 25033090,
+    "deliveryBytes": 3351584
+  }
+]

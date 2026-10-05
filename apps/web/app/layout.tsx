@@ -1,10 +1,18 @@
 import { SITE_URL } from "@/lib/site-metadata";
-import { Inter } from "next/font/google";
+import { Google_Sans_Code, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Providers } from "./providers";
 import "./globals.css";
 
+const googleSansCode = Google_Sans_Code({
+  subsets: ["latin"],
+  variable: "--font-google-sans-code",
+  adjustFontFallback: false,
+  display: "swap",
+});
+
 const inter = Inter({
+  style: ["normal", "italic"],
   subsets: ["latin"],
   variable: "--font-inter",
   display: "swap",
@@ -21,7 +29,11 @@ const geistMono = localFont({
 const goga = localFont({
   src: [
     { path: "./fonts/goga/Goga-Thin.otf", weight: "100", style: "normal" },
-    { path: "./fonts/goga/Goga-Extralight.otf", weight: "200", style: "normal" },
+    {
+      path: "./fonts/goga/Goga-Extralight.otf",
+      weight: "200",
+      style: "normal",
+    },
     { path: "./fonts/goga/Goga-Light.otf", weight: "300", style: "normal" },
     { path: "./fonts/goga/Goga-Regular.otf", weight: "400", style: "normal" },
     { path: "./fonts/goga/Goga-Medium.otf", weight: "500", style: "normal" },
@@ -37,13 +49,18 @@ const goga = localFont({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title: "Attention Factory | Your AI Partner",
-  description: "For people who would rather leverage AI than talk about leveraging AI.",
-  authors: [{ name: "Mercy Thaddeus", url: "https://mercythaddeus.xyz" }, { name: "Joshua Omobola", url: "https://koha.wtf" }],
+  description:
+    "For people who would rather leverage AI than talk about leveraging AI.",
+  authors: [
+    { name: "Mercy Thaddeus", url: "https://mercythaddeus.xyz" },
+    { name: "Joshua Omobola", url: "https://koha.wtf" },
+  ],
   creator: "Joshua Omobola",
   publisher: "Joshua Omobola",
   openGraph: {
     title: "Attention Factory | Your AI Partner",
-    description: "For people who would rather leverage AI than talk about leveraging AI.",
+    description:
+      "For people who would rather leverage AI than talk about leveraging AI.",
     url: SITE_URL,
     siteName: "Attention Factory",
   },
@@ -56,7 +73,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${goga.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body
+        className={`${inter.variable} ${googleSansCode.variable} ${goga.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+      >
         <Providers>{children}</Providers>
       </body>
     </html>

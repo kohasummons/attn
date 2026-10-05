@@ -1,0 +1,32 @@
+.dither-image,
+.dither-image > picture,
+.dither-image > canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.dither-image {
+  overflow: hidden;
+  pointer-events: none;
+}
+.dither-image > picture {
+  filter: contrast(var(--dither-contrast, 0.91))
+    saturate(var(--dither-saturation, 0.88));
+}
+.dither-image > picture::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / var(--dither-dim, 0.29));
+}
+.dither-image img {
+  object-fit: cover;
+}
+.dither-image > canvas {
+  opacity: 0;
+}
+.dither-image[data-dither-ready="true"] > canvas {
+  opacity: 1;
+}

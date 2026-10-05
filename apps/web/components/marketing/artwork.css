@@ -1,0 +1,47 @@
+/* Feather the artwork into the page without fading any text or controls. */
+.af-artwork-blend {
+  --af-blend-top: 0px;
+  --af-blend-bottom: 0px;
+  --af-artwork-mask: linear-gradient(
+    to bottom,
+    transparent 0,
+    rgb(0 0 0 / 0.16) calc(var(--af-blend-top) * 0.25),
+    rgb(0 0 0 / 0.5) calc(var(--af-blend-top) * 0.5),
+    rgb(0 0 0 / 0.84) calc(var(--af-blend-top) * 0.75),
+    black var(--af-blend-top),
+    black calc(100% - var(--af-blend-bottom)),
+    rgb(0 0 0 / 0.84) calc(100% - var(--af-blend-bottom) * 0.75),
+    rgb(0 0 0 / 0.5) calc(100% - var(--af-blend-bottom) * 0.5),
+    rgb(0 0 0 / 0.16) calc(100% - var(--af-blend-bottom) * 0.25),
+    transparent 100%
+  );
+  overflow: hidden;
+  -webkit-mask-image: var(--af-artwork-mask);
+  mask-image: var(--af-artwork-mask);
+}
+.af-artwork-blend[data-blend="top"],
+.af-artwork-blend[data-blend="both"] {
+  --af-blend-top: clamp(64px, 8vw, 112px);
+}
+.af-artwork-blend[data-blend="bottom"],
+.af-artwork-blend[data-blend="both"] {
+  --af-blend-bottom: clamp(80px, 10vw, 144px);
+}
+.af-parallax-layer,
+.af-parallax-layer > picture {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+.af-artwork-blend[data-motion="desktop"] .af-parallax-layer {
+  inset-block: -32px;
+}
+.af-artwork-blend[data-motion="mobile"] .af-parallax-layer {
+  inset-block: -16px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .af-artwork-blend .af-parallax-layer {
+    inset: 0;
+    transform: none !important;
+  }
+}

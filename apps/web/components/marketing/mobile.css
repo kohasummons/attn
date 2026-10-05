@@ -1,0 +1,674 @@
+/* Shared mobile contract: Figma Designs / 24123:1055, 440px canvas.
+   Layout stays in document flow so narrower screens and expanded FAQs can grow. */
+.af-mobile-only,
+.af-mobile-copy {
+  display: none;
+}
+.af-menu-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 16px;
+}
+.af-menu-lines i {
+  height: 2px;
+  width: 16px;
+  background: currentColor;
+  border-radius: 16px;
+}
+.af-service-icon {
+  flex: 0 0 40px;
+}
+
+/* Reuse the mobile glass trigger at every compact-navigation width. */
+@media (max-width: 1100px) {
+  .af-mobile-layout .af-mobile-toggle {
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border-radius: 50%;
+    background: #ffffff66;
+    box-shadow:
+      inset 0 2px 8px #ffffff40,
+      inset 0 -2px 2px #00000040;
+  }
+}
+
+@media (max-width: 600px) {
+  .af-mobile-layout {
+    --font-inter: var(--font-inter-display);
+    --af-muted: #8a8a8a;
+    font-family: var(--font-inter-display), sans-serif;
+    letter-spacing: -0.02em;
+  }
+  .af-mobile-layout .af-mobile-only {
+    display: block;
+  }
+  .af-mobile-layout .af-mobile-copy {
+    display: inline;
+  }
+  .af-mobile-layout .af-desktop-copy {
+    display: none;
+  }
+  .af-mobile-layout .af-section {
+    padding-block: 24px;
+  }
+  .af-mobile-layout h2 {
+    font-size: 24px;
+    line-height: 26px;
+    letter-spacing: -0.02em;
+    text-wrap: wrap;
+  }
+  .af-mobile-layout h3 {
+    font-size: 22px;
+    line-height: 24px;
+    letter-spacing: -0.02em;
+  }
+  .af-mobile-layout .af-eyebrow {
+    font-size: 14px;
+    line-height: 18px;
+    color: #4d4d4d;
+    margin-bottom: 14px;
+    text-transform: uppercase;
+  }
+  .af-mobile-layout .af-eyebrow > span[aria-hidden] {
+    width: 10px;
+    height: 10px;
+  }
+  .af-mobile-layout .af-lead {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+  }
+  .af-mobile-layout.af-site .af-button {
+    width: 186px;
+    min-height: 55px;
+    padding: 18px 24px;
+    font-size: 16px;
+    line-height: 19px;
+    margin: 4px;
+    background: #e85626;
+    box-shadow:
+      inset 0 2px 8px #ffffff40,
+      inset 0 -2px 2px #00000040,
+      0 0 0 4px #ffffff33;
+  }
+
+  /* Header: 153 × 20 logo, 38px glass menu, 32px headline. */
+  .af-mobile-layout .af-header {
+    padding: 24px 0 0;
+  }
+  .af-mobile-layout .af-header-inner > a img {
+    width: 153px;
+    height: 20px;
+  }
+
+  .af-mobile-layout .af-hero {
+    min-height: 593px;
+  }
+  .af-mobile-layout .af-hero > .af-artwork img {
+    object-position: center top;
+  }
+  .af-mobile-layout .af-hero-fade {
+    display: none;
+  }
+  .af-mobile-layout .af-hero-content {
+    padding-top: 77px;
+    padding-bottom: 142px;
+    gap: 0;
+  }
+  .af-mobile-layout .af-launch-badge {
+    font-size: 16px;
+    line-height: 19px;
+    padding: 8px 24px;
+    border: 0;
+    background: #ffffff33;
+    backdrop-filter: none;
+    margin-bottom: 32px;
+  }
+  .af-mobile-layout .af-launch-badge svg {
+    width: 18px;
+    height: 18px;
+  }
+  .af-mobile-layout .af-hero h1 {
+    font-size: 32px;
+    line-height: 35px;
+    letter-spacing: -0.02em;
+    text-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-hero-content > p {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 500;
+    margin-bottom: 24px;
+  }
+
+  /* Partner strip uses the original mobile crop and decorative rails. */
+  .af-mobile-layout .af-trust {
+    min-height: 278px;
+    overflow: hidden;
+  }
+  .af-mobile-layout .af-trust .af-eyebrow {
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-trust h2 {
+    max-width: 270px;
+  }
+  .af-mobile-layout .af-logos {
+    height: 112px;
+    margin-top: 32px;
+  }
+  .af-mobile-layout .af-logo-track {
+    width: calc(100% * var(--brand-count) / 3 * 2);
+  }
+  .af-mobile-layout .af-logo-cell {
+    padding: 12px;
+  }
+  .af-mobile-layout .af-logo-lockup {
+    flex-shrink: 0;
+    max-width: none;
+    transform: scale(0.64);
+  }
+  .af-mobile-layout .af-logo-lockup img {
+    max-width: none;
+  }
+  .af-mobile-layout .af-trust-decor {
+    position: absolute;
+    top: -73px;
+    width: 32px;
+    height: 250px;
+  }
+  .af-mobile-layout .af-trust-decor-left {
+    left: 8px;
+  }
+  .af-mobile-layout .af-trust-decor-right {
+    right: 8px;
+  }
+
+  /* Courses: headline precedes supporting copy in the mobile composition. */
+  .af-mobile-layout .af-landscape-section {
+    min-height: 632px;
+    overflow: hidden;
+  }
+  .af-mobile-layout .af-landscape-section .af-artwork {
+    inset: 0;
+  }
+  .af-mobile-layout .af-landscape-section .af-split {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .af-mobile-layout .af-landscape-section .af-split > div {
+    display: contents;
+  }
+  .af-mobile-layout .af-landscape-section .af-eyebrow {
+    order: 0;
+  }
+  .af-mobile-layout .af-landscape-section h2 {
+    order: 1;
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-landscape-section .af-lead {
+    order: 2;
+    margin-bottom: 24px;
+  }
+  .af-mobile-layout .af-landscape-section .af-button {
+    order: 3;
+  }
+
+  /* Featured work: 300px artwork windows and 24px gaps. */
+  .af-mobile-layout .af-projects {
+    padding-bottom: 0;
+  }
+  .af-mobile-layout .af-product-grid {
+    gap: 24px;
+  }
+  .af-mobile-layout .af-product-art {
+    height: 300px;
+    padding: 16px;
+    background-size: 100% 348px;
+    background-position: top;
+  }
+  .af-mobile-layout .af-product-screen {
+    height: 268px;
+    aspect-ratio: auto;
+  }
+  .af-mobile-layout .af-product-screen > img {
+    object-position: center;
+  }
+  .af-mobile-layout .af-product:nth-child(2) .af-product-art {
+    padding-block: 14px;
+  }
+  .af-mobile-layout .af-product:nth-child(2) .af-product-screen {
+    height: 272px;
+  }
+  .af-mobile-layout .af-product-metric {
+    left: 32px;
+    top: 32px;
+    width: 116px;
+    height: 116px;
+    gap: 3px;
+  }
+  .af-mobile-layout .af-product-metric > img {
+    padding: 6.8px 8px;
+  }
+  .af-mobile-layout .af-product-metric strong {
+    font-size: 24px;
+    line-height: 25px;
+  }
+  .af-mobile-layout .af-product-metric span {
+    font-size: 12px;
+    line-height: 13px;
+  }
+  .af-mobile-layout .af-product-visit {
+    left: 32px;
+    bottom: 32px;
+    padding: 0;
+    background: transparent;
+    font-size: 16px;
+    line-height: 17px;
+  }
+  .af-mobile-layout .af-product-heading {
+    margin: 24px 0 8px;
+  }
+  .af-mobile-layout .af-product-heading h3 {
+    font-size: 20px;
+    line-height: 21px;
+  }
+  .af-mobile-layout .af-product > p {
+    font-size: 16px;
+    line-height: 22px;
+    font-weight: 600;
+    margin: 0;
+  }
+  .af-mobile-layout .af-lab-ribbon {
+    margin-top: 19px;
+    height: 34px;
+    padding: 8px 0 6px;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  /* HQ illustration remains a separate decorative asset behind live text. */
+  .af-mobile-layout .af-hq {
+    min-height: 569px;
+    overflow: hidden;
+  }
+  .af-mobile-layout .af-hq .af-artwork {
+    inset: 246.58px auto auto calc(50% - 240px);
+    width: 500px;
+    height: 322.21px;
+  }
+  .af-mobile-layout .af-hq .af-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .af-mobile-layout .af-hq .af-split,
+  .af-mobile-layout .af-hq .af-split > div {
+    display: contents;
+  }
+  .af-mobile-layout .af-hq .af-eyebrow {
+    order: 0;
+  }
+  .af-mobile-layout .af-hq h2 {
+    order: 1;
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-hq .af-split > p {
+    order: 2;
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-hq .af-button {
+    order: 3;
+  }
+  .af-mobile-layout .af-hq-note {
+    order: 4;
+    margin-top: 194px !important;
+    max-width: none;
+  }
+  .af-mobile-layout .af-hq-decor {
+    position: absolute;
+    top: 304px;
+    left: 0;
+  }
+
+  /* Services: stacked icon/title/action cards with the original dashed rails. */
+  .af-mobile-layout .af-services-intro {
+    margin-top: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+    color: var(--af-muted);
+  }
+  .af-mobile-layout .af-services-list {
+    border-top: 0;
+    border-inline: 1px dashed #ccc;
+  }
+  .af-mobile-layout .af-services-list article {
+    flex-direction: column;
+    gap: 24px;
+    padding: 16px;
+    border-color: #ccc;
+  }
+  .af-mobile-layout .af-services-list article > div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .af-mobile-layout .af-services-list article:last-child {
+    border-bottom: 0;
+  }
+  .af-mobile-layout .af-service-icon {
+    flex-basis: auto;
+    width: 48px;
+    height: 48px;
+  }
+  .af-mobile-layout .af-service-icon img {
+    width: 48px;
+    height: 48px;
+  }
+  .af-mobile-layout .af-services-list p {
+    margin: 8px 0 16px;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 22px;
+  }
+  .af-mobile-layout .af-services-list .af-text-link {
+    font-size: 16px;
+    line-height: 22px;
+    color: #0a0a0a;
+  }
+  .af-mobile-layout .af-services-list .af-text-link svg {
+    width: 18px;
+    height: 18px;
+  }
+  .af-mobile-layout .af-testimonials {
+    display: none;
+  }
+
+  /* The source mobile FAQ opens its first item and uses 16px side padding. */
+  .af-mobile-layout .af-faq .af-eyebrow {
+    text-transform: none;
+  }
+  .af-mobile-layout .af-accordion {
+    border-inline: 1px dashed #ccc;
+  }
+  .af-mobile-layout .af-accordion [data-slot="accordion-item"] {
+    border-color: #ccc;
+  }
+  .af-mobile-layout .af-accordion [data-slot="accordion-item"]:last-child {
+    border-bottom: 0;
+  }
+  .af-mobile-layout .af-accordion [data-slot="accordion-trigger"] {
+    padding: 10px 16px;
+    border: 0;
+    font-size: 18px;
+    line-height: 20px;
+    letter-spacing: -0.02em;
+    gap: 8px;
+  }
+  .af-mobile-layout
+    .af-accordion
+    [data-slot="accordion-trigger"][aria-expanded="true"] {
+    border-bottom: 1px dashed #ccc;
+  }
+  .af-mobile-layout .af-accordion [data-slot="accordion-content"] {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .af-mobile-layout .af-accordion [data-slot="accordion-content"] > div {
+    padding: 8px 16px 12px;
+  }
+  .af-mobile-layout .af-faq-plus {
+    flex-basis: 16px;
+    height: 16px;
+    background: #e85626;
+    color: white;
+  }
+  .af-mobile-layout .af-faq-plus::before,
+  .af-mobile-layout .af-faq-plus::after {
+    top: 7px;
+    left: 4px;
+    width: 8px;
+    height: 2px;
+  }
+  .af-mobile-layout [aria-expanded="true"] .af-faq-plus {
+    transform: rotate(45deg);
+  }
+  .af-mobile-layout [aria-expanded="true"] .af-faq-plus::after {
+    transform: rotate(90deg);
+  }
+
+  /* News: original 164px artwork and 16px spacing throughout the cards. */
+  .af-mobile-layout .af-articles .af-section-heading {
+    text-align: left;
+  }
+  .af-mobile-layout .af-articles .af-eyebrow {
+    justify-content: flex-start;
+  }
+  .af-mobile-layout .af-article-grid {
+    gap: 16px;
+  }
+  .af-mobile-layout .af-article-grid article {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    border: 1px dashed #ccc;
+    padding: 16px;
+  }
+  .af-mobile-layout .af-article-image {
+    height: 164px;
+    aspect-ratio: auto;
+    margin-bottom: 16px;
+  }
+  .af-mobile-layout .af-article-grid article h3 {
+    font-size: 24px;
+    line-height: 25px;
+  }
+  .af-mobile-layout .af-article-grid p {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 16px 0;
+  }
+  .af-mobile-layout .af-article-grid .af-text-link {
+    font-size: 20px;
+    line-height: 21px;
+  }
+  .af-mobile-layout .af-article-grid .af-text-link svg {
+    width: 18px;
+    height: 18px;
+    color: var(--af-orange);
+  }
+
+  /* Live time keeps the source layout; the date is announced by the timer. */
+  .af-mobile-layout .af-event {
+    container-type: inline-size;
+    min-height: 553px;
+    padding: 24px 0;
+  }
+  .af-mobile-layout .af-event .af-artwork {
+    inset: 0;
+  }
+  .af-mobile-layout.af-site .af-event .af-button {
+    margin: 20px 4px 4px;
+  }
+  .af-mobile-layout .af-countdown {
+    margin: 74px 0 16px;
+    gap: 8px;
+    opacity: 0.92;
+  }
+  .af-mobile-layout .af-countdown > div {
+    flex: 1 1 0;
+    min-width: 0;
+    width: auto;
+    gap: 16px;
+  }
+  .af-mobile-layout .af-countdown strong,
+  .af-mobile-layout .af-countdown > b {
+    font-size: clamp(32px, calc(20cqw - 32px), 56px);
+    font-weight: 600;
+    line-height: 59px;
+    letter-spacing: 0.1em;
+    background: linear-gradient(#ffffff80, #ffffff26);
+    background-clip: text;
+    color: transparent;
+    -webkit-text-stroke: 0;
+    position: relative;
+  }
+  .af-mobile-layout .af-countdown strong {
+    justify-self: center;
+    width: max-content;
+    font-variant-numeric: normal;
+  }
+  .af-mobile-layout .af-countdown strong::after,
+  .af-mobile-layout .af-countdown > b::after {
+    content: attr(data-value) / "";
+    position: absolute;
+    inset: 0;
+    color: transparent;
+    -webkit-text-stroke: 1px white;
+    mask-image: linear-gradient(135deg, black, transparent);
+  }
+  .af-mobile-layout .af-countdown > b {
+    width: 24px;
+    letter-spacing: -0.02em;
+  }
+  .af-mobile-layout .af-countdown span {
+    font:
+      500 16px/20px var(--font-google-sans-code),
+      monospace;
+    letter-spacing: 0.1em;
+    color: #ffffff80;
+  }
+  .af-mobile-layout .af-countdown-caption {
+    font-size: 16px;
+    line-height: 20px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+  .af-mobile-layout .af-event-date {
+    display: none;
+  }
+
+  /* Footer: original two status rows, 40px section gaps, 392 × 254 agent card. */
+  .af-mobile-layout .af-footer-body {
+    min-height: 1107px;
+    padding: 24px 0 88px;
+  }
+  .af-mobile-layout .af-footer-bottom {
+    display: none;
+  }
+  .af-mobile-layout .af-footer-top {
+    grid-template-areas: "brand" "columns" "agents" "status";
+    gap: 40px;
+  }
+  .af-mobile-layout .af-footer-brand {
+    max-width: 326px;
+  }
+  .af-mobile-layout .af-footer-brand > p:not(.af-system-status) {
+    max-width: 300px;
+    line-height: 24px;
+  }
+  .af-mobile-layout .af-system-status {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 37px;
+    font:
+      500 16px/20px var(--font-google-sans-code),
+      monospace;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #4d4d4d;
+    white-space: nowrap;
+  }
+  .af-mobile-layout .af-system-status > span {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    background: #70d335;
+  }
+  .af-mobile-layout .af-footer-status {
+    grid-area: status;
+    margin: 0;
+  }
+  .af-mobile-layout .af-footer-columns h2 {
+    font-size: 18px;
+    line-height: 23px;
+  }
+  .af-mobile-layout .af-footer-columns h2::before {
+    width: 10px;
+    height: 10px;
+  }
+  .af-mobile-layout .af-footer-columns li {
+    line-height: 22px;
+  }
+  .af-mobile-layout .af-agent-card p {
+    line-height: 24px;
+  }
+  .af-mobile-layout .af-agent-links {
+    width: 237px;
+  }
+  .af-mobile-layout .af-agent-links a {
+    position: relative;
+    border-color: transparent;
+  }
+  .af-mobile-layout .af-agent-links a::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border: 1px solid transparent;
+    border-radius: inherit;
+    background: linear-gradient(white, transparent) border-box;
+    mask:
+      linear-gradient(white 0 0) padding-box,
+      linear-gradient(white 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+}
+
+@media (max-width: 380px) {
+  .af-mobile-layout .af-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+  .af-mobile-layout .af-launch-badge {
+    padding-inline: 12px;
+    font-size: 14px;
+  }
+  .af-mobile-layout .af-system-status {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+  }
+  .af-mobile-layout .af-footer-columns {
+    column-gap: 24px;
+  }
+  .af-mobile-layout .af-footer-columns h2 {
+    font-size: 14px;
+  }
+
+  .af-mobile-layout .af-countdown > b {
+    width: 16px;
+  }
+  .af-mobile-layout .af-countdown span,
+  .af-mobile-layout .af-countdown-caption {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .af-mobile-layout .af-logo-lockup {
+    transform: scale(0.5);
+  }
+}
+
+@media (max-width: 600px) {
+  .af-footer-wordmark-container {
+    display: none;
+  }
+}
