@@ -1,3 +1,5 @@
+import { legacyPageRedirects, legacyAssetRewrites } from "./route-migration.mjs";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   async redirects() {
@@ -64,51 +66,22 @@ const nextConfig = {
       },
       {
             "source": "/guide",
-            "destination": "/v2/playbooks",
+            "destination": "/playbooks",
             "permanent": false
       },
       {
             "source": "/guide/:slug",
-            "destination": "/v2/playbooks/:slug",
+            "destination": "/playbooks/:slug",
             "permanent": false
       }
+      ,...legacyPageRedirects.filter((route) => ![
+        "/v2/about", "/v2/the-lab", "/v2/contact", "/v2/services/:path*"
+      ].includes(route.source)),
+      { source: "/the-lab", destination: "/labs", permanent: false }
 ];
   },
   async rewrites() {
-    return [
-      {
-            "source": "/courses/:path*",
-            "destination": "/v2/courses/:path*"
-      },
-      {
-            "source": "/organizations/:path*",
-            "destination": "/v2/organizations/:path*"
-      },
-      {
-            "source": "/playbooks/:path*",
-            "destination": "/v2/playbooks/:path*"
-      },
-      {
-            "source": "/blog/:path*",
-            "destination": "/v2/blog/:path*"
-      },
-      {
-            "source": "/intelligence/:path*",
-            "destination": "/v2/intelligence/:path*"
-      },
-      {
-            "source": "/community/:path*",
-            "destination": "/v2/community/:path*"
-      },
-      {
-            "source": "/brand/:path*",
-            "destination": "/v2/brand/:path*"
-      },
-      {
-            "source": "/ai-archetype/:path*",
-            "destination": "/v2/ai-archetype/:path*"
-      }
-];
+    return legacyAssetRewrites;
   },
   images: {
     qualities: [75, 90],

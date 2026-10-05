@@ -20,4 +20,13 @@ export default [
       ],
     },
   },
+  {
+    // The /superrad sales page is a pixel-faithful Figma clone that relies on
+    // raw positioned, sprite-cropped, and masked images; next/image's sizing
+    // model doesn't fit those cases, so plain <img> is intentional here.
+    files: ["app/superrad/**/*.{ts,tsx}"],
+    rules: {
+      "@next/next/no-img-element": "off",
+    },
+  },
 ];

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "motion/react";
 import { useEffect, useRef, useState } from "react";
 
@@ -24,23 +25,23 @@ const servicesMenu: MenuItem[] = [
     title: "Software development",
     description:
       "Apps, internal tools, platforms, and AI products, from first brief to launch.",
-    href: "/v2/services/software-building",
+    href: "/services/software-building",
   },
   {
     title: "Workflow automation",
     description:
       "Find the repetitive work slowing your team down, then automate the right parts.",
-    href: "/v2/services/workflow-automation",
+    href: "/services/workflow-automation",
   },
   {
     title: "AI planning",
     description: "Decide where AI fits, what to do first, and who owns it.",
-    href: "/v2/services/ai-transformation-planning",
+    href: "/services/ai-transformation-planning",
   },
   {
     title: "Ongoing AI support",
     description: "Experienced help as your AI plan becomes working systems.",
-    href: "/v2/services/ai-strategy-support",
+    href: "/services/ai-strategy-support",
   },
 ];
 
@@ -49,7 +50,7 @@ const servicesMenu: MenuItem[] = [
 //   {
 //     title: "Courses",
 //     description: "Browse the courses we offer.",
-//     href: "/v2/courses",
+//     href: "/courses",
 //   },
 //   {
 //     title: "Membership",
@@ -70,7 +71,7 @@ const resourcesMenu: MenuItem[] = [
   {
     title: "Playbooks, guides and tools",
     description: "Practical resources for putting AI to work.",
-    href: "/v2/playbooks",
+    href: "/playbooks",
   },
   {
     title: "AI archetype",
@@ -81,22 +82,22 @@ const resourcesMenu: MenuItem[] = [
   // {
   //   title: "Blog",
   //   description: "Insights and updates from Attention Factory.",
-  //   href: "/v2/blog",
+  //   href: "/blog",
   // },
   // {
   //   title: "Attention Factory Intelligence",
   //   description: "Our read on where AI is actually going, minus the hype.",
-  //   href: "/v2/intelligence",
+  //   href: "/intelligence",
   // },
   // {
   //   title: "The Lab",
   //   description: "The products and experiments we ship.",
-  //   href: "/v2/the-lab",
+  //   href: "/the-lab",
   // },
   {
     title: "About",
     description: "Why we started, and who builds this.",
-    href: "/v2/about",
+    href: "/about",
   },
 ];
 
@@ -109,12 +110,12 @@ function MenuPanel({ items }: { items: MenuItem[] }) {
         <li key={item.title}>
           <NavigationMenuLink
             href={item.href}
-            className="flex-col items-start gap-1 p-3"
+            className="flex-col items-start gap-1 rounded-[8px]! p-3 hover:bg-black/5 focus:bg-black/5"
           >
-            <span className="text-sm font-medium text-foreground">
+            <span className="text-sm font-medium text-black/98">
               {item.title}
             </span>
-            <span className="text-[13px] leading-snug text-muted-foreground">
+            <span className="text-[13px] leading-snug text-black/90">
               {item.description}
             </span>
           </NavigationMenuLink>
@@ -166,8 +167,8 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-full max-w-[1166px] items-center justify-between px-6">
-        <a
-          href="/v2"
+        <Link
+          href="/"
           className={cn(
             "flex items-center gap-1 text-[20px] font-semibold tracking-[-0.04em] transition-colors",
             scrolled ? "text-[#121313]" : "text-white",
@@ -175,7 +176,7 @@ export function SiteHeader() {
         >
           <span>attention</span>
           <span>factory</span>
-        </a>
+        </Link>
 
         <NavigationMenu className="hidden md:flex">
           <NavigationMenuList className="gap-1">
@@ -201,7 +202,7 @@ export function SiteHeader() {
 
             <NavigationMenuItem>
               <NavigationMenuLink
-                href="/v2/organizations"
+                href="/organizations"
                 className={cn("inline-flex rounded-lg", triggerClasses)}
               >
                 Organizations
@@ -232,7 +233,7 @@ export function SiteHeader() {
             Log in
           </a>
           <a
-            href="/v2/contact"
+            href="/contact"
             className={cn(
               "px-5 py-2 text-[16px] font-medium transition-colors",
               scrolled

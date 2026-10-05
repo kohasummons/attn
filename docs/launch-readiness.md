@@ -35,3 +35,10 @@ Local route HTTP checks (five retained pages 200, representative redirects 307);
 
 ## Campaign preservation correction
 Standalone campaign pages are preserved: `/launch`, `/university`, `/superrad`, `/superrad/upgrade`, `/free-audit`. These are restored from the original project, including artwork, fonts, video media and animation dependencies. Broad `/v2/*` and other marketing redirects were removed. Only `/services/*` and `/v2/services/*` redirect home; legal/contact aliases still point to their redesigned equivalents. Unknown URLs now show a normal not-found page. Existing marketing URLs for courses, organizations, playbooks, blog, intelligence, community, brand and archetype render their existing pages using internal rewrites. Earlier blanket-redirect statements above are superseded by this correction. Campaign text and dates have been preserved rather than rewritten. No deployment has been made.
+
+
+## Main integration — 5 October 2026
+
+The PR targets `kohasummons/attn:main`. Main's canonical route migration is retained: campaign and content pages live at their root URLs, with legacy `/v2` redirects and asset rewrites. This supersedes the earlier note about rewrites into `/v2`. The redesign serves `/`, `/about`, `/labs`, `/privacy-policy`, and `/terms-of-service`; `/the-lab` resolves to `/labs`. Contact aliases open the redesigned modal, and service routes return home.
+
+Production build, TypeScript, both countdown tests, and HTTP checks of the redesigned pages, campaign pages, playbooks, and redirects passed. Browser visual verification is still outstanding. Contact delivery still requires Resend configuration and a delivery test; no email was sent. DialKit controls are hidden.

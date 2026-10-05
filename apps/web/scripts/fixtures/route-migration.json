@@ -1,0 +1,703 @@
+{
+  "pages": [
+    {
+      "old": "/free-audit",
+      "path": "/free-audit",
+      "headings": ["attention factory."]
+    },
+    {
+      "old": "/launch",
+      "path": "/launch",
+      "headings": [
+        "attention factory",
+        "build ai skills that pay you, scale your business, land you clients and jobs, get you promoted, and run your life."
+      ]
+    },
+    {
+      "old": "/legal/privacy-policy",
+      "path": "/legal/privacy-policy",
+      "headings": ["Privacy policy."]
+    },
+    {
+      "old": "/legal/terms-of-service",
+      "path": "/legal/terms-of-service",
+      "headings": ["Terms of use."]
+    },
+    {
+      "old": "/",
+      "path": "/v1",
+      "headings": ["attention factory."]
+    },
+    {
+      "old": "/services/ai-spokespersons",
+      "path": "/services/ai-spokespersons",
+      "headings": ["AI Spokesperson Videos"]
+    },
+    {
+      "old": "/services/chatbots",
+      "path": "/services/chatbots",
+      "headings": ["Custom Chatbots & AI Assistants"]
+    },
+    {
+      "old": "/services/music-videos",
+      "path": "/services/music-videos",
+      "headings": ["Music Video Production"]
+    },
+    {
+      "old": "/services/mvps-prototypes",
+      "path": "/services/mvps-prototypes",
+      "headings": ["MVPs & Prototypes"]
+    },
+    {
+      "old": "/services/partnerships",
+      "path": "/services/partnerships",
+      "headings": ["Partnerships"]
+    },
+    {
+      "old": "/services/seo-content",
+      "path": "/services/seo-content",
+      "headings": ["Programmatic SEO Content"]
+    },
+    {
+      "old": "/services/social-media",
+      "path": "/services/social-media",
+      "headings": ["Social Media Content Automation"]
+    },
+    {
+      "old": "/services/training",
+      "path": "/services/training",
+      "headings": ["Training & Skill Transfer"]
+    },
+    {
+      "old": "/services/video-ads",
+      "path": "/services/video-ads",
+      "headings": ["AI Video Ads at Scale"]
+    },
+    {
+      "old": "/services/voice-cloning",
+      "path": "/services/voice-cloning",
+      "headings": ["Voice Cloning for Brands"]
+    },
+    {
+      "old": "/superrad",
+      "path": "/superrad",
+      "headings": ["The SuperRad Challenge"]
+    },
+    {
+      "old": "/superrad/upgrade",
+      "path": "/superrad/upgrade",
+      "headings": ["Wait, one thingbefore you go in."]
+    },
+    {
+      "old": "/team",
+      "path": "/team",
+      "headings": ["team."]
+    },
+    {
+      "old": "/university",
+      "path": "/university",
+      "headings": [
+        "attention factory",
+        "spend one week with us. walk out earning with ai."
+      ]
+    },
+    {
+      "old": "/v2/about",
+      "path": "/about",
+      "headings": ["We help people learn AI,use it at work, and build with it."]
+    },
+    {
+      "old": "/v2/ai-archetype",
+      "path": "/ai-archetype",
+      "headings": ["What kind of AI user are you?"]
+    },
+    {
+      "old": "/v2/blog",
+      "path": "/blog",
+      "headings": ["What we shipped. What broke.What it cost."]
+    },
+    {
+      "old": "/v2/brand",
+      "path": "/brand",
+      "headings": ["The system. Follow it."]
+    },
+    {
+      "old": "/v2/community",
+      "path": "/community",
+      "headings": ["Ship or Sink.and never sleeps."]
+    },
+    {
+      "old": "/v2/contact",
+      "path": "/contact",
+      "headings": [
+        "Tell us what you are trying to do.We will help you find the right next step."
+      ]
+    },
+    {
+      "old": "/v2/courses",
+      "path": "/courses",
+      "headings": ["Courses"]
+    },
+    {
+      "old": "/v2/intelligence",
+      "path": "/intelligence",
+      "headings": ["For the person who has to decide by Monday."]
+    },
+    {
+      "old": "/v2/organizations",
+      "path": "/organizations",
+      "headings": ["Your team is already using AI.Badly."]
+    },
+    {
+      "old": "/v2",
+      "path": "/",
+      "headings": ["AI is a multiplierWe make it work for you"]
+    },
+    {
+      "old": "/v2/playbooks/five-ai-employees",
+      "path": "/playbooks/five-ai-employees",
+      "headings": ["Five AI employees"]
+    },
+    {
+      "old": "/v2/playbooks/how-to-set-up-claude",
+      "path": "/playbooks/how-to-set-up-claude",
+      "headings": ["How to set up Claude"]
+    },
+    {
+      "old": "/v2/playbooks/3-prompts-better-ai-results",
+      "path": "/playbooks/3-prompts-better-ai-results",
+      "headings": ["3 prompts that get you better AI results"]
+    },
+    {
+      "old": "/v2/playbooks/5-ai-tools-worth-your-money",
+      "path": "/playbooks/5-ai-tools-worth-your-money",
+      "headings": ["5 AI tools that are actually worth your money"]
+    },
+    {
+      "old": "/v2/playbooks/ai-influencer-three-files",
+      "path": "/playbooks/ai-influencer-three-files",
+      "headings": ["The three file system"]
+    },
+    {
+      "old": "/v2/playbooks/humanize-setup",
+      "path": "/playbooks/humanize-setup",
+      "headings": ["Make your AI stop writing like an AI"]
+    },
+    {
+      "old": "/v2/playbooks/edit-videos-with-claude",
+      "path": "/playbooks/edit-videos-with-claude",
+      "headings": ["Edit your videos with Claude"]
+    },
+    {
+      "old": "/v2/playbooks/transcriptx-claude-setup",
+      "path": "/playbooks/transcriptx-claude-setup",
+      "headings": ["Get any video's transcript directly inside Claude"]
+    },
+    {
+      "old": "/v2/playbooks/100-chatgpt-secret-codes",
+      "path": "/playbooks/100-chatgpt-secret-codes",
+      "headings": ["100ChatGPT Secret Codes"]
+    },
+    {
+      "old": "/v2/playbooks/vet-ai-skills",
+      "path": "/playbooks/vet-ai-skills",
+      "headings": ["Vet any AI skill before it touches your machine."]
+    },
+    {
+      "old": "/v2/playbooks/chatgpt-upgrade-playbook",
+      "path": "/playbooks/chatgpt-upgrade-playbook",
+      "headings": ["The ChatGPT upgrade you can actually use"]
+    },
+    {
+      "old": "/v2/playbooks/fable-five-prompts",
+      "path": "/playbooks/fable-five-prompts",
+      "headings": ["The three prompts I'd run before Fable 5 goes."]
+    },
+    {
+      "old": "/v2/playbooks/five-claude-connectors",
+      "path": "/playbooks/five-claude-connectors",
+      "headings": ["5 Claude connectors that put you ahead of 99% of people"]
+    },
+    {
+      "old": "/v2/playbooks/claude-goal-command",
+      "path": "/playbooks/claude-goal-command",
+      "headings": ["/Goal"]
+    },
+    {
+      "old": "/v2/playbooks/six-claude-content-skills",
+      "path": "/playbooks/six-claude-content-skills",
+      "headings": ["6 Claude Skills You Can Steal"]
+    },
+    {
+      "old": "/v2/playbooks/design-with-claude-canva",
+      "path": "/playbooks/design-with-claude-canva",
+      "headings": ["Make designs by just chatting with Claude"]
+    },
+    {
+      "old": "/v2/playbooks/claude-tag-playbook",
+      "path": "/playbooks/claude-tag-playbook",
+      "headings": ["How to put Claudeinside your team."]
+    },
+    {
+      "old": "/v2/playbooks/connect-claude-to-socials",
+      "path": "/playbooks/connect-claude-to-socials",
+      "headings": ["Connect Claude to all your socials"]
+    },
+    {
+      "old": "/v2/playbooks/anime-storyboard-to-video",
+      "path": "/playbooks/anime-storyboard-to-video",
+      "headings": ["Turn a single ideainto a full anime scene."]
+    },
+    {
+      "old": "/v2/playbooks/ai-clone-method",
+      "path": "/playbooks/ai-clone-method",
+      "headings": ["Shoot content without getting in front of a camera."]
+    },
+    {
+      "old": "/v2/playbooks/build-your-ai-influencer",
+      "path": "/playbooks/build-your-ai-influencer",
+      "headings": ["Build Your OwnAI Influencer"]
+    },
+    {
+      "old": "/v2/playbooks/thirty-claude-codes",
+      "path": "/playbooks/thirty-claude-codes",
+      "headings": ["ThirtyClaude Codes"]
+    },
+    {
+      "old": "/v2/playbooks/ai-certifications-weekend",
+      "path": "/playbooks/ai-certifications-weekend",
+      "headings": ["AI certifications you can actually finish this weekend"]
+    },
+    {
+      "old": "/v2/playbooks/heygen-video-translate",
+      "path": "/playbooks/heygen-video-translate",
+      "headings": [
+        "Make a video of yourself fluent in a language you don't speak."
+      ]
+    },
+    {
+      "old": "/v2/playbooks/3-prompts-stop-ai-lying",
+      "path": "/playbooks/3-prompts-stop-ai-lying",
+      "headings": ["The 3 prompts that stopAI from lying to you."]
+    },
+    {
+      "old": "/v2/playbooks/30-day-ai-roadmap",
+      "path": "/playbooks/30-day-ai-roadmap",
+      "headings": ["The 30-DayAI Roadmap."]
+    },
+    {
+      "old": "/v2/playbooks/markitdown-mcp-claude-setup",
+      "path": "/playbooks/markitdown-mcp-claude-setup",
+      "headings": ["Stop wasting 70% of your tokens in Claude."]
+    },
+    {
+      "old": "/v2/playbooks/the-ai-job-map",
+      "path": "/playbooks/the-ai-job-map",
+      "headings": []
+    },
+    {
+      "old": "/v2/playbooks/understanding-claude-modes",
+      "path": "/playbooks/understanding-claude-modes",
+      "headings": ["Understanding Claude Modes"]
+    },
+    {
+      "old": "/v2/playbooks/creative-studio-claude-6-skills",
+      "path": "/playbooks/creative-studio-claude-6-skills",
+      "headings": ["Build a Creative Studio in Claude with 6 Skills"]
+    },
+    {
+      "old": "/v2/playbooks/claude-council-pressure-test-decisions",
+      "path": "/playbooks/claude-council-pressure-test-decisions",
+      "headings": ["The Claude Council"]
+    },
+    {
+      "old": "/v2/playbooks/remotion-claude-code-video-editing",
+      "path": "/playbooks/remotion-claude-code-video-editing",
+      "headings": [
+        "Remotion \u00d7 Claude Code \u2014 Edit Videos Without a Timeline"
+      ]
+    },
+    {
+      "old": "/v2/playbooks/claude-mcps-business-owners",
+      "path": "/playbooks/claude-mcps-business-owners",
+      "headings": ["The 5 Claude MCPs Every Business Owner Needs"]
+    },
+    {
+      "old": "/v2/playbooks/claude-5-step-beginner",
+      "path": "/playbooks/claude-5-step-beginner",
+      "headings": ["Set Up Claude In 5 Steps. The Beginner's Guide"]
+    },
+    {
+      "old": "/v2/playbooks",
+      "path": "/playbooks",
+      "headings": ["The Free Resource LibraryYour AI Playbook"]
+    },
+    {
+      "old": "/v2/services/software-building",
+      "path": "/services/software-building",
+      "headings": ["Need a software built?Idea to working product."]
+    },
+    {
+      "old": "/v2/services/workflow-automation",
+      "path": "/services/workflow-automation",
+      "headings": ["Find the work worth automating.Then automate it."]
+    },
+    {
+      "old": "/v2/services/ai-transformation-planning",
+      "path": "/services/ai-transformation-planning",
+      "headings": ["Decide where AI fits.Then make it work."]
+    },
+    {
+      "old": "/v2/services/ai-strategy-support",
+      "path": "/services/ai-strategy-support",
+      "headings": ["You have the plan.We help you keep it moving."]
+    },
+    {
+      "old": "/v2/services",
+      "path": "/services",
+      "headings": ["Four ways we work.Each ends in something running."]
+    },
+    {
+      "old": "/v2/the-lab",
+      "path": "/the-lab",
+      "headings": ["We build our own software.Then we tell you what it cost."]
+    }
+  ],
+  "assets": [
+    {
+      "old": "/v2/Logos_Group_X_02.png",
+      "path": "/images/logos/Logos_Group_X_02.png",
+      "hash": "cbfa0a6bab34cee9ed01275345befa43f25989881652f991656c409f4d176e74"
+    },
+    {
+      "old": "/v2/Logos_Group_X_03.png",
+      "path": "/images/logos/Logos_Group_X_03.png",
+      "hash": "0a88485536c4a7520885e76c3ac804b58b376bfa5bd6c7aa05b694d0efe267cc"
+    },
+    {
+      "old": "/v2/background-hero.png",
+      "path": "/images/backgrounds/background-hero.png",
+      "hash": "cce37107bf6975846f21558da08b387e9c34aed162b4890653610a75ef60fbfd"
+    },
+    {
+      "old": "/v2/brands/abacus.png",
+      "path": "/images/brands/abacus.png",
+      "hash": "91db60e6c7c3f9ad0a1916b7b2f4606e3ad19ac89d8c9771f44befd1d719cca9"
+    },
+    {
+      "old": "/v2/brands/gamma.png",
+      "path": "/images/brands/gamma.png",
+      "hash": "16b1b2560c01a5b3ab45a9ef55f059053e46d0ece7f1c0cbbe59896a48339c18"
+    },
+    {
+      "old": "/v2/brands/google-labs.png",
+      "path": "/images/brands/google-labs.png",
+      "hash": "41659f3281b416902a907ace82d1148bfdd726b2d77eef533f1108658c52280b"
+    },
+    {
+      "old": "/v2/brands/kaneai.png",
+      "path": "/images/brands/kaneai.png",
+      "hash": "588d0f44baf3be77883b884a3de8cd666b016d3f022357152aaba9b1e9c6c311"
+    },
+    {
+      "old": "/v2/brands/kimi.png",
+      "path": "/images/brands/kimi.png",
+      "hash": "e9b826bf81bb212a604aaba7147551903de46a6595fa9b3dcf30b145a57e7aa3"
+    },
+    {
+      "old": "/v2/brands/meta.png",
+      "path": "/images/brands/meta.png",
+      "hash": "dbb349ca75c02ddf185425b3e19205a65f88bd05c3c5da62d20be4a5d9fa4e58"
+    },
+    {
+      "old": "/v2/brands/recall.png",
+      "path": "/images/brands/recall.png",
+      "hash": "a47a0c47d474fc1162ac39f6d819776df2389beb0bac7d39f84f67de869ca823"
+    },
+    {
+      "old": "/v2/brands/red-bull.png",
+      "path": "/images/brands/red-bull.png",
+      "hash": "7f5ae121dc3b6e9e842e424ef42a531320dd715936f716b3dd61f804d08e79ea"
+    },
+    {
+      "old": "/v2/brands/relume.png",
+      "path": "/images/brands/relume.png",
+      "hash": "cc9b33a3c4a17ce9930a32065860e30542f851d5bfa5a5e38d32bfb0bd647c6d"
+    },
+    {
+      "old": "/v2/brands/speak-french-fast.png",
+      "path": "/images/brands/speak-french-fast.png",
+      "hash": "7bd8de2555bd284289ef14f29054059f6b535db7399be62e9587ad6d6bbd7780"
+    },
+    {
+      "old": "/v2/cta-bg.png",
+      "path": "/images/backgrounds/cta-bg.png",
+      "hash": "f0f653247f6d033e3cf4f9d02572cfe68c65e6263e3072463b7bb6196a8e961a"
+    },
+    {
+      "old": "/v2/footer-art.png",
+      "path": "/images/brand/footer-art.png",
+      "hash": "1e5b62b9d7c78afb9eabcb2afd8a1b202b7b30f4da31d7845bc16ea23b15a9fa"
+    },
+    {
+      "old": "/v2/hero-bg.png",
+      "path": "/images/backgrounds/hero-bg.png",
+      "hash": "56f2a4b0ccd244461a6d0ad5372710c51ccd624785f599fcea4b1d19b4f14430"
+    },
+    {
+      "old": "/v2/impact-education.png",
+      "path": "/images/impact/impact-education.png",
+      "hash": "dc32237aed95002ea3ba6db2c2e91c31b1dc08fa69e51d45b49266cf782b6d31"
+    },
+    {
+      "old": "/v2/impact-mvps-1.png",
+      "path": "/images/impact/impact-mvps-1.png",
+      "hash": "4e9c7d3e08a1e1aa8d0972cd0162d3d983d1d15b1ab78d717e1f2a239c2aec4a"
+    },
+    {
+      "old": "/v2/impact-mvps-2.png",
+      "path": "/images/impact/impact-mvps-2.png",
+      "hash": "872d1da36df1ce6582c2c4f830dc88ba7eb009e7c28488277853367eb1cc482e"
+    },
+    {
+      "old": "/v2/logo-cloud.png",
+      "path": "/images/logos/logo-cloud.png",
+      "hash": "50cf18f722bfb365ca4be95a4306542062b94765a86c69c45dc65158ecc156ba"
+    },
+    {
+      "old": "/v2/logo_group_1.png",
+      "path": "/images/logos/logo_group_1.png",
+      "hash": "caed3613af5fd5f505e33cf3daa5803df89da2358b6680e9cdf557630bedf0da"
+    },
+    {
+      "old": "/v2/logo_group_3.png",
+      "path": "/images/logos/logo_group_3.png",
+      "hash": "eaf51e035836ec91c5fd862b136b565a36df1ea1fb44ac8035bc73c6dee3c07f"
+    },
+    {
+      "old": "/v2/logo_group_4.png",
+      "path": "/images/logos/logo_group_4.png",
+      "hash": "e2c3494f6cb926b0f78a15e553f987f191ee99335821f37f4bf4ea88d8c09959"
+    },
+    {
+      "old": "/v2/logo_group_6.png",
+      "path": "/images/logos/logo_group_6.png",
+      "hash": "6825172744b113cf5af9d4941914f0c83da6f74b2c76fef78786663a252d432b"
+    },
+    {
+      "old": "/v2/logos/2k-games.png",
+      "path": "/images/logos/2k-games.png",
+      "hash": "867bc1b12c1e670acb4c2ab6c7b63796595d15def20899b426dde038d58c106e"
+    },
+    {
+      "old": "/v2/logos/adobe.png",
+      "path": "/images/logos/adobe.png",
+      "hash": "f50d3ac30e1a6c2b8138c88d11bf4a54004a349e3aaf7a1dde3a06ff0b97a45e"
+    },
+    {
+      "old": "/v2/logos/amazon.png",
+      "path": "/images/logos/amazon.png",
+      "hash": "e06cffc3e47cfa2786bfb37eada61b7749ab5dd6801c7de45053510284d726d4"
+    },
+    {
+      "old": "/v2/logos/apple.png",
+      "path": "/images/logos/apple.png",
+      "hash": "1ed8783b7aea70eb94971aa8db7af5bcc98a11966769095d9fb00fdf4e0f311a"
+    },
+    {
+      "old": "/v2/logos/brand-mark.png",
+      "path": "/images/logos/brand-mark.png",
+      "hash": "6d0e42a6fbf9011464a3e8403e18607f28d65ad31af185932ee083741db56b0f"
+    },
+    {
+      "old": "/v2/logos/british-airways.png",
+      "path": "/images/logos/british-airways.png",
+      "hash": "3f6bc17828dbc78de6f7ff00c66297168b26955011b91f92f169780501218869"
+    },
+    {
+      "old": "/v2/logos/das-erste.png",
+      "path": "/images/logos/das-erste.png",
+      "hash": "aaf5e3ebbd9bce0135d0c79b1c49655cbe778e204bee539992ff6c4d2ae41497"
+    },
+    {
+      "old": "/v2/logos/der-spiegel.png",
+      "path": "/images/logos/der-spiegel.png",
+      "hash": "b9df7ce59ab7d9ae1cb28fb5a4e851abdd8dcdb117f4f3244c0d9528974f81ce"
+    },
+    {
+      "old": "/v2/logos/google.png",
+      "path": "/images/logos/google.png",
+      "hash": "ac0af2e68b604f534f7466ec48cd7c7862fe5cfc0db7d9e3d51075e1c92aafba"
+    },
+    {
+      "old": "/v2/logos/lg.png",
+      "path": "/images/logos/lg.png",
+      "hash": "f9f5b5683727cfc697acee0435baee6de019e34d824bb3b69f809fea9dc9f94b"
+    },
+    {
+      "old": "/v2/logos/lyft.png",
+      "path": "/images/logos/lyft.png",
+      "hash": "b2bd2f4e27d023ba5a7496f705994b8f83484f3bdbd20810bf2bd2bf71ad4eab"
+    },
+    {
+      "old": "/v2/logos/magenta.png",
+      "path": "/images/logos/magenta.png",
+      "hash": "5691a87a8895899489624b864acefcb2170667ecfe6915765908151e5255a8af"
+    },
+    {
+      "old": "/v2/logos/microsoft.png",
+      "path": "/images/logos/microsoft.png",
+      "hash": "1ec72eea0fdca91cb6373a7ac1a147510486b90373072fde95acb8ca5341e1a6"
+    },
+    {
+      "old": "/v2/logos/netflix.png",
+      "path": "/images/logos/netflix.png",
+      "hash": "a39e06185d9acc8d47d259a75c49688d41ecd31020b22f65d328534802385083"
+    },
+    {
+      "old": "/v2/logos/nike.png",
+      "path": "/images/logos/nike.png",
+      "hash": "4335b41ba6b507a1e842bd340861b9301d51fe5280d568acf354c657a5275d3d"
+    },
+    {
+      "old": "/v2/logos/nvidia.png",
+      "path": "/images/logos/nvidia.png",
+      "hash": "5c330c8f2b93ba0f8e3b8e7e230ee20f9010390f4daa28b79c69c694ad364895"
+    },
+    {
+      "old": "/v2/logos/samsung.png",
+      "path": "/images/logos/samsung.png",
+      "hash": "77fba764af72f37b5598beebbbb2c2b03088a30f106ad8c1765d47740f5e839f"
+    },
+    {
+      "old": "/v2/logos/snap.png",
+      "path": "/images/logos/snap.png",
+      "hash": "745e9bb4676c5a5af799dd3714064f7d9677acc5f5f37c0ef4b3dab6feb375c5"
+    },
+    {
+      "old": "/v2/logos/spotify.png",
+      "path": "/images/logos/spotify.png",
+      "hash": "ccc36abf493eb4cde3edf00a0af285825aff62092240bbfb41d893dd0b97cc98"
+    },
+    {
+      "old": "/v2/logos/swatch.png",
+      "path": "/images/logos/swatch.png",
+      "hash": "7470defae71bbfcf8ed200acabbf6a96ce4b2ef3ddc9fd15ba4ff7890156228b"
+    },
+    {
+      "old": "/v2/logos/toyota.png",
+      "path": "/images/logos/toyota.png",
+      "hash": "bd8d5c82bacc15d4f774457166dc866a64350a22ad329f58aac1f0774ac668ce"
+    },
+    {
+      "old": "/v2/logos/vw.png",
+      "path": "/images/logos/vw.png",
+      "hash": "5f1cd24d59de774e732ca1207ce61ba2ceb7f0810f465a2d2baf99bb1e3da12a"
+    },
+    {
+      "old": "/v2/logos/wired.png",
+      "path": "/images/logos/wired.png",
+      "hash": "22c757b949b78b044a4ddc7ad0079b76898b38550eb53368a5f438068d535d98"
+    },
+    {
+      "old": "/v2/logos/wwf.png",
+      "path": "/images/logos/wwf.png",
+      "hash": "eea437d9b517840e6e5034180be6d473b605c801ad9e85b39b717ac5f21cc1cd"
+    },
+    {
+      "old": "/v2/team/illustration-notion.jpg",
+      "path": "/images/team/illustration-notion.jpg",
+      "hash": "dbaf24c7129088859fd8ef422edef3e3235e9277f1625dde1cabad5c59a6fb2f"
+    },
+    {
+      "old": "/v2/team/logo-coursera.svg",
+      "path": "/images/team/logo-coursera.svg",
+      "hash": "34f5fa3d28dc61a6b68e49d36942c521bea13a657b3d24b2aa3e79a236813bcb"
+    },
+    {
+      "old": "/v2/team/logo-dropbox.svg",
+      "path": "/images/team/logo-dropbox.svg",
+      "hash": "9e2c3aef14b5a42195bbdd757c333d6f3c3e4f744240e4ba1705fec7e9c83cf6"
+    },
+    {
+      "old": "/v2/team/logo-graphite.svg",
+      "path": "/images/team/logo-graphite.svg",
+      "hash": "b3883b12158d95f552edeab5614ad64cf075d081dcb8ad12afab4fed93f47f0f"
+    },
+    {
+      "old": "/v2/team/logo-navan.svg",
+      "path": "/images/team/logo-navan.svg",
+      "hash": "2e43bf9383230e81b7ab8e25a6e82eeaf462ba6134a1eeba968e74412b069f60"
+    },
+    {
+      "old": "/v2/team/logo-notion-dark.svg",
+      "path": "/images/team/logo-notion-dark.svg",
+      "hash": "ce6ce9757bc1c51633911e65adcc6e7eb79ac92037d404eb3ce15e3ae34ce6ee"
+    },
+    {
+      "old": "/v2/team/logo-notion.svg",
+      "path": "/images/team/logo-notion.svg",
+      "hash": "2cca2bb0bc541a1b24965ed42daf32bd771bfbce6144d9e1d08b9bcc9aa1ba27"
+    },
+    {
+      "old": "/v2/team/logo-replit.svg",
+      "path": "/images/team/logo-replit.svg",
+      "hash": "ceb2d6c797cc3ced11742468b7981fa06ca136f4789768d402c21e45c60d11d5"
+    },
+    {
+      "old": "/v2/team/logo-vercel.svg",
+      "path": "/images/team/logo-vercel.svg",
+      "hash": "8284f0fd668fbd615b58b645ed740ad313cf08f54b86bdf29fc04659bdf9e339"
+    },
+    {
+      "old": "/v2/team/portrait-business-manager.png",
+      "path": "/images/team/portrait-business-manager.png",
+      "hash": "35c4c181be001605673399f6cf8d1581f6cd4533c30a1049405d2d8d21b1e41c"
+    },
+    {
+      "old": "/v2/team/portrait-dropbox.jpg",
+      "path": "/images/team/portrait-dropbox.jpg",
+      "hash": "11eea1536e5884c1d669aa956153a9f69403dfd84ec2e0468c04d1c448e25672"
+    },
+    {
+      "old": "/v2/team/portrait-navan.jpg",
+      "path": "/images/team/portrait-navan.jpg",
+      "hash": "d0af2295a6f4db895f7473805efbc7bc57f2365c269e047cc9509c6028199c38"
+    },
+    {
+      "old": "/v2/team/portrait-notion.jpg",
+      "path": "/images/team/portrait-notion.jpg",
+      "hash": "158542b28f76c49bbd709cccce9584cd2e856b35510cc37e81118c8c5a62246d"
+    },
+    {
+      "old": "/v2/team/portrait-replit.jpg",
+      "path": "/images/team/portrait-replit.jpg",
+      "hash": "ffe3f341afd8473eeb9ac67a59d3eb3e843b478810f212eede7a171c089d1820"
+    },
+    {
+      "old": "/v2/team/portrait-vercel.jpg",
+      "path": "/images/team/portrait-vercel.jpg",
+      "hash": "13d96ac9639b33f79fe2c1703a558043346d2da128b1730b336b917a69e99ce4"
+    },
+    {
+      "old": "/v2/testimonial-logo.svg",
+      "path": "/images/testimonials/testimonial-logo.svg",
+      "hash": "25ffdeb7f8bc038b4535abb51068c01491c4f0a78ddc99393e1ab4240b0e0f67"
+    },
+    {
+      "old": "/v2/testimonial-portrait.png",
+      "path": "/images/testimonials/testimonial-portrait.png",
+      "hash": "35c4c181be001605673399f6cf8d1581f6cd4533c30a1049405d2d8d21b1e41c"
+    },
+    {
+      "old": "/v2/woa-gold.png",
+      "path": "/images/logos/woa-gold.png",
+      "hash": "139f6cb3eee2c17ec8a1fd0b9ed5e48c3aa801f1d8efbf5c486158e801a147eb"
+    },
+    {
+      "old": "/v2/woa.png",
+      "path": "/images/logos/woa.png",
+      "hash": "71d801b61e763327c99c4c8748b58c4bc46fab81ca653c7ac063f7c43496645a"
+    }
+  ]
+}

@@ -1,82 +1,71 @@
 "use client";
 
-import Image from "next/image";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
 type Testimonial = {
-  quote: string;
+  id: string;
   name: string;
-  role?: string;
-  /** What they shipped afterwards. Rendered under the quote when present. */
-  result?: string;
-  /**
-   * Real headshot only. Left undefined until the person's own photo is in
-   * `public/v2/team/` — the stock portraits in that folder belong to other
-   * companies, and pairing one with a named participant would misattribute it.
-   */
-  portrait?: string;
+  quote: string;
+  excerpt: string;
+  role: string;
 };
 
 const testimonials: Testimonial[] = [
   {
+    id: "alpha-fellow",
+    name: "Dapo Ijaola",
     quote:
       "Before the bootcamp, I understood AI in theory. I could talk about it, but I couldn't actually ship anything. Since then, I've built and launched websites, apps, AI agents, and my own digital product. I don't just talk about AI anymore. I build it and ship it, for myself and for real clients.",
-    name: "Oladapo Ijaola",
-    role: "Attention Factory bootcamp participant",
-    result:
-      "Built a voice AI agent, a WhatsApp assistant, a workforce management app, websites, an AI video campaign, and a digital product.",
+    excerpt: "I don't just talk about AI anymore.",
+    role: "AI Fellow · Alpha cohort",
   },
   {
+    id: "business-manager",
+    name: "Sonia Omasheye",
     quote:
       "Before the mentorship, I was overwhelmed and lacked direction. I was sorting through too much information and constantly second-guessing my work. The mentorship gave me clear guidance, practical systems, and hands-on skills. I stopped guessing, saved hours of trial and error, and became more confident and intentional with my content.",
-    name: "A Sonia Omashaye",
-    role: "Business Manager, Soniacraft LLC",
-    // TODO: add her submitted headshot to public/v2/team/ and set `portrait`.
+    excerpt: "I stopped guessing, saved hours of trial and error…",
+    role: "Business Manager",
   },
   {
+    id: "bravo-fellow",
+    name: "S.K.",
     quote:
       "I wasn't sure I would get enough value from the program. I left with practical, hands-on skills and built and deployed apps using Claude Code, Lovable, Replit, and Emergent. I would definitely recommend it.",
-    name: "Anonymous",
+    excerpt: "I left with practical, hands-on skills…",
+    role: "AI Fellow · Bravo cohort",
   },
 ];
 
 function TestimonialCard({ item }: { item: Testimonial }) {
   return (
-    <article className="flex min-w-0 shrink-0 basis-[82%] snap-start flex-col bg-white sm:basis-[60%] md:basis-[calc((100%-1.5rem)/2)] lg:basis-[calc((100%-3rem)/3)]">
-      {/* Square portrait, flush to the top-left corner of the card. Without a
-          real headshot the corner stays a flat swatch so the card keeps its
-          shape and nothing is misattributed. */}
-      {item.portrait ? (
-        <Image
-          src={item.portrait}
-          alt=""
-          width={64}
-          height={64}
-          className="size-16 shrink-0 object-cover grayscale"
-        />
-      ) : (
-        <div aria-hidden className="size-16 shrink-0 bg-[#e4e3de]" />
-      )}
+    <article className="flex min-w-0 shrink-0 basis-[90%] snap-start flex-col rounded-[16px]! bg-white p-6 sm:basis-[70%] md:basis-[calc((100%-1.5rem)/2)] md:p-8 lg:basis-[calc((100%-3rem)/3)]">
+      <blockquote className="text-[24px] leading-[1.2] font-medium tracking-[-0.03em] text-[#1a1a1a] md:text-[26px]">
+        &ldquo;{item.excerpt}&rdquo;
+      </blockquote>
 
-      <p className="mt-7 px-6 text-[13px] leading-[1.55] font-semibold tracking-[-0.005em] text-[#1a1a1a]">
-        &ldquo;{item.quote}&rdquo;
+      <p className="mt-3 text-[15px] leading-[1.65] font-normal tracking-[-0.01em] text-[#5a5a5a]">
+        {item.quote}
       </p>
 
-      {item.result ? (
-        <p className="mt-5 px-6 text-[13px] leading-[1.55] tracking-[-0.005em] text-[#5a5a5a]">
-          {item.result}
-        </p>
-      ) : null}
-
-      <div className="mt-auto px-6 pt-10 pb-6 text-[13px] leading-[1.6] tracking-[-0.02em]">
-        <p className="text-[#1a1a1a]">{item.name}</p>
-        {item.role ? <p className="text-[#8c8a84]">{item.role}</p> : null}
-      </div>
+      <footer className="mt-auto pt-8 text-[13px] leading-[1.6] tracking-[-0.01em]">
+        <p className="font-medium text-[#1a1a1a]">{item.name}</p>
+        <p className="mt-0.5 text-[#777]">{item.role}</p>
+      </footer>
     </article>
   );
+}
+
+function getScrollPositions(el: HTMLDivElement) {
+  const maxScroll = Math.max(0, el.scrollWidth - el.clientWidth);
+  const first = el.firstElementChild as HTMLElement | null;
+  if (!first) return [0];
+  return [...new Set(Array.from(el.children, (child) =>
+    Math.round(Math.min(maxScroll, (child as HTMLElement).offsetLeft - first.offsetLeft)),
+  ))];
 }
 
 export function Testimonial() {
@@ -87,10 +76,11 @@ export function Testimonial() {
   const measure = useCallback(() => {
     const el = trackRef.current;
     if (!el) return;
-    // A "page" is one viewport-width of the track.
-    const total = Math.max(1, Math.round(el.scrollWidth / el.clientWidth));
-    setPages(total);
-    setPage(Math.round(el.scrollLeft / el.clientWidth));
+    const positions = getScrollPositions(el);
+    setPages(positions.length);
+    setPage(positions.reduce((nearest, position, index) =>
+      Math.abs(position - el.scrollLeft) < Math.abs(positions[nearest]! - el.scrollLeft) ? index : nearest,
+    0));
   }, []);
 
   useEffect(() => {
@@ -105,16 +95,19 @@ export function Testimonial() {
   const scrollToPage = (next: number) => {
     const el = trackRef.current;
     if (!el) return;
-    const clamped = Math.max(0, Math.min(pages - 1, next));
-    el.scrollTo({ left: clamped * el.clientWidth, behavior: "smooth" });
+    const positions = getScrollPositions(el);
+    const clamped = Math.max(0, Math.min(positions.length - 1, next));
+    el.scrollTo({
+      left: positions[clamped],
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth",
+    });
   };
 
   return (
-    <section className="relative overflow-hidden bg-[#f9f9f9] py-16 md:py-24">
+    <section id="testimonials" aria-labelledby="testimonials-heading" className="relative overflow-hidden bg-[#f9f9f9] py-16 md:py-24">
       <div className="relative mx-auto max-w-[1166px] px-6">
-        <h2 className="text-[clamp(28px,5vw,48px)] leading-[1.05] font-medium tracking-[-0.04em]">
-          <span className="block text-[#1a1a1a]">What our customers</span>
-          <span className="block text-[#6a7282]">are saying</span>
+        <h2 id="testimonials-heading" className="text-[clamp(28px,5vw,48px)] leading-[1.05] font-medium tracking-[-0.04em] text-black">
+          Hear from our AI Fellows
         </h2>
 
         <div
@@ -123,7 +116,7 @@ export function Testimonial() {
           className="mt-12 flex items-stretch snap-x snap-mandatory gap-4 overflow-x-auto overscroll-x-contain [-ms-overflow-style:none] [scrollbar-width:none] md:gap-6 [&::-webkit-scrollbar]:hidden"
         >
           {testimonials.map((item) => (
-            <TestimonialCard key={item.name} item={item} />
+            <TestimonialCard key={item.id} item={item} />
           ))}
         </div>
 
@@ -138,10 +131,10 @@ export function Testimonial() {
                   aria-current={i === page}
                   onClick={() => scrollToPage(i)}
                   className={cn(
-                    "size-1.5 rounded-full transition-colors duration-300",
+                    "flex size-8 items-center justify-center rounded-full! after:size-1.5 after:rounded-full! after:bg-current transition-colors duration-300",
                     i === page
-                      ? "bg-[#1a1a1a]"
-                      : "bg-[#1a1a1a]/20 hover:bg-[#1a1a1a]/40",
+                      ? "text-[#1a1a1a]"
+                      : "text-[#1a1a1a]/25 hover:text-[#1a1a1a]/50",
                   )}
                 />
               ))}
@@ -153,7 +146,7 @@ export function Testimonial() {
                 aria-label="Previous testimonials"
                 onClick={() => scrollToPage(page - 1)}
                 disabled={page === 0}
-                className="flex size-9 items-center justify-center rounded-full border border-[#1a1a1a]/15 text-[#1a1a1a] transition-colors duration-300 hover:border-[#1a1a1a]/40 hover:bg-white disabled:pointer-events-none disabled:opacity-30"
+                className="flex size-9 items-center justify-center rounded-full! border border-[#1a1a1a]/15 text-[#1a1a1a] transition-colors duration-300 hover:border-[#1a1a1a]/40 hover:bg-white disabled:pointer-events-none disabled:opacity-30"
               >
                 <ArrowLeft className="size-4" strokeWidth={1.5} />
               </button>
@@ -162,7 +155,7 @@ export function Testimonial() {
                 aria-label="Next testimonials"
                 onClick={() => scrollToPage(page + 1)}
                 disabled={page >= pages - 1}
-                className="flex size-9 items-center justify-center rounded-full border border-[#1a1a1a]/15 text-[#1a1a1a] transition-colors duration-300 hover:border-[#1a1a1a]/40 hover:bg-white disabled:pointer-events-none disabled:opacity-30"
+                className="flex size-9 items-center justify-center rounded-full! border border-[#1a1a1a]/15 text-[#1a1a1a] transition-colors duration-300 hover:border-[#1a1a1a]/40 hover:bg-white disabled:pointer-events-none disabled:opacity-30"
               >
                 <ArrowRight className="size-4" strokeWidth={1.5} />
               </button>
@@ -196,24 +189,24 @@ export function Testimonial() {
  *       "We completely rebuilt our GTM stack with Attio in under 90 days while growing pipeline",
  *     name: "Joshua Omobola",
  *     company: "BB Capital",
- *     portrait: "/v2/testimonial-portrait.png",
- *     logo: "/v2/testimonial-logo.svg",
+ *     portrait: "/images/testimonials/testimonial-portrait.png",
+ *     logo: "/images/testimonials/testimonial-logo.svg",
  *   },
  *   {
  *     quote:
  *       "Their team became an extension of ours — we shipped a working MVP in six weeks.",
  *     name: "Jane Doe",
  *     company: "Acme",
- *     portrait: "/v2/testimonial-portrait.png",
- *     logo: "/v2/testimonial-logo.svg",
+ *     portrait: "/images/testimonials/testimonial-portrait.png",
+ *     logo: "/images/testimonials/testimonial-logo.svg",
  *   },
  *   {
  *     quote:
  *       "Saw a 3x lift in qualified pipeline within a quarter of launching with them.",
  *     name: "Sam Lee",
  *     company: "Globex",
- *     portrait: "/v2/testimonial-portrait.png",
- *     logo: "/v2/testimonial-logo.svg",
+ *     portrait: "/images/testimonials/testimonial-portrait.png",
+ *     logo: "/images/testimonials/testimonial-logo.svg",
  *   },
  * ];
  *

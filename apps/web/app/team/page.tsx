@@ -39,7 +39,10 @@ export default function TeamPage() {
             team.
           </h1>
           <p className="mb-4">
-            attention factory is run by humans first. Then AI Agents.
+            attention factory is run by humans first.
+          </p>
+          <p className="mb-4">
+            then AI Agents.
           </p>
           <p>
             we work across ai education & media, agentic systems, automation, and

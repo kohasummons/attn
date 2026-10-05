@@ -1,3 +1,4 @@
+import { SITE_URL } from "@/lib/site-metadata";
 import { Google_Sans_Code, Inter } from "next/font/google";
 import localFont from "next/font/local";
 import { Providers } from "./providers";
@@ -46,7 +47,7 @@ const goga = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://attentionfactory.io"),
+  metadataBase: new URL(SITE_URL),
   title: "Attention Factory | Your AI Partner",
   description:
     "For people who would rather leverage AI than talk about leveraging AI.",
@@ -60,7 +61,7 @@ export const metadata = {
     title: "Attention Factory | Your AI Partner",
     description:
       "For people who would rather leverage AI than talk about leveraging AI.",
-    url: "https://attentionfactory.io",
+    url: SITE_URL,
     siteName: "Attention Factory",
   },
 };

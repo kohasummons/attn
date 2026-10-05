@@ -1,4 +1,4 @@
-import Image from "next/image";
+import { FooterAscii } from "./footer-ascii";
 
 import { Container } from "@/components/ui/container";
 
@@ -11,26 +11,26 @@ const columns: { label: string; items: FooterLink[] }[] = [
   {
     label: "Services",
     items: [
-      { label: "Software development", href: "/v2/services/software-building" },
+      { label: "Software development", href: "/services/software-building" },
       {
         label: "Workflow automation",
-        href: "/v2/services/workflow-automation",
+        href: "/services/workflow-automation",
       },
       {
         label: "AI planning",
-        href: "/v2/services/ai-transformation-planning",
+        href: "/services/ai-transformation-planning",
       },
       {
         label: "Ongoing AI support",
-        href: "/v2/services/ai-strategy-support",
+        href: "/services/ai-strategy-support",
       },
-      { label: "Organization training", href: "/v2/organizations" },
+      { label: "Organization training", href: "/organizations" },
     ],
   },
   {
     label: "University",
     items: [
-      { label: "Courses", href: "/v2/courses" },
+      { label: "Courses", href: "/courses" },
       { label: "Membership", href: `${APP_URL}/membership` },
       { label: "Weekends of AI", href: WOA_URL },
     ],
@@ -39,28 +39,28 @@ const columns: { label: string; items: FooterLink[] }[] = [
     label: "Resources",
     items: [
       // Temporarily hidden — routes still exist, just off the menu.
-      // { label: "Blog", href: "/v2/blog" },
-      { label: "Playbooks, guides and tools", href: "/v2/playbooks" },
+      // { label: "Blog", href: "/blog" },
+      { label: "Playbooks, guides and tools", href: "/playbooks" },
       {
         label: "AI archetype",
         href: "https://ai-archetype-pied.vercel.app/",
       },
       // {
       //   label: "Attention Factory Intelligence",
-      //   href: "/v2/intelligence",
+      //   href: "/intelligence",
       // },
-      // { label: "The Lab", href: "/v2/the-lab" },
-      { label: "About", href: "/v2/about" },
+      // { label: "The Lab", href: "/the-lab" },
+      { label: "About", href: "/about" },
     ],
   },
   {
     label: "Company",
     items: [
-      { label: "About us", href: "/v2/about" },
-      { label: "Contact us", href: "/v2/contact" },
-      { label: "Talk to us", href: "/v2/contact" },
-      { label: "Privacy Policy", href: "/v2/privacy-policy" },
-      { label: "Terms of Service", href: "/v2/terms-of-service" },
+      { label: "About us", href: "/about" },
+      { label: "Contact us", href: "/contact" },
+      { label: "Talk to us", href: "/contact" },
+      { label: "Privacy Policy", href: "/legal/privacy-policy" },
+      { label: "Terms of Use", href: "/legal/terms-of-service" },
     ],
   },
 ];
@@ -70,14 +70,7 @@ export function SiteFooter() {
     <footer className="relative h-[714px] overflow-hidden bg-black">
       <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[246px] hidden justify-end lg:flex">
         <div className="relative h-[742px] w-[857px] -mr-[103px]">
-          <Image
-            src="/v2/footer-art.png"
-            alt=""
-            fill
-            sizes="857px"
-            className="object-contain object-right-bottom"
-            priority
-          />
+          <FooterAscii />
         </div>
       </div>
 

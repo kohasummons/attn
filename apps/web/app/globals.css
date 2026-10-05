@@ -297,9 +297,9 @@ body {
 }
 
 /* Retain the existing square treatment on pages awaiting the redesign. */
-body:not(:has(.af-site)) *,
-body:not(:has(.af-site)) *::before,
-body:not(:has(.af-site)) *::after {
+body:not(:has(.af-site)):not(:has(.superrad-root)) *,
+body:not(:has(.af-site)):not(:has(.superrad-root)) *::before,
+body:not(:has(.af-site)):not(:has(.superrad-root)) *::after {
   border-radius: 0 !important;
 }
 

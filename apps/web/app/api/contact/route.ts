@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 
-const recipient = "hello@attentionfactory.io";
+const recipient = "sales@attentionfactory.io";
 const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 type ContactPayload = {
@@ -46,7 +46,7 @@ export async function POST(request: Request) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const from = "Attention Factory Website <hello@attentionfactory.io>";
+  const from = "Attention Factory Website <hello@hermes.attentionfactory.io>";
 
   if (!apiKey) {
     return NextResponse.json(

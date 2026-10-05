@@ -4,7 +4,7 @@ export function Business() {
   return (
     <section className="relative overflow-hidden bg-[#d9d9d9]">
       <Image
-        src="/v2/cta-bg.png"
+        src="/images/backgrounds/cta-bg.png"
         alt=""
         fill
         sizes="100vw"
