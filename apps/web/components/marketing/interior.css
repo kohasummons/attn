@@ -120,12 +120,6 @@
   .af-labs .af-product-screen {
     height: 250px;
   }
-  .af-labs .af-product:first-child .af-product-art {
-    background-image: url("/redesign/product-1-desktop-bg.png") !important;
-  }
-  .af-labs .af-product:nth-child(2) .af-product-art {
-    background-image: url("/redesign/product-2-desktop-bg.png") !important;
-  }
   .af-labs .af-product-status {
     font-size: 14px;
     color: white;

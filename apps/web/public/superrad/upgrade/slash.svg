@@ -1,0 +1,15 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="23" height="24" viewBox="0 0 23 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="slash.svg" clip-path="url(#clip0_0_7)">
+<path id="Vector" d="M11.7202 0.750072V0.750072C17.7913 0.750072 22.7202 5.67901 22.7202 11.7501V11.7501C22.7202 17.8211 17.7913 22.7501 11.7202 22.7501V22.7501C5.64913 22.7501 0.720195 17.8211 0.720195 11.7501V11.7501C0.720195 5.67901 5.64913 0.750072 11.7202 0.750072V0.750072" stroke="url(#paint0_linear_0_7)" stroke-width="1.01261"/>
+<path id="Vector_2" fill-rule="evenodd" clip-rule="evenodd" d="M7.471 7.78603C7.72728 7.52975 8.1428 7.52975 8.39908 7.78603L11.435 10.822L14.471 7.78603C14.7272 7.52975 15.1428 7.52975 15.399 7.78603C15.6553 8.04231 15.6553 8.45783 15.399 8.71411L12.3631 11.7501L15.399 14.7861C15.6553 15.0423 15.6553 15.4579 15.399 15.7141C15.1428 15.9704 14.7272 15.9704 14.471 15.7141L11.435 12.6782L8.39908 15.7141C8.1428 15.9704 7.72728 15.9704 7.471 15.7141C7.21472 15.4579 7.21472 15.0423 7.471 14.7861L10.5069 11.7501L7.471 8.71411C7.21472 8.45783 7.21472 8.04231 7.471 7.78603V7.78603" fill="#EAEAEA"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_7" x1="10.7562" y1="0.750088" x2="10.7134" y2="22.75" gradientUnits="userSpaceOnUse">
+<stop offset="0.59375" stop-color="#FEC352"/>
+<stop offset="1" stop-color="#F8B5F6"/>
+</linearGradient>
+<clipPath id="clip0_0_7">
+<rect width="23" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>

@@ -29,14 +29,18 @@ export function EventSection() {
 
   return (
     <section id="events" className="af-event" aria-labelledby="event-title">
-      <Artwork name="event-desktop-bg.png" mobileName="event-mobile-bg.png" />
+      <Artwork
+        blend="both"
+        name="event-desktop-bg.png"
+        mobileName="event-mobile-bg.png"
+      />
       <div className="af-event-fade" aria-hidden="true" />
       <PageContainer>
         <Eyebrow>Weekends of AI</Eyebrow>
         <h2 id="event-title">
           Join us every weekend to learn a new concept in AI
         </h2>
-        <ActionLink href={`${links.workshops}/signup`}>Register Now</ActionLink>
+        <ActionLink href={links.workshops}>Register Now</ActionLink>
         <div
           className="af-countdown"
           role="timer"

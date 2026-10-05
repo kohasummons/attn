@@ -1,9 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState, type FormEvent, type ReactNode } from "react";
+import { useState, useEffect, type FormEvent, type ReactNode } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { X } from "lucide-react";
+import { DitherImage } from "@/components/effects/dither/dither-image";
+import { interDisplay } from "./fonts";
+import "./contact-dialog.css";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -29,9 +31,25 @@ export function ContactDialog({
 }) {
   const [open, setOpen] = useState(false);
   const reduceMotion = useReducedMotion();
+  // Legacy contact URLs open the existing redesigned modal on the homepage.
+  useEffect(() => {
+    if (className !== "af-contact-button") return;
+    const sync = () => {
+      if (window.location.hash === "#contact") setOpen(true);
+    };
+    sync();
+    window.addEventListener("hashchange", sync);
+    return () => window.removeEventListener("hashchange", sync);
+  }, [className]);
+  function changeOpen(next: boolean) {
+    setOpen(next);
+    if (!next && window.location.hash === "#contact") {
+      window.history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
+    <Dialog open={open} onOpenChange={changeOpen}>
       <DialogTrigger asChild>
         <Button className={className}>{children}</Button>
       </DialogTrigger>
@@ -49,7 +67,7 @@ export function ContactDialog({
             </DialogOverlay>
             <DialogSurface forceMount asChild>
               <motion.div
-                className="af-dialog"
+                className={`af-dialog af-contact-dialog ${interDisplay.variable}`}
                 initial={{
                   opacity: 0,
                   transform: reduceMotion
@@ -66,19 +84,11 @@ export function ContactDialog({
                 transition={{ duration: 0.2, ease: [0.23, 1, 0.32, 1] }}
               >
                 <div className="af-contact-art">
-                  <Image
-                    src={asset("contact-painting.png")}
-                    alt=""
-                    fill
-                    sizes="474px"
-                  />
-                  <Image
-                    className="af-contact-logo"
-                    src={asset("9875e.svg")}
-                    alt=""
-                    width={420}
-                    height={74}
-                  />
+                  <DitherImage src="/redesign/originals/contact.webp" tuningGroup="contact" dim={0.4} sizes="(max-width: 600px) calc(100vw - 80px), 474px" />
+                  <picture className="af-contact-logo">
+                    <source media="(max-width: 600px)" srcSet={asset("contact-logo-mobile.svg")} />
+                    <Image src={asset("9875e.svg")} alt="" width={367.227} height={49} />
+                  </picture>
                 </div>
                 <DialogClose asChild>
                   <Button
@@ -87,14 +97,14 @@ export function ContactDialog({
                     className="af-close"
                     aria-label="Close contact form"
                   >
-                    <X size={18} />
+                    <Image src={asset("contact-close.svg")} alt="" width={12} height={12} />
                   </Button>
                 </DialogClose>
                 <DialogTitle className="af-dialog-title">
-                  We will love to hear from you
+                  Tell us what you are trying to do.
                 </DialogTitle>
                 <DialogDescription className="sr-only">
-                  Tell us about your project or ask about our programs.
+                  We will help you find the right next step.
                 </DialogDescription>
                 <ContactForm />
               </motion.div>
@@ -134,22 +144,22 @@ function ContactForm() {
     <form className="af-form" onSubmit={submit}>
       <div className="af-form-row">
         <label>
-          Name
+          <span>Name <b aria-hidden="true">*</b></span>
           <Input
             name="name"
             autoComplete="name"
-            placeholder="Your full name"
+            placeholder="What can we call you?"
             required
             maxLength={120}
           />
         </label>
         <label>
-          Email address
+          <span>Email Address <b aria-hidden="true">*</b></span>
           <Input
             name="email"
             type="email"
             autoComplete="email"
-            placeholder="you@example.com"
+            placeholder="What is your email?"
             required
             maxLength={254}
           />
@@ -157,33 +167,35 @@ function ContactForm() {
       </div>
       <div className="af-form-row">
         <label>
-          Company (optional)
+          <span>Company <em>- optional</em></span>
           <Input
             name="company"
             autoComplete="organization"
-            placeholder="Company name"
+            placeholder="Enter company name"
             maxLength={180}
           />
         </label>
         <label>
-          Subject
+          <span>Subject of Inquiry <b aria-hidden="true">*</b></span>
           <NativeSelect name="topic" defaultValue="" required>
             <option value="" disabled>
-              Select a subject
+              Select scope
             </option>
-            <option>Training and workshops</option>
+            <option>Learning or course support</option>
+            <option>Team training</option>
             <option>Software development</option>
             <option>Workflow automation</option>
-            <option>AI planning</option>
+            <option>AI planning for an organization</option>
+            <option>Partnership, speaking, or media</option>
             <option>Something else</option>
           </NativeSelect>
         </label>
       </div>
       <label>
-        Message
+        <span>Message <b aria-hidden="true">*</b></span>
         <Textarea
           name="message"
-          placeholder="Tell us a little about what you have in mind…"
+          placeholder="Dear attention factory..."
           required
           maxLength={10000}
           rows={4}

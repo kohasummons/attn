@@ -27,18 +27,15 @@ import { links } from "./content";
 
 const serviceLinks = [
   { label: "Our services", href: links.services },
-  { label: "Training for organizations", href: "/v2/organizations" },
+  { label: "Training for organizations", href: "/#top" },
 ];
 const hqLinks = [
   { label: "Courses", href: links.university },
-  { label: "Join the HQ", href: links.waitlist },
+  { label: "Join AttentionHQ", href: links.waitlist },
   { label: "About us", href: "/about" },
 ];
-const mainLinks = [
-  { label: "Labs", href: "/labs" },
-  { label: "Workshops", href: links.workshops },
-  { label: "Events", href: "/#events" },
-];
+const mainLinks = [{ label: "Labs", href: "/labs" }];
+const upcomingNavItems = ["Workshops", "Events"] as const;
 
 export function SiteHeader() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -76,7 +73,7 @@ export function SiteHeader() {
                 <NavigationMenuContent className="af-nav-dropdown">
                   {group.items.map((item) => (
                     <NavigationMenuLink
-                      key={item.href}
+                      key={item.label}
                       render={<Link href={item.href} />}
                     >
                       {item.label}
@@ -85,11 +82,9 @@ export function SiteHeader() {
                 </NavigationMenuContent>
               </NavigationMenuItem>
             ))}
-            {mainLinks.slice(1).map((item) => (
-              <NavigationMenuItem key={item.label}>
-                <NavigationMenuLink render={<Link href={item.href} />}>
-                  {item.label}
-                </NavigationMenuLink>
+            {upcomingNavItems.map((label) => (
+              <NavigationMenuItem key={label}>
+                <span className="af-nav-placeholder">{label}</span>
               </NavigationMenuItem>
             ))}
           </NavigationMenuList>
@@ -138,6 +133,11 @@ export function SiteHeader() {
                 >
                   {item.label}
                 </Link>
+              ))}
+              {upcomingNavItems.map((label) => (
+                <span className="af-nav-placeholder" key={label}>
+                  {label}
+                </span>
               ))}
             </nav>
             <ContactDialog className="af-button" />

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { GlassScene, GlassSurface } from "@/components/effects/glass/glass";
 import Link from "next/link";
 import { ContactDialog } from "./contact-dialog";
 import { links } from "./content";
@@ -12,7 +13,7 @@ const columns = [
       ["Workflow Automation", links.services],
       ["AI Planning", links.services],
       ["Ongoing AI Support", links.services],
-      ["Organization Training", "/v2/organizations"],
+      ["Organization Training", "/#top"],
     ],
   },
   {
@@ -36,52 +37,77 @@ const columns = [
     items: [
       ["About Us", "/about"],
       ["Contact Us", null],
-      ["Privacy Policy", "/v2/privacy-policy"],
-      ["Terms of Usage", "/v2/terms-of-service"],
+      ["Privacy Policy", "/privacy-policy"],
+      ["Terms of Usage", "/terms-of-service"],
     ],
   },
 ];
+const aiQuestion =
+  "Tell me about Attention Factory (https://attentionfactory.io) and how it can help me or my team learn and use AI through training, workshops, software development, and workflow automation.";
+
+const encodedAiQuestion = encodeURIComponent(aiQuestion);
+
 const agents = [
-  { name: "ChatGPT", icon: "agent-chatgpt.svg", href: "https://chatgpt.com" },
-  { name: "Claude", icon: "agent-claude.svg", href: "https://claude.ai" },
-  { name: "Grok", icon: "agent-grok.svg", href: "https://grok.com" },
-  { name: "Gemini", icon: "6792f.svg", href: "https://gemini.google.com" },
+  {
+    name: "ChatGPT",
+    icon: "agent-chatgpt.svg",
+    href: `https://chatgpt.com/?prompt=${encodedAiQuestion}`,
+  },
+  {
+    name: "Claude",
+    icon: "agent-claude.svg",
+    href: `https://claude.ai/new?q=${encodedAiQuestion}`,
+  },
+  {
+    name: "Grok",
+    icon: "agent-grok.svg",
+    href: `https://grok.com/?q=${encodedAiQuestion}`,
+  },
+  {
+    name: "Google AI",
+    icon: "6792f.svg",
+    href: `https://www.google.com/search?udm=50&source=searchlabs&q=${encodedAiQuestion}`,
+  },
   {
     name: "Perplexity",
     icon: "agent-perplexity.svg",
-    href: "https://perplexity.ai",
+    href: `https://www.perplexity.ai/search/new?q=${encodedAiQuestion}`,
   },
 ];
 
 function AgentCard() {
   return (
-    <div className="af-agent-card">
-      <Artwork name="agent-painting.png" mobileName="agent-mobile-bg.png" />
+    <GlassScene className="af-agent-card" backdropSelector=".af-artwork img">
+      <Artwork
+        name="agent-painting.png"
+        mobileName="agent-mobile-bg.png"
+        sizes="(max-width: 600px) calc(100vw - 48px), 326px"
+      />
       <div className="af-agent-content">
         <div className="af-agent-links">
           {agents.map((agent) => (
-            <a
+            <GlassSurface
               key={agent.name}
-              href={agent.href}
-              target="_blank"
-              rel="noreferrer"
+              render={<a href={agent.href} target="_blank" rel="noreferrer" />}
             >
-              <Image src={asset(agent.icon)} alt="" width={32} height={32} />
+              <GlassSurface className="af-agent-icon" render={<span />}>
+                <Image src={asset(agent.icon)} alt="" width={32} height={32} />
+              </GlassSurface>
               {agent.name}
               <span className="sr-only"> (opens in a new tab)</span>
-            </a>
+            </GlassSurface>
           ))}
         </div>
         <p>Ask your favourite agent about attention factory</p>
       </div>
-    </div>
+    </GlassScene>
   );
 }
 
 export function SiteFooter() {
   return (
     <footer className="af-footer">
-      <PageContainer>
+      <PageContainer className="af-footer-wordmark-container">
         <picture className="af-wordmark" aria-hidden="true">
           <source
             media="(max-width: 600px)"
@@ -97,6 +123,7 @@ export function SiteFooter() {
       </PageContainer>
       <div className="af-footer-body">
         <Artwork
+          blend="top"
           name="footer-desktop-bg.png"
           mobileName="footer-mobile-bg.png"
         />
@@ -115,10 +142,6 @@ export function SiteFooter() {
               <p>
                 AI is your multiplier. We make you equipped to become 10x with
                 it
-              </p>
-              <p className="af-mobile-only af-system-status">
-                <span aria-hidden="true" />
-                All systems operational
               </p>
             </div>
             <div className="af-footer-columns">
@@ -140,7 +163,7 @@ export function SiteFooter() {
               ))}
             </div>
             <AgentCard />
-            <p className="af-mobile-only af-system-status af-footer-status">
+            <p className="af-system-status af-footer-status">
               <span aria-hidden="true" />
               All systems operational
             </p>

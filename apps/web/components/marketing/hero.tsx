@@ -3,6 +3,7 @@ import { Building2 } from "lucide-react";
 import { SiteHeader } from "./navigation";
 import { ActionLink, Artwork, PageContainer, asset } from "./primitives";
 import { links } from "./content";
+import { HqLaunchCountdown } from "./hq-launch-countdown";
 
 export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
   const about = page === "about";
@@ -10,6 +11,8 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
   return (
     <section className={`af-hero${labs ? " af-hero-compact" : ""}`}>
       <Artwork
+        tuningGroup="hero"
+        blend="bottom"
         name={
           page === "home"
             ? "hero-desktop-bg.png"
@@ -24,6 +27,13 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
               ? "about-mobile-bg.png"
               : undefined
         }
+        // A portrait hero crops a wide painting: request enough pixels for
+        // its rendered height, rather than only the narrow viewport width.
+        sizes={
+          labs
+            ? "(max-width: 600px) 700px, 100vw"
+            : "(max-width: 600px) 1200px, (max-width: 1100px) 1400px, 100vw"
+        }
         priority
       />
       <div className="af-hero-fade" aria-hidden="true" />
@@ -32,11 +42,14 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
       <PageContainer className="af-hero-content">
         {labs ? (
           <>
-            <h1>Attention Factory Labs</h1>
+            <h1>attn.labs</h1>
           </>
         ) : (
           <>
-            <a className="af-launch-badge" href={links.waitlist}>
+            <a
+              className="af-launch-badge"
+              href="https://academy.attentionfactory.io/ai-university"
+            >
               <Building2
                 className="af-desktop-copy"
                 size={20}
@@ -49,39 +62,39 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
                 width={18}
                 height={18}
               />
-              <span className="af-desktop-copy">
-                Attention HQ Opens in 12 Days
-              </span>
-              <span className="af-mobile-copy">
-                Attention HQ Opens in 12 Days
-              </span>
+              <HqLaunchCountdown className="af-desktop-copy" />
+              <HqLaunchCountdown className="af-mobile-copy" />
             </a>
             <h1>
               {about ? (
                 <>
-                  We help people <em>learn AI</em> for the purpose of{" "}
-                  <em>creating value</em>
+                  We help people <em>learn AI</em>, use it at work, and{" "}
+                  <em>build with it.</em>
                 </>
               ) : (
                 <>
-                  Learn to <em>leverage AI</em> not just talk about{" "}
-                  <em>leveraging AI</em>
+                  AI is a <em>multiplier</em>.
+                  <br />
+                  We make it <em>work for you</em>.
                 </>
               )}
             </h1>
             <p>
               {about
-                ? "What started as free online content has grown into learning programs for individuals, training for teams, and software and automation for organizations."
-                : "You now use AI to automate processes, but there is a lot of value you leave on the table. We are here to bring that value to you"}
+                ? "Attention Factory is an AI education and technology company. What started as free online content has grown into learning programs for individuals, training for teams, and software and automation for organizations."
+                : (
+                  <>
+                    Getting value from AI is a different job.
+                    <br />
+                    We help you do that.
+                  </>
+                )}
             </p>
             <ActionLink href={about ? links.waitlist : links.university}>
               {about ? (
-                "Join The HQ"
+                "Join AttentionHQ"
               ) : (
-                <>
-                  <span className="af-desktop-copy">Join Our Training</span>
-                  <span className="af-mobile-copy">View Our Courses</span>
-                </>
+                "Join the AI University"
               )}
             </ActionLink>
           </>

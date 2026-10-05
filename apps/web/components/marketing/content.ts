@@ -1,16 +1,16 @@
 export const links = {
   university: "https://app.attentionfactory.io",
-  waitlist: "https://nestuge.com/attnhq-waitlist",
+  waitlist: "https://app.attentionfactory.io/attnhq-waitlist",
   workshops: "https://weekendsofai.com",
-  services: "/v2/services",
-  guides: "/v2/playbooks",
+  services: "/#top",
+  guides: "/playbooks",
 };
 
 export const services = [
   {
     title: "Education",
     description:
-      "Training for you and your team, to get the best of AI knowledge to implement it",
+      "Learn AI through structured courses and practical projects at the AI University.",
     action: "Visit University",
     href: links.university,
     icon: "7644e.svg",
@@ -18,29 +18,30 @@ export const services = [
     mobileAction: "Visit University",
   },
   {
-    title: "Team Trainings",
+    title: "Team Training",
     description:
-      "Training for you and your team, to get the best of AI knowledge to implement it",
+      "Training built around your team’s roles, tools, and everyday work.",
     action: "View Workshops",
-    href: "/v2/organizations",
+    href: "/#top",
     icon: "518f4.svg",
     mobileIcon: "mobile-training.png",
     mobileAction: "View Workshops",
   },
   {
-    title: "Distributions",
+    title: "Distribution",
     description:
-      "Training for you and your team, to get the best of AI knowledge to implement it",
-    action: "View Workshops",
+      "Bring your work to the people it is made for through content and distribution.",
+    action: "Explore Distribution",
     href: links.services,
     icon: "602b4.svg",
     mobileIcon: "mobile-distribution.png",
-    mobileAction: "View Workshops",
+    mobileAction: "Explore Distribution",
   },
   {
     title: "Attention Films",
+    href: "/#top",
     description:
-      "Training for you and your team, to get the best of AI knowledge to implement it",
+      "Explore storytelling and film production with AI, from an idea to the screen.",
     action: "View Our Films",
     icon: "6ca45.svg",
     mobileIcon: "mobile-film.png",
@@ -64,8 +65,8 @@ export const partnerships = [
     description:
       "We build training around your team's roles, tools, and daily work, so the learning shows up in what people do next.",
     action: "Register Your Team",
-    mobileAction: "iRegister Your Team",
-    href: "/v2/organizations",
+    mobileAction: "Register Your Team",
+    href: "/#top",
     icon: "518f4.svg",
     mobileIcon: "mobile-training.png",
   },
@@ -91,36 +92,29 @@ export const partnerships = [
   },
 ];
 
-export const faqs = [
+export const testimonials = [
   {
-    question: "What services do you offer?",
-    answer:
-      "We build custom software, automate business workflows, help organizations plan and carry out AI adoption, and train individuals and teams. Our education arm includes Attention University and the free Weekends of AI program.",
+    headline: "I don't just talk about AI anymore.",
+    quote:
+      "Before the bootcamp, I understood AI in theory. I could talk about it, but I couldn't actually ship anything. Since then, I've built and launched websites, apps, AI agents, and my own digital product. I don't just talk about AI anymore. I build it and ship it, for myself and for real clients.",
+    name: "Dapo Ijaola",
+    role: "AI Fellow",
+    cohort: "Alpha cohort",
   },
   {
-    question: "How do you price your services?",
-    answer:
-      "Pricing depends on the scope, complexity, and support your project needs. Get in touch with your goals and we’ll work through the right approach with you.",
+    headline: "I stopped guessing, saved hours of trial and error…",
+    quote:
+      "Before the mentorship, I was overwhelmed and lacked direction. … The mentorship gave me clear guidance, practical systems, and hands-on skills. I stopped guessing, saved hours of trial and error, and became more confident and intentional with my content.",
+    name: "Sonia Omasheye",
+    role: "Business Manager",
   },
   {
-    question: "How do we start a project?",
-    answer:
-      "Use the contact form to tell us what you want to build or improve. We’ll follow up to understand your goals, scope, and next steps.",
-  },
-  {
-    question: "Do you work with clients from anywhere in the world?",
-    answer:
-      "Yes. We work remotely with individuals and teams around the world.",
-  },
-  {
-    question: "Do I need technical knowledge to join your training?",
-    answer:
-      "No. Weekends of AI is a practical place to start. Our programs help you move from understanding AI to applying it to your own work.",
-  },
-  {
-    question: "Can you build software for an early idea?",
-    answer:
-      "Yes. Share the problem you’re trying to solve, who it’s for, and what you have so far. We can help you decide what to build first.",
+    headline: "I left with practical, hands-on skills…",
+    quote:
+      "I wasn't sure I would get enough value from the program. I left with practical, hands-on skills and built and deployed apps using Claude Code, Lovable, Replit, and Emergent. I would definitely recommend it.",
+    name: "S.K.",
+    role: "AI Fellow",
+    cohort: "Bravo cohort",
   },
 ];
 

@@ -44,6 +44,10 @@
 .af-dialog button {
   -webkit-tap-highlight-color: transparent;
 }
+:where(.af-site, .af-dialog, .af-mobile-menu, .af-nav-dropdown)
+  :is(button, [role="button"]):not(:disabled):not([aria-disabled="true"]) {
+  cursor: pointer;
+}
 .af-site :focus-visible,
 .af-dialog :focus-visible,
 .af-mobile-menu :focus-visible,
@@ -201,6 +205,7 @@
   padding: 59px 0 0;
 }
 .af-header-inner {
+  width: 88.9%;
   display: flex;
   align-items: center;
   gap: 28px;
@@ -210,7 +215,8 @@
   flex-shrink: 0;
 }
 .af-desktop-nav [data-slot="navigation-menu-link"],
-.af-desktop-nav [data-slot="navigation-menu-trigger"] {
+.af-desktop-nav [data-slot="navigation-menu-trigger"],
+.af-desktop-nav .af-nav-placeholder {
   color: white;
   font-size: 16px;
   padding: 10px 12px;
@@ -221,6 +227,19 @@
 .af-desktop-nav [data-slot="navigation-menu-trigger"]:hover,
 .af-desktop-nav [data-slot="navigation-menu-trigger"][data-popup-open] {
   background: #ffffff20;
+}
+/* Keep white header labels readable in the UI library's focus/active states. */
+.af-desktop-nav :is([data-slot="navigation-menu-link"], [data-slot="navigation-menu-trigger"]):is(:focus, :active, [data-active], [data-open], [data-popup-open]) {
+  color: white;
+  background: #ffffff20;
+  box-shadow: none;
+}
+.af-desktop-nav :is([data-slot="navigation-menu-link"], [data-slot="navigation-menu-trigger"]):focus:not(:focus-visible) {
+  outline: none;
+}
+.af-desktop-nav .af-nav-placeholder {
+  display: block;
+  cursor: default;
 }
 .af-nav-dropdown {
   min-width: 240px;
@@ -321,17 +340,55 @@
   margin-inline: auto;
 }
 .af-logos {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  display: block;
   margin-top: 40px;
   border: 1px dashed var(--af-line);
 }
-.af-logos img {
-  width: 100%;
+.af-logo-viewport {
+  overflow: hidden;
+}
+.af-logo-track {
+  display: flex;
+  width: calc(100% * var(--brand-count) / 5 * 2);
+}
+.af-logo-group {
+  display: flex;
+  flex: 0 0 50%;
+  min-width: 0;
+}
+.af-logo-cell {
+  display: flex;
+  flex: 1 0 0;
+  min-width: 0;
+  height: 110px;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-inline-end: 1px dashed var(--af-line);
+  background: white;
+}
+.af-logo-lockup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  max-width: 100%;
+  color: #171717;
+}
+.af-logo-lockup img {
   height: auto;
-  aspect-ratio: 226 / 112;
+  max-width: 100%;
+  min-width: 0;
   object-fit: contain;
 }
+.af-logo-lockup span {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+}
+
 .af-landscape-section {
   min-height: 777px;
 }
@@ -364,7 +421,7 @@
 }
 .af-lab-ribbon {
   display: flex;
-  gap: 24px;
+  --ticker-gap: 24px;
   overflow: hidden;
   white-space: nowrap;
   background: var(--af-orange);
@@ -373,7 +430,21 @@
   margin-top: 40px;
   font-size: 14px;
 }
-.af-lab-ribbon span {
+.af-ticker-track {
+  display: flex;
+  flex: 0 0 auto;
+  width: max-content;
+}
+.af-ticker-group {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: space-around;
+  min-width: 100vw;
+  gap: var(--ticker-gap, 24px);
+  padding-right: var(--ticker-gap, 24px);
+}
+.af-lab-ribbon-item {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -410,6 +481,23 @@
   object-fit: cover;
   object-position: top;
   transition: transform 220ms var(--ease-out);
+}
+/* The lock lens samples this exact centered backdrop crop. */
+.af-redacted .af-product-screen > img {
+  object-position: center;
+}
+.af-product-lock.glass-surface {
+  display: grid;
+  place-items: center;
+  width: 80px;
+  height: 80px;
+  border: 1px solid #ffffff80;
+  border-radius: 50%;
+  z-index: 2;
+  pointer-events: none;
+}
+.af-redacted-label {
+  z-index: 2;
 }
 .af-product-visit {
   position: absolute;
@@ -644,9 +732,14 @@
   margin-inline: auto;
 }
 .af-article-grid article {
+  position: relative;
   padding: 16px;
   border: 1px solid #f0f0f0;
-  border-radius: 16px;
+  border-radius: 0;
+}
+.af-article-locked {
+  color: #3d3d3d;
+  cursor: default;
 }
 .af-article-grid article h3 {
   font-size: 24px;
@@ -699,6 +792,18 @@
   font-weight: 500;
   line-height: 1.2;
   letter-spacing: -0.045em;
+}
+.af-count-up {
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+}
+.af-count-up-width {
+  visibility: hidden;
+}
+.af-count-up-value {
+  position: absolute;
+  inset: 0;
 }
 .af-metrics dd {
   max-width: 290px;
@@ -880,6 +985,7 @@
 }
 .af-agent-content {
   position: relative;
+  z-index: 2;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -909,6 +1015,17 @@
   border: 1px solid white;
   padding: 4px 6px;
   border-radius: 64px;
+}
+.af-agent-icon {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  border-radius: 50%;
+}
+.af-agent-card .af-artwork picture {
+  position: absolute;
+  inset: 0;
 }
 .af-agent-links img {
   flex: 0 0 auto;
@@ -1061,7 +1178,8 @@
   gap: 4px;
   margin-block: 24px;
 }
-.af-mobile-menu nav a {
+.af-mobile-menu nav a,
+.af-mobile-menu nav .af-nav-placeholder {
   padding: 10px 0;
   font-size: 18px;
   border-bottom: 1px dashed #e3e3e3;
@@ -1094,7 +1212,8 @@
     gap: 16px;
   }
   .af-desktop-nav [data-slot="navigation-menu-link"],
-  .af-desktop-nav [data-slot="navigation-menu-trigger"] {
+  .af-desktop-nav [data-slot="navigation-menu-trigger"],
+  .af-desktop-nav .af-nav-placeholder {
     padding-inline: 8px;
     font-size: 14px;
   }
@@ -1249,14 +1368,7 @@
     margin: auto;
   }
   .af-logos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     margin-top: 32px;
-  }
-  .af-logos img {
-    width: 33.333%;
-    height: auto;
   }
   .af-landscape-section {
     min-height: 720px;
@@ -1315,9 +1427,6 @@
   .af-testimonial-grid {
     grid-template-columns: 1fr;
     border-inline-width: 8px;
-  }
-  .af-testimonial[aria-hidden="true"] {
-    display: none;
   }
   .af-testimonial {
     padding: 24px 16px;
@@ -1513,3 +1622,22 @@
     display: none;
   }
 }
+
+/* Keep navigation inside the hero rails before desktop links become crowded. */
+@media (max-width: 1100px) {
+  .af-desktop-nav,
+  .af-header-contact {
+    display: none;
+  }
+  .af-mobile-toggle {
+    display: inline-flex;
+  }
+}
+@media (max-width: 600px) {
+  .af-header-inner {
+    width: 100%;
+  }
+}
+
+/* Temporary service destinations return immediately to the homepage top. */
+html:has(#top:target) { scroll-behavior: auto; }

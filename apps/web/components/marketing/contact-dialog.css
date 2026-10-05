@@ -1,0 +1,36 @@
+/* Contact frames: desktop 522px, mobile 392px at a 440px viewport. */
+.af-dialog.af-contact-dialog { --font-inter: var(--font-inter-display); font-family: var(--font-inter-display), sans-serif; }
+.af-dialog.af-contact-dialog .af-contact-logo { left: 50%; width: 367.227px; height: 49px; transform: translate(-50%, -50%); }
+.af-contact-logo img { display: block; }
+.af-dialog.af-contact-dialog .af-dialog-title { text-align: center; letter-spacing: -0.02em; }
+.af-dialog.af-contact-dialog .af-close { top: 40px; right: 40px; background: linear-gradient(#ffffff80,#ffffff26); border: 1px solid white; color: white; backdrop-filter: blur(4px); }
+.af-dialog.af-contact-dialog .af-form { gap: 24px; }
+.af-dialog.af-contact-dialog .af-form label { min-width: 0; font-size: 16px; line-height: 22px; }
+.af-dialog.af-contact-dialog label b { color: #fb4337; font-weight: 500; margin-left: 8px; }
+.af-dialog.af-contact-dialog label em { color: #a3a3a3; margin-left: 8px; }
+.af-dialog.af-contact-dialog .af-form input,
+.af-dialog.af-contact-dialog .af-form select,
+.af-dialog.af-contact-dialog .af-form textarea { height: 48px; padding: 12px 7px; border: 1px solid #e5e5e5; border-radius: 8px; background: #f2f2f2; font: 500 16px/1.4 var(--font-inter-display), sans-serif; letter-spacing: -0.02em; box-shadow: none; }
+.af-dialog.af-contact-dialog .af-form input::placeholder,
+.af-dialog.af-contact-dialog .af-form textarea::placeholder { color: #a3a3a3; opacity: 1; }
+.af-dialog.af-contact-dialog .af-form select:invalid { color: #a3a3a3; }
+.af-dialog.af-contact-dialog .af-form select { padding-right: 32px; background-image: url('/redesign/contact-chevron.svg'); background-repeat: no-repeat; background-position: right 15px center; }
+.af-dialog.af-contact-dialog [data-slot="native-select-wrapper"] > svg { display: none; }
+.af-dialog.af-contact-dialog .af-form textarea { height: 114px; min-height: 114px; }
+.af-dialog.af-contact-dialog .af-form > .af-button { width: calc(100% - 8px); margin: 4px; min-height: 66px; font-size: 20px; font-weight: 600; }
+@media (max-width: 600px) {
+  .af-dialog.af-contact-dialog { width: calc(100% - 48px); padding: 16px; border-radius: 24px; }
+  .af-dialog.af-contact-dialog .af-contact-art { height: 156px; margin-bottom: 16px; }
+  .af-dialog.af-contact-dialog .af-contact-logo { width: 245.227px; height: 33px; }
+  .af-dialog.af-contact-dialog .af-contact-logo img { width: 245.227px; height: 33px; }
+  .af-dialog.af-contact-dialog .af-close { top: 32px; right: 32px; }
+  .af-dialog.af-contact-dialog .af-dialog-title { font-size: 24px; margin-bottom: 16px; }
+  .af-dialog.af-contact-dialog .af-form { gap: 16px; }
+  .af-dialog.af-contact-dialog .af-form-row { grid-template-columns: minmax(0,1fr) minmax(0,1fr); }
+  .af-dialog.af-contact-dialog .af-form label { font-size: 14px; line-height: 20px; }
+  .af-dialog.af-contact-dialog .af-form input,
+  .af-dialog.af-contact-dialog .af-form select,
+  .af-dialog.af-contact-dialog .af-form textarea { font-size: 14px; }
+  .af-dialog.af-contact-dialog .af-form textarea { height: 80px; min-height: 80px; }
+  .af-dialog.af-contact-dialog .af-form > .af-button { min-height: 55px; margin-block: 4px; font-size: 16px; }
+}

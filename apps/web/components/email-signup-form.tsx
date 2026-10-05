@@ -28,7 +28,7 @@ declare global {
 let confettiScriptPromise: Promise<void> | undefined;
 
 function loadConfettiScript() {
-  if (window.confetti) {
+  if (typeof window.confetti === "function") {
     return Promise.resolve();
   }
 
@@ -174,7 +174,7 @@ export function EmailSignupForm() {
         title="signup submission"
       />
     </form> */}
-    <a href="https://nestuge.com/attnhq-waitlist">
+    <a href="https://app.attentionfactory.io/attnhq-waitlist">
       <Button className="h-14 w-full cursor-pointer rounded-md bg-black text-[16px] font-semibold text-white disabled:cursor-not-allowed disabled:opacity-60">
         join to waitlist 
         <span className="inline-block size-4 ml-2 text-[#fff]">

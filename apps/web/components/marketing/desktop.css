@@ -10,24 +10,24 @@
   inset: 0;
   pointer-events: none;
 }
-.af-section-rails picture {
+.af-section-rails .af-rail-position {
   position: absolute;
   top: -97px;
-  left: max(24px, calc(50% - 588px));
+  left: max(24px, calc(50% - 580px));
 }
-.af-section-rails picture + picture {
+.af-section-rails .af-rail-position + .af-rail-position {
   left: auto;
   right: max(24px, calc(50% - 580px));
   top: -49px;
 }
-.af-section-rails img {
+.af-section-rails .af-floating-rail {
   width: 64px;
   height: auto;
 }
-.af-section-rails-trust picture {
+.af-section-rails-trust .af-rail-position {
   top: -9px;
 }
-.af-section-rails-trust picture + picture {
+.af-section-rails-trust .af-rail-position + .af-rail-position {
   top: -9px;
 }
 .af-trust::before,
@@ -38,10 +38,7 @@
 .af-metrics::after {
   display: none;
 }
-.af-hero-fade,
-.af-landscape-fade,
-.af-event-fade,
-.af-footer-fade {
+.af-hero-fade {
   display: none;
 }
 .af-story-content h2 span {
@@ -154,10 +151,6 @@
     padding-inline: 16px;
     background: #f0f0f0;
   }
-  .af-logos img {
-    height: 110px;
-    background: white;
-  }
   .af-landscape-section .af-eyebrow {
     margin-bottom: 16px;
   }
@@ -222,9 +215,9 @@
     padding: 14px 0 12px;
     font-size: 20px;
     line-height: 21px;
-    gap: 16px;
+    --ticker-gap: 16px;
   }
-  .af-lab-ribbon span {
+  .af-lab-ribbon-item {
     gap: 8px;
   }
   .af-hq {
@@ -248,7 +241,6 @@
     max-width: 411px;
   }
   .af-services {
-    min-height: 518px;
     padding: 40px 0;
   }
   .af-services .af-split,
@@ -256,26 +248,22 @@
     grid-template-columns: minmax(0, 556fr) minmax(0, 587fr);
     gap: 17px;
   }
+  /* The grid bounds the sticky column; the cards use the page scroll. */
+  .af-services-summary {
+    position: sticky;
+    top: 32px;
+    display: flex;
+    flex-direction: column;
+    min-height: min(720px, calc(100svh - 64px));
+  }
   .af-services-intro {
     max-width: 411px;
-    margin-top: 187px !important;
-  }
-  .af-about .af-services-intro {
-    margin-top: 207px !important;
+    margin-top: auto !important;
+    padding-top: 64px;
   }
   .af-services-list {
-    height: 438px;
-    overflow-y: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: none;
     border-inline: 1px dashed #ccc;
     border-top: 0;
-  }
-  .af-services-list::-webkit-scrollbar {
-    display: none;
-  }
-  .af-about .af-services-list {
-    height: 478px;
   }
   .af-services-list article {
     display: flex;
@@ -386,9 +374,6 @@
   }
   .af-article-grid article {
     border: 1px dashed #ccc;
-  }
-  .af-article-grid article:not(:first-child) {
-    border-radius: 0;
   }
   .af-article-image {
     height: 164px;
@@ -628,9 +613,6 @@
   .af-faq .af-split {
     gap: 24px;
   }
-  .af-services-intro {
-    margin-top: 80px !important;
-  }
   .af-story-content {
     gap: 24px;
   }
@@ -670,18 +652,7 @@
     padding: 16px 24px;
     line-height: 19px;
   }
-  .af-services-intro {
-    position: absolute;
-    top: 363px;
-    left: 24px;
-    margin-top: 0 !important;
-  }
-  .af-about .af-services-intro {
-    top: 339px;
-    margin-top: 0 !important;
-  }
   .af-testimonial-grid {
-    height: 306px;
     border-left-width: 17px;
   }
   .af-testimonial {
@@ -722,23 +693,23 @@
   .af-header-contact .af-contact-button {
     padding-block: 15px;
   }
-  .af-section-rails picture,
-  .af-section-rails picture + picture {
+  .af-section-rails .af-rail-position,
+  .af-section-rails .af-rail-position + .af-rail-position {
     top: 0;
   }
   .af-hq .af-artwork {
     height: 556.416px;
   }
-  .af-hq-rails img {
+  .af-hq-rails .af-horizontal-rail {
     position: absolute;
     left: calc(50% - 589.025px);
     top: 337px;
   }
-  .af-hq-rails img:nth-child(2) {
+  .af-hq-rails .af-horizontal-rail:nth-child(2) {
     left: calc(50% + 342.975px);
     top: 335px;
   }
-  .af-hq-rails img:nth-child(3) {
+  .af-hq-rails .af-horizontal-rail:nth-child(3) {
     left: calc(50% + 342.975px);
     top: 495px;
   }
@@ -817,5 +788,29 @@
   .af-lab-ribbon img {
     width: 14px;
     height: 14px;
+  }
+}
+
+.af-floating-rail {
+  overflow: hidden;
+  pointer-events: none;
+}
+@media (max-width: 600px) {
+  .af-section-rails .af-rail-position,
+  .af-section-rails .af-rail-position + .af-rail-position {
+    top: -49px;
+  }
+  .af-section-rails .af-rail-position {
+    left: 8px;
+  }
+  .af-section-rails .af-rail-position + .af-rail-position {
+    left: auto;
+    right: 8px;
+  }
+  .af-section-rails .af-floating-rail {
+    width: 32px;
+  }
+  .af-trust .af-section-rails {
+    display: none;
   }
 }

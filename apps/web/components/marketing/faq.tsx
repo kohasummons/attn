@@ -8,7 +8,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { faqs } from "./content";
+import { siteFaqs } from "@/lib/site-faqs";
 import { asset, Eyebrow, PageContainer } from "./primitives";
 
 const mobileQuery = "(max-width: 600px)";
@@ -32,7 +32,7 @@ export function FrequentlyAskedQuestions() {
           <Eyebrow>FAQs</Eyebrow>
           <h2 id="faq-title">All your questions and more, answered</h2>
           <Image
-            src={asset("faq-desktop-art.png")}
+            src={asset("faq-desktop-art.svg")}
             alt=""
             width={402}
             height={324}
@@ -40,21 +40,17 @@ export function FrequentlyAskedQuestions() {
         </div>
         <Accordion
           className="af-accordion"
-          value={expanded ?? (mobile ? [faqs[0]!.question] : [])}
+          value={expanded ?? (mobile ? [siteFaqs[0]!.question] : [])}
           onValueChange={setExpanded}
         >
-          {faqs.map(({ question, answer }) => (
+          {siteFaqs.map(({ question, answer }) => (
             <AccordionItem key={question} value={question}>
               <AccordionTrigger>
                 <span className="af-desktop-copy">
-                  {question === faqs[0]!.question
-                    ? "What services do you offfer"
-                    : question}
+                  {question}
                 </span>
                 <span className="af-mobile-copy">
-                  {question === faqs[0]!.question
-                    ? "What services do you offfer"
-                    : question}
+                  {question}
                 </span>
                 <span className="af-faq-plus" aria-hidden="true" />
               </AccordionTrigger>

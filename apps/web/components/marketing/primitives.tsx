@@ -1,9 +1,12 @@
 import Image from "next/image";
+import { DitherImage } from "@/components/effects/dither/dither-image";
+import { paintingAssets } from "./artwork-sources";
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { buttonVariants } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { cn } from "@/lib/utils";
+import { ParallaxArtwork } from "./parallax-artwork";
 
 export const asset = (filename: string) => `/redesign/${filename}`;
 
@@ -46,26 +49,46 @@ export function Artwork({
   mobileName,
   className,
   priority = false,
+  sizes = "100vw",
+  blend,
+  tuningGroup,
 }: {
+  tuningGroup?: string;
   name: string;
   mobileName?: string;
   className?: string;
   priority?: boolean;
+  sizes?: string;
+  blend?: "top" | "bottom" | "both";
 }) {
-  return (
+  const painting = paintingAssets[name];
+  const mobilePainting = mobileName ? paintingAssets[mobileName] : undefined;
+  const picture = painting ? (
+    <DitherImage
+      {...painting}
+      tuningGroup={tuningGroup}
+      mobileSrc={
+        mobilePainting?.src !== painting.src ? mobilePainting?.src : undefined
+      }
+      sizes={sizes}
+      priority={priority}
+    />
+  ) : (
+    <picture>
+      {mobileName && (
+        <source media="(max-width: 600px)" srcSet={asset(mobileName)} />
+      )}
+      <Image src={asset(name)} alt="" fill sizes={sizes} priority={priority} />
+    </picture>
+  );
+
+  return blend ? (
+    <ParallaxArtwork className={cn("af-artwork", className)} blend={blend}>
+      {picture}
+    </ParallaxArtwork>
+  ) : (
     <div className={cn("af-artwork", className)} aria-hidden="true">
-      <picture>
-        {mobileName && (
-          <source media="(max-width: 600px)" srcSet={asset(mobileName)} />
-        )}
-        <Image
-          src={asset(name)}
-          alt=""
-          fill
-          sizes="100vw"
-          priority={priority}
-        />
-      </picture>
+      {picture}
     </div>
   );
 }

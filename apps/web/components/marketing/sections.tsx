@@ -1,14 +1,20 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { GUIDE_ENTRIES } from "@/app/v2/playbooks/guides-data";
+import { ArrowUpRight, LockKeyhole } from "lucide-react";
 import { ContactDialog } from "./contact-dialog";
+import { TrustLogos } from "./trust-logos";
+import { CountUp } from "./count-up";
+import { ContinuousTicker } from "./continuous-ticker";
+import { FloatingRail } from "./floating-rail";
+import { HorizontalRail } from "./horizontal-rail";
+import { RedactedProductCard } from "./redacted-product-card";
 import {
   featuredProducts,
   labProducts,
   links,
   services,
   partnerships,
+  testimonials,
   type Product,
 } from "./content";
 import {
@@ -25,34 +31,20 @@ function SectionRails({ trust = false }: { trust?: boolean }) {
       className={`af-section-rails${trust ? " af-section-rails-trust" : ""}`}
       aria-hidden="true"
     >
-      <picture>
-        <source
-          media="(max-width: 600px)"
-          srcSet={asset("trust-decor-left.png")}
-        />
-        <Image
-          src={asset(
-            trust ? "trust-desktop-left.png" : "metrics-desktop-left.png",
-          )}
-          alt=""
-          width={64}
-          height={251}
-        />
-      </picture>
-      <picture>
-        <source
-          media="(max-width: 600px)"
-          srcSet={asset("trust-decor-right.png")}
-        />
-        <Image
-          src={asset(
-            trust ? "trust-desktop-right.png" : "metrics-desktop-right.png",
-          )}
-          alt=""
-          width={64}
-          height={251}
-        />
-      </picture>
+      {(["left", "right"] as const).map((side) => (
+        <span className="af-rail-position" key={side}>
+          <FloatingRail
+            name={`${trust ? "trust" : "metrics"}-${side}`}
+            stopBefore={trust ? ".af-logos" : undefined}
+            className="af-desktop-copy"
+          />
+          <FloatingRail
+            name={`mobile-${side}`}
+            className="af-mobile-only"
+            visibleTop={49}
+          />
+        </span>
+      ))}
     </div>
   );
 }
@@ -61,47 +53,22 @@ export function TrustSection() {
   return (
     <section className="af-trust af-section">
       <SectionRails trust />
-      <Image
+      <FloatingRail
+        name="mobile-left"
+        visibleTop={(73 * 178) / 250}
+        stopBefore=".af-logos"
         className="af-mobile-only af-trust-decor af-trust-decor-left"
-        src={asset("trust-decor-left.png")}
-        alt=""
-        width={32}
-        height={250}
       />
-      <Image
+      <FloatingRail
+        name="mobile-right"
+        visibleTop={(73 * 178) / 250}
+        stopBefore=".af-logos"
         className="af-mobile-only af-trust-decor af-trust-decor-right"
-        src={asset("trust-decor-right.png")}
-        alt=""
-        width={32}
-        height={250}
       />
       <PageContainer>
         <Eyebrow>Trusted by the best</Eyebrow>
         <h2>We are trusted by industry leaders</h2>
-        <Image
-          className="af-mobile-only af-logos-mobile"
-          src={asset("trust-strip-mobile.png")}
-          alt="Red Bull, Google Labs, and recall.ai"
-          width={392}
-          height={112}
-        />
-        <div className="af-logos">
-          {["Relume", "Meta", "Redbull", "Google", "Recall"].map((name) => (
-            <Image
-              key={name}
-              src={asset(`${name.toLowerCase()}-logo.png`)}
-              alt={
-                name === "Google"
-                  ? "Google Labs"
-                  : name === "Recall"
-                    ? "recall.ai"
-                    : name
-              }
-              width={226}
-              height={112}
-            />
-          ))}
-        </div>
+        <TrustLogos />
       </PageContainer>
     </section>
   );
@@ -111,6 +78,7 @@ export function CoursesSection({ mission = false }: { mission?: boolean }) {
   return (
     <section className="af-landscape-section af-section">
       <Artwork
+        blend="both"
         name={mission ? "mission-desktop-bg.png" : "courses-desktop-bg.png"}
         mobileName={mission ? "mission-mobile-bg.png" : "courses-mobile-bg.png"}
       />
@@ -129,17 +97,17 @@ export function CoursesSection({ mission = false }: { mission?: boolean }) {
           </Eyebrow>
           <p className="af-lead">
             {mission
-              ? "Helping people could mean building an app, automating a workflow, using AI better at work, or starting a new career."
-              : "Everything you need to leverage AI starts here at attention factory"}
+              ? "That could mean building an app, automating a workflow, using AI better at work, or starting a new career."
+              : "Learn AI, put it to work, and build with it at the AI University."}
           </p>
         </div>
         <div>
           <h2>
             {mission
               ? "People should leave Attention Factory able to do something they could not do before."
-              : "We have curated all you need to know to stay ahead of the curve in this rapidly changing world of AI"}
+              : "Build practical AI skills through courses, projects, and a community of learners."}
           </h2>
-          <ActionLink href={links.university}>View Our Courses</ActionLink>
+          <ActionLink href={links.university}>View Our Programs</ActionLink>
         </div>
       </PageContainer>
     </section>
@@ -155,10 +123,11 @@ function ProductCard({
 }) {
   return (
     <article className="af-product">
-      <div
-        className="af-product-art"
-        style={{ backgroundImage: `url(${asset(product.backdrop)})` }}
-      >
+      <div className="af-product-art">
+        <Artwork
+          name={product.backdrop}
+          sizes="(max-width: 600px) 90vw, 572px"
+        />
         <div className="af-product-screen">
           <Image
             src={asset(product.image)}
@@ -228,11 +197,7 @@ function ProductCard({
       <div className="af-product-heading">
         <h3>{product.name}</h3>
       </div>
-      <p>
-        {featured
-          ? product.description
-          : "Get instant transcripts for all your videos and some description of the product"}
-      </p>
+      <p>{product.description}</p>
     </article>
   );
 }
@@ -244,7 +209,7 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
     >
       <PageContainer>
         {labs && (
-          <h2 className="af-labs-heading">Our Products and Experimentation</h2>
+          <h2 className="af-labs-heading">Experiments</h2>
         )}
         {!labs && (
           <div className="af-projects-heading">
@@ -260,60 +225,39 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
             labs ? "af-product-grid af-product-grid-three" : "af-product-grid"
           }
         >
-          {(labs ? labProducts : featuredProducts).map((product) => (
-            <ProductCard
-              key={product.name}
-              product={product}
-              featured={!labs}
-            />
-          ))}
+          {(labs ? labProducts : featuredProducts).map((product, index) =>
+            labs && product.name !== "TranscriptX" ? (
+              <RedactedProductCard key={`redacted-${index}`} />
+            ) : (
+              <ProductCard
+                key={product.name}
+                product={product}
+                featured={!labs}
+              />
+            ),
+          )}
           {labs &&
             [1, 2].map((id) => (
-              <article className="af-product af-redacted" key={id}>
-                <div
-                  className="af-product-art"
-                  style={{
-                    backgroundImage: `url(${asset("product-2-desktop-bg.png")})`,
-                  }}
-                >
-                  <div className="af-product-screen">
-                    <Image
-                      src={asset("6bc7a.svg")}
-                      alt="Unreleased project"
-                      fill
-                      sizes="360px"
-                    />
-                  </div>
-                  <Image
-                    unoptimized
-                    className="af-product-lock"
-                    src={asset("product-lock.png")}
-                    alt=""
-                    width={80}
-                    height={80}
-                  />
-                  <span className="af-redacted-label">REDACTED</span>
-                </div>
-                <h3>[Readacted]</h3>
-                <p>[Readacted]</p>
-              </article>
+              <RedactedProductCard key={id} />
             ))}
         </div>
       </PageContainer>
       {!labs && (
         <Link href="/labs" className="af-lab-ribbon">
           <span className="sr-only">Visit Our Lab</span>
-          {Array.from({ length: 12 }, (_, i) => (
-            <span key={i} aria-hidden="true">
-              <Image
-                src={asset("lab-flask.svg")}
-                alt=""
-                width={18}
-                height={18}
-              />{" "}
-              Visit Our Lab <i className="af-ribbon-separator" />
-            </span>
-          ))}
+          <ContinuousTicker>
+            {Array.from({ length: 12 }, (_, i) => (
+              <span key={i} className="af-lab-ribbon-item">
+                <Image
+                  src={asset("lab-flask.svg")}
+                  alt=""
+                  width={18}
+                  height={18}
+                />{" "}
+                Visit Our Lab <i className="af-ribbon-separator" />
+              </span>
+            ))}
+          </ContinuousTicker>
         </Link>
       )}
     </section>
@@ -323,33 +267,16 @@ export function ProjectsSection({ labs = false }: { labs?: boolean }) {
 export function HeadquartersSection() {
   return (
     <section className="af-hq af-section" id="headquarters">
-      <Artwork name="hq-desktop.png" mobileName="hq-mobile.png" />
+      <Artwork name="hq-desktop.svg" mobileName="hq-mobile.svg" />
       <div className="af-desktop-art af-hq-rails" aria-hidden="true">
-        <Image
-          src={asset("hq-decor-left.png")}
-          alt=""
-          width={219}
-          height={16}
-        />
-        <Image
-          src={asset("hq-decor-right-high.png")}
-          alt=""
-          width={219}
-          height={16}
-        />
-        <Image
-          src={asset("hq-decor-right-low.png")}
-          alt=""
-          width={219}
-          height={16}
-        />
+        <HorizontalRail />
+        <HorizontalRail />
+        <HorizontalRail index={2} />
       </div>
-      <Image
+      <HorizontalRail
         className="af-mobile-only af-hq-decor"
-        src={asset("mobile-hq-decor.png")}
-        alt=""
         width={115}
-        height={16}
+        restingX={40}
       />
       <PageContainer>
         <div className="af-split af-split-wide-left">
@@ -358,26 +285,24 @@ export function HeadquartersSection() {
               <span className="af-desktop-copy">
                 Attention Factory University
               </span>
-              <span className="af-mobile-copy">We are always tinkering</span>
+              <span className="af-mobile-copy">Attention Factory University</span>
             </Eyebrow>
             <h2>
-              The power to build is now in your hands, opening 5th October 2026
+              Learn the skills to turn your ideas into working projects.
             </h2>
-            <ActionLink href={links.waitlist}>Join the HQ</ActionLink>
+            <ActionLink href={links.waitlist}>Join AttentionHQ</ActionLink>
           </div>
           <p className="af-lead">
-            At Attention HQ, we provide the best tutorials for you to go out and
-            build anything with AI
+            Explore practical tutorials and projects to help you build with AI
+            at AttentionHQ.
           </p>
         </div>
         <p className="af-hq-note af-lead">
           <span className="af-desktop-copy">
-            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
-            will change the world
+            Join us at the university
           </span>
           <span className="af-mobile-copy">
-            Join us on 5/10/2026 as we being a new cohort of AI Fellows that
-            will change the worldo out and build anything with AI
+            Join us at the university
           </span>
         </p>
       </PageContainer>
@@ -390,14 +315,14 @@ export function ServicesSection({ about = false }: { about?: boolean }) {
   return (
     <section className="af-services af-section" id="services">
       <PageContainer className="af-split">
-        <div>
+        <div className="af-services-summary">
           <Eyebrow>
             {about ? "Work With Us" : "Trainings, workshops and more"}
           </Eyebrow>
           <h2>
             {about
               ? "Here are some ways to partner with us"
-              : "At attention factory provide the best services and trainings for you or your team"}
+              : "Learn with us, train your team, or bring your next project to life."}
           </h2>
           <p className="af-services-intro af-lead">
             {about ? (
@@ -405,12 +330,10 @@ export function ServicesSection({ about = false }: { about?: boolean }) {
             ) : (
               <>
                 <span className="af-desktop-copy">
-                  Join us on 5/10/2026 as we being a new cohort of AI Fellows
-                  that will change the world
+                  Join us at the university
                 </span>
                 <span className="af-mobile-copy">
-                  Join us on 5/10/2026 as we being a new cohort of AI Fellows
-                  that will change the worldo out and build anything with AI
+                  Join us at the university
                 </span>
               </>
             )}
@@ -418,7 +341,6 @@ export function ServicesSection({ about = false }: { about?: boolean }) {
         </div>
         <div
           className="af-services-list"
-          tabIndex={0}
           role="region"
           aria-label={about ? "Ways to partner with us" : "Services"}
         >
@@ -441,9 +363,7 @@ export function ServicesSection({ about = false }: { about?: boolean }) {
                 <p>
                   <span className="af-desktop-copy">{service.description}</span>
                   <span className="af-mobile-copy">
-                    {about
-                      ? service.description
-                      : "Training for you and your team, to get the best of AI knowledge to implement it"}
+                    {service.description}
                   </span>
                 </p>
                 {service.href ? (
@@ -496,26 +416,21 @@ export function TestimonialsSection() {
           <h2>We are spoken of kindly</h2>
         </div>
         <div className="af-testimonial-grid">
-          {[0, 1, 2].map((index) => (
-            <figure
-              className="af-testimonial"
-              key={index}
-              aria-hidden={index > 0 ? true : undefined}
-            >
+          {testimonials.map(({ headline, quote, name, role, cohort }) => (
+            <figure className="af-testimonial" key={name}>
               <blockquote>
-                <h3>“I don’t just talk about AI anymore.”</h3>
-                <p>
-                  Before the bootcamp, I understood AI in theory. I could talk
-                  about it, but I couldn’t actually ship anything. Since then,
-                  I’ve built and launched websites, apps, AI agents, and my own
-                  digital product. I don’t just talk about AI anymore. I build
-                  it and ship it, for myself and for real clients.
-                </p>
+                <h3>“{headline}”</h3>
+                <p>{quote}</p>
               </blockquote>
               <figcaption>
-                <strong>Dapo Ijaola</strong>
+                <strong>{name}</strong>
                 <span>
-                  AI Fellow <i aria-hidden="true" /> Alpha Cohort
+                  {role}
+                  {cohort ? (
+                    <>
+                      <i aria-hidden="true" /> {cohort}
+                    </>
+                  ) : null}
                 </span>
               </figcaption>
             </figure>
@@ -535,61 +450,24 @@ export function ArticlesSection() {
           <h2>We write about the new things in AI</h2>
         </div>
         <div className="af-article-grid">
-          {GUIDE_ENTRIES.slice(0, 3).map((guide, index) => (
-            <article key={guide.slug}>
-              <Link
-                href={`${links.guides}/${guide.slug}`}
-                tabIndex={-1}
-                aria-hidden="true"
-              >
-                <div className="af-article-image">
-                  <picture>
-                    <source
-                      media="(max-width: 600px)"
-                      srcSet={asset(`article-${index + 1}-mobile.png`)}
-                    />
-                    <Image
-                      src={asset(`article-${index + 1}-desktop.png`)}
-                      alt=""
-                      fill
-                      sizes="(max-width: 700px) 90vw, 380px"
-                    />
-                  </picture>
-                </div>
-              </Link>
-              <h3>
-                <span className="af-desktop-copy">AI Roundup For February</span>
-                <span className="af-mobile-copy">AI Roundup For February</span>
-              </h3>
+          {["September", "August", "July"].map((month, index) => (
+            <article key={month}>
+              <div className="af-article-image">
+                <Artwork
+                  name={`article-${index + 1}-desktop.png`}
+                  sizes="(max-width: 600px) 90vw, 380px"
+                />
+              </div>
+              <h3>AI Roundup For {month}</h3>
               <p>
-                <span className="af-desktop-copy">
-                  See what happened in the AI space in this month and how you
-                  can gain leverage with the updates
-                </span>
-                <span className="af-mobile-copy">
-                  See what happened in the AI space in this month and how you
-                  can gain leverage with the updates
-                </span>
+                The {month} AI roundup is not yet available. Check back for
+                updates.
               </p>
-              <Link
-                className="af-text-link"
-                href={`${links.guides}/${guide.slug}`}
-              >
-                Read Now
-                <ArrowUpRight
-                  className="af-desktop-copy"
-                  size={20}
-                  aria-hidden="true"
-                />
-                <Image
-                  className="af-mobile-only"
-                  src={asset("arrow-orange.svg")}
-                  alt=""
-                  width={18}
-                  height={18}
-                />
-                <span className="sr-only">: {guide.title}</span>
-              </Link>
+              <span className="af-text-link af-article-locked">
+                Coming soon
+                <LockKeyhole size={20} aria-hidden="true" />
+                <span className="sr-only"> — locked, not yet available</span>
+              </span>
             </article>
           ))}
         </div>
@@ -601,7 +479,7 @@ export function ArticlesSection() {
 export function StorySection() {
   return (
     <section className="af-story af-section">
-      <Artwork name="story-desktop.png" mobileName="story-mobile.png" />
+      <Artwork name="story-desktop.svg" mobileName="story-mobile.svg" />
       <div className="af-desktop-art af-story-rails" aria-hidden="true">
         <Image
           src={asset("story-decor-vertical.png")}
@@ -620,7 +498,7 @@ export function StorySection() {
         <Eyebrow>Humble beginnings</Eyebrow>
         <h2>
           <span>
-            Attention Factory began with free online content that showed people
+            The AI University began with free online content that showed people
             how to use AI for real work.
           </span>
           <span>
@@ -629,13 +507,12 @@ export function StorySection() {
           </span>
         </h2>
         <p className="af-lead af-story-summary">
-          It started with free content with the purpose of informing and
-          educating.
+          Because the work began online, the audience and client base crossed borders from the start. Some of our earliest clients were in the UK and Canada. Today, we work with learners and organizations across Africa and beyond.
         </p>
         <div className="af-lead af-story-note">
           <p>
-            We now have free masterclasses, Weekends of AI, bootcamps, and
-            Attention University.
+            The learning programs grew to include free masterclasses,
+            Weekends of AI, and intensive bootcamps.
           </p>
           <p>
             Businesses began coming to us with another set of needs: team
@@ -643,7 +520,7 @@ export function StorySection() {
             deciding where AI fits.
           </p>
         </div>
-        <ActionLink href={links.university}>View Our Courses</ActionLink>
+        <ActionLink href={links.university}>View Our Programs</ActionLink>
       </PageContainer>
     </section>
   );
@@ -651,10 +528,10 @@ export function StorySection() {
 
 export function MetricsSection() {
   const metrics = [
-    ["250,000+", "People reached through our educational content."],
-    ["3,200+", "Learners trained through Weekends of AI."],
-    ["160+", "Learners who have completed our intensive bootcamp."],
-  ];
+    [250000, "People reached through our educational content."],
+    [3200, "Learners trained through Weekends of AI."],
+    [160, "Learners who have completed our intensive bootcamp."],
+  ] as const;
   return (
     <section className="af-metrics af-section">
       <SectionRails />
@@ -666,7 +543,9 @@ export function MetricsSection() {
         <dl>
           {metrics.map(([value, description]) => (
             <div key={value}>
-              <dt>{value}</dt>
+              <dt>
+                <CountUp value={value} suffix="+" />
+              </dt>
               <dd>{description}</dd>
             </div>
           ))}
