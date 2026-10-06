@@ -4,6 +4,6 @@ const dayMs = 24 * 60 * 60 * 1000;
 
 export function hqLaunchBadgeText(now: number) {
   const days = Math.ceil((hqLaunchAt - now) / dayMs);
-  if (days <= 0) return "Attention HQ is coming";
+  if (days <= 0) return "AttentionHQ is live";
   return `Attention HQ Opens in ${days} ${days === 1 ? "Day" : "Days"}`;
 }

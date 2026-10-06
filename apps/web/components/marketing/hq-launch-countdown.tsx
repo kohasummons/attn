@@ -5,7 +5,7 @@ import { hqLaunchBadgeText } from "./hq-launch-time";
 
 export function HqLaunchCountdown({ className }: { className: string }) {
   // Keep the server and first client render identical, then use the visitor's clock.
-  const [label, setLabel] = useState("Attention HQ is coming");
+  const [label, setLabel] = useState("AttentionHQ is live");
 
   useEffect(() => {
     const update = () => setLabel(hqLaunchBadgeText(Date.now()));
