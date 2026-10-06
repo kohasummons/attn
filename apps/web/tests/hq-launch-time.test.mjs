@@ -33,10 +33,10 @@ test("the final day is singular and the date never goes negative", () => {
   );
   assert.equal(
     hqLaunchBadgeText(Date.parse("2026-10-04T23:00:00Z")),
-    "Attention HQ is coming",
+    "AttentionHQ is live",
   );
   assert.equal(
     hqLaunchBadgeText(Date.parse("2026-10-06T12:00:00Z")),
-    "Attention HQ is coming",
+    "AttentionHQ is live",
   );
 });
