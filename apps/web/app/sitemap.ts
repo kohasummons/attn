@@ -6,13 +6,8 @@ const pages = [
   "/",
   "/about",
   "/ai-archetype",
-  "/blog",
   "/brand",
-  "/community",
-  "/courses",
   "/free-audit",
-  "/intelligence",
-  "/launch",
   "/privacy-policy",
   "/terms-of-service",
   "/organizations",
@@ -21,7 +16,6 @@ const pages = [
   "/superrad/upgrade",
   "/team",
   "/labs",
-  "/university",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

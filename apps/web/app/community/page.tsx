@@ -12,7 +12,11 @@ import { ArrowButton } from "@/components/ui/arrow-button";
 
 import { LogoMarquee } from "../_components/logo-marquee";
 
-export const metadata = withCanonical("/community");
+// Unlinked draft with placeholder copy, so kept out of search until it's written.
+export const metadata = withCanonical("/community", {
+  title: "Community — Attention Factory",
+  robots: { index: false, follow: true },
+});
 
 export default function CommunityPage() {
   return (

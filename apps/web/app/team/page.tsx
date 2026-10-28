@@ -1,5 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
+import { withCanonical } from "@/lib/site-metadata";
+
+export const metadata = withCanonical("/team", {
+  title: "Team — Attention Factory",
+  description:
+    "Attention Factory is run by humans first, then AI agents. Meet the people working across AI education, media, agentic systems and automation.",
+}, { ownImage: true });
 
 const team = [
   {

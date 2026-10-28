@@ -1,6 +1,6 @@
 export const links = {
   university: "https://app.attentionfactory.io",
-  waitlist: "https://app.attentionfactory.io/attnhq-waitlist",
+  waitlist: "https://university.attentionfactory.io",
   workshops: "https://weekendsofai.com",
   services: "/#top",
   guides: "/playbooks",

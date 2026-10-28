@@ -94,7 +94,7 @@ export function TrustLogos() {
                   {logo && (
                     <Image
                       src={logo.src}
-                      alt=""
+                      alt={brand.showName ? "" : brand.name}
                       loading="eager"
                       width={logo.width}
                       height={logo.height}

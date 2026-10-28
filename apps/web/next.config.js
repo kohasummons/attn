@@ -77,7 +77,10 @@ const nextConfig = {
       ,...legacyPageRedirects.filter((route) => ![
         "/v2/about", "/v2/the-lab", "/v2/contact", "/v2/services/:path*"
       ].includes(route.source)),
-      { source: "/the-lab", destination: "/labs", permanent: false }
+      { source: "/the-lab", destination: "/labs", permanent: false },
+      { source: "/university", destination: "https://university.attentionfactory.io", permanent: true },
+      { source: "/launch", destination: "https://university.attentionfactory.io", permanent: true },
+      { source: "/courses", destination: "https://university.attentionfactory.io", permanent: true }
 ];
   },
   async rewrites() {

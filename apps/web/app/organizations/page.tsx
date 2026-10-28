@@ -12,7 +12,7 @@ export const metadata: Metadata = withCanonical("/organizations", {
   title: "Organization training — Attention Factory",
   description:
     "We train your people to use AI on their actual work, then leave you with systems that hold up after we go.",
-});
+}, { ownImage: true });
 
 const audiences = [
   {

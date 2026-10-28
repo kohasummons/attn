@@ -1,3 +1,4 @@
+import { withCanonical } from "@/lib/site-metadata";
 import type { Metadata } from "next";
 import Link from "next/link";
 
@@ -14,11 +15,11 @@ const photos = [
   { alt: "AttentionHQ", height: 800, src: "/images/attn-hq.png", width: 800 },
 ];
 
-export const metadata: Metadata = {
+export const metadata = withCanonical("/free-audit", {
   title: "free ai audit — attention factory",
   description:
     "we look at how you're using ai right now and tell you what to keep, kill, or start. for leaders, builders & creators.",
-};
+}, { ownImage: true });
 
 export default function FreeAuditPage() {
   return (

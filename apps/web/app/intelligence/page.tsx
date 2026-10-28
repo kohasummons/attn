@@ -13,6 +13,8 @@ import {
 } from "@/components/ui/page-shell";
 
 export const metadata: Metadata = withCanonical("/intelligence", {
+  // Hidden from the menu for now, so kept out of search too.
+  robots: { index: false, follow: true },
   title: "Intelligence — Attention Factory",
   description:
     "Our read on where AI is actually going.",
