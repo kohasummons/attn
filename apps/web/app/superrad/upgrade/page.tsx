@@ -1,3 +1,4 @@
+import { withCanonical } from "@/lib/site-metadata";
 import { LandingConfetti } from "./_components/landing-confetti";
 import { Hero } from "./_components/hero";
 import { Fellows } from "./_components/fellows";
@@ -6,9 +7,9 @@ import { Vip } from "./_components/vip";
 import { Testimonials } from "./_components/testimonials";
 import { UpgradeTable } from "./_components/upgrade-table";
 
-export const metadata = {
+export const metadata = withCanonical("/superrad/upgrade", {
   title: "Upgrade Your Access — The SuperRad Cinematic AI Film Challenge",
-};
+});
 
 export default function SuperradUpgradePage() {
   return (

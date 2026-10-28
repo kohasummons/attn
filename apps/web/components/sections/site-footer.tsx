@@ -11,26 +11,13 @@ const columns: { label: string; items: FooterLink[] }[] = [
   {
     label: "Services",
     items: [
-      { label: "Software development", href: "/services/software-building" },
-      {
-        label: "Workflow automation",
-        href: "/services/workflow-automation",
-      },
-      {
-        label: "AI planning",
-        href: "/services/ai-transformation-planning",
-      },
-      {
-        label: "Ongoing AI support",
-        href: "/services/ai-strategy-support",
-      },
       { label: "Organization training", href: "/organizations" },
     ],
   },
   {
     label: "University",
     items: [
-      { label: "Courses", href: "/courses" },
+      { label: "AI University", href: "https://university.attentionfactory.io" },
       { label: "Membership", href: `${APP_URL}/membership` },
       { label: "Weekends of AI", href: WOA_URL },
     ],

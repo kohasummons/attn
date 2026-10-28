@@ -48,7 +48,7 @@ const goga = localFont({
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title: "Attention Factory | Your AI Partner",
+  title: "Attention Factory — Your AI Partner",
   description:
     "For people who would rather leverage AI than talk about leveraging AI.",
   authors: [
@@ -58,12 +58,24 @@ export const metadata = {
   creator: "Joshua Omobola",
   publisher: "Joshua Omobola",
   openGraph: {
-    title: "Attention Factory | Your AI Partner",
+    title: "Attention Factory — Your AI Partner",
     description:
       "For people who would rather leverage AI than talk about leveraging AI.",
     url: SITE_URL,
     siteName: "Attention Factory",
   },
+};
+
+const organizationJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "Attention Factory",
+  url: SITE_URL,
+  logo: `${SITE_URL}/opengraph-image.jpg`,
+  sameAs: [
+    "https://university.attentionfactory.io",
+    "https://instagram.com/mercythaddeus_",
+  ],
 };
 
 export default function RootLayout({
@@ -76,6 +88,10 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${googleSansCode.variable} ${goga.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+        />
         <Providers>{children}</Providers>
       </body>
     </html>

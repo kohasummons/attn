@@ -48,7 +48,7 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
           <>
             <a
               className="af-launch-badge"
-              href="https://academy.attentionfactory.io/ai-university"
+              href="https://university.attentionfactory.io"
             >
               <Building2
                 className="af-desktop-copy"

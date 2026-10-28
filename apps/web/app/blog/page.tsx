@@ -7,6 +7,8 @@ import { Container } from "@/components/ui/container";
 import { PageHero, Section, SectionHeading } from "@/components/ui/page-shell";
 
 export const metadata: Metadata = withCanonical("/blog", {
+  // Hidden from the menu for now, so kept out of search too.
+  robots: { index: false, follow: true },
   title: "Blog — Attention Factory",
   description:
     "Field notes on putting AI to work: what shipped, what broke, and what it cost. Written by the people who did the build.",

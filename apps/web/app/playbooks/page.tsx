@@ -13,7 +13,7 @@ export const metadata: Metadata = withCanonical("/playbooks", {
   title: "Playbooks, guides and tools — Attention Factory",
   description:
     "We turn the methods we teach, test, and use in our own work into free guides you can follow on your own. Choose the task in front of you and start there.",
-});
+}, { ownImage: true });
 
 export default function PlaybooksPage() {
   return (

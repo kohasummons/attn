@@ -10,6 +10,13 @@ import { Pricing } from "./_components/pricing";
 import { Faq } from "./_components/faq";
 import { ClosingCta } from "./_components/closing-cta";
 import { Footer } from "./_components/footer";
+import { withCanonical } from "@/lib/site-metadata";
+
+export const metadata = withCanonical("/superrad", {
+  title: "The SuperRad Challenge — Learn Cinematic AI Film Making in 3 Days",
+  description:
+    "Master cinematic AI generation in 3 days. Direct AI films good enough to win contests and land paid brand work.",
+}, { ownImage: true });
 
 export default function SuperradPage() {
   return (
