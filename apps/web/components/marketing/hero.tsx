@@ -12,6 +12,7 @@ export function Hero({ page = "home" }: { page?: "home" | "about" | "labs" }) {
     <section className={`af-hero${labs ? " af-hero-compact" : ""}`}>
       <Artwork
         tuningGroup="hero"
+        colorOnHover={page === "home" ? ".af-hero-content .af-button" : undefined}
         blend="bottom"
         name={
           page === "home"

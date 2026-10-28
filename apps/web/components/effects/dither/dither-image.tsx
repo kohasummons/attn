@@ -4,7 +4,11 @@ import Image, { getImageProps } from "next/image";
 import { useEffect, useRef, type CSSProperties } from "react";
 import type { DitherHandle, DitherOptions } from "./dither-types";
 import { useDitherTuning } from "./dither-tuning-context";
-import { ditherSiteDefaults, originalImageColors } from "./dither-defaults";
+import {
+  ditherGroupPresets,
+  ditherSiteDefaults,
+  originalImageColors,
+} from "./dither-defaults";
 import "./dither.css";
 
 export type DitherImageProps = DitherOptions & {
@@ -15,6 +19,8 @@ export type DitherImageProps = DitherOptions & {
   sizes?: string;
   priority?: boolean;
   className?: string;
+  /** Selector, inside the same section, whose hover or focus brings back full color. */
+  colorOnHover?: string;
 };
 
 export function DitherImage(props: DitherImageProps) {
@@ -31,8 +37,10 @@ export function DitherImage(props: DitherImageProps) {
     <DitherImageView
       {...props}
       {...ditherSiteDefaults}
+      {...(props.tuningGroup ? ditherGroupPresets[props.tuningGroup] : undefined)}
       {...imageColors}
       {...tuning?.options}
+      {...(props.colorOnHover ? { saturation: 0 } : {})}
     />
   );
 }
@@ -54,6 +62,7 @@ function DitherImageView({
   animated,
   animationDuration,
   animationAmount,
+  colorOnHover,
 }: DitherImageProps & Required<DitherOptions>) {
   const element = useRef<HTMLSpanElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
@@ -128,6 +137,40 @@ function DitherImageView({
       handle.current = null;
     };
   }, [src, mobileSrc]);
+
+  useEffect(() => {
+    const trigger = colorOnHover
+      ? element.current?.closest("section")?.querySelector<HTMLElement>(colorOnHover)
+      : null;
+    if (!trigger) return;
+    let frame = 0;
+    let current = saturation;
+    const fadeTo = (target: number) => {
+      cancelAnimationFrame(frame);
+      const from = current;
+      const start = performance.now();
+      const step = (now: number) => {
+        const t = Math.min((now - start) / 500, 1);
+        current = from + (target - from) * (1 - (1 - t) ** 3);
+        handle.current?.update({ ...options.current, saturation: current });
+        if (t < 1) frame = requestAnimationFrame(step);
+      };
+      frame = requestAnimationFrame(step);
+    };
+    const enter = () => fadeTo(1);
+    const leave = () => fadeTo(saturation);
+    const events = [
+      ["pointerenter", enter],
+      ["focus", enter],
+      ["pointerleave", leave],
+      ["blur", leave],
+    ] as const;
+    for (const [name, fn] of events) trigger.addEventListener(name, fn);
+    return () => {
+      cancelAnimationFrame(frame);
+      for (const [name, fn] of events) trigger.removeEventListener(name, fn);
+    };
+  }, [colorOnHover, saturation]);
 
   const mobileImage = mobileSrc
     ? getImageProps({ src: mobileSrc, alt, fill: true, sizes, quality: 90 })
