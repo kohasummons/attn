@@ -158,7 +158,8 @@
     margin-bottom: 24px;
   }
   .af-projects-heading h2 {
-    line-height: 42px;
+    font-size: 32px;
+    line-height: 40px;
   }
   .af-product-grid {
     gap: 24px 16px;
@@ -526,7 +527,7 @@
   .af-footer-columns {
     gap: 40px;
   }
-  .af-site .af-footer-columns h2 {
+  .af-site .af-footer-columns .af-footer-heading {
     font-size: 16px;
     line-height: 20px;
     white-space: nowrap;

@@ -40,7 +40,6 @@ export function EventSection() {
         <h2 id="event-title">
           Join us every weekend to learn a new concept in AI
         </h2>
-        <ActionLink href={links.workshops}>Register Now</ActionLink>
         <div
           className="af-countdown"
           role="timer"
@@ -79,6 +78,7 @@ export function EventSection() {
         <p className="af-countdown-caption">
           Countdown to the next Weekend of AI
         </p>
+        <ActionLink href={links.workshops}>Register Now</ActionLink>
         <p className="af-event-date">
           {session ? dateFormat.format(session) : "Every Saturday"} · 6 p.m. WAT
           · Free, live training

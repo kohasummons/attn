@@ -122,12 +122,6 @@ export function SiteFooter() {
         </picture>
       </PageContainer>
       <div className="af-footer-body">
-        <Artwork
-          blend="top"
-          name="footer-desktop-bg.png"
-          mobileName="footer-mobile-bg.png"
-        />
-        <div className="af-footer-fade" aria-hidden="true" />
         <PageContainer>
           <div className="af-footer-top">
             <div className="af-footer-brand">
@@ -147,7 +141,7 @@ export function SiteFooter() {
             <div className="af-footer-columns">
               {columns.map((column) => (
                 <div key={column.title}>
-                  <h2>{column.title}</h2>
+                  <p className="af-footer-heading">{column.title}</p>
                   <ul>
                     {column.items.map(([label, href]) => (
                       <li key={label}>

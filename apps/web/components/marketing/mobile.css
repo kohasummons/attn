@@ -596,11 +596,11 @@
     grid-area: status;
     margin: 0;
   }
-  .af-mobile-layout .af-footer-columns h2 {
+  .af-mobile-layout .af-footer-columns .af-footer-heading {
     font-size: 18px;
     line-height: 23px;
   }
-  .af-mobile-layout .af-footer-columns h2::before {
+  .af-mobile-layout .af-footer-columns .af-footer-heading::before {
     width: 10px;
     height: 10px;
   }
@@ -648,7 +648,7 @@
   .af-mobile-layout .af-footer-columns {
     column-gap: 24px;
   }
-  .af-mobile-layout .af-footer-columns h2 {
+  .af-mobile-layout .af-footer-columns .af-footer-heading {
     font-size: 14px;
   }
 

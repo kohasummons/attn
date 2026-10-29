@@ -18,6 +18,13 @@ const inter = Inter({
   display: "swap",
 });
 
+// The marketing styles alias --font-inter to Inter Display, so the text cut gets its own name.
+const interText = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter-text",
+  display: "swap",
+});
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -86,7 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.variable} ${googleSansCode.variable} ${goga.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${inter.variable} ${interText.variable} ${googleSansCode.variable} ${goga.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <script
           type="application/ld+json"

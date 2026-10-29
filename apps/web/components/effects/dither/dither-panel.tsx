@@ -3,16 +3,17 @@
 import { useEffect } from "react";
 import { useDialKitController, type DialConfig } from "dialkit";
 import type { DitherTuningValues } from "./dither-tuning-context";
-import { ditherSiteDefaults } from "./dither-defaults";
+import { ditherGroups, ditherSiteDefaults } from "./dither-defaults";
 
 const controls = {
   applyTo: {
     type: "select",
     options: [
+      { value: "off", label: "Off (saved settings)" },
       { value: "all", label: "All images" },
-      { value: "hero", label: "Hero images only" },
+      ...ditherGroups,
     ],
-    default: "all",
+    default: "off",
   },
   effect: {
     strength: [ditherSiteDefaults.strength, 0, 1, 0.01],
@@ -41,7 +42,7 @@ export default function DitherPanel({
   onChange: (values: DitherTuningValues) => void;
 }) {
   const dial = useDialKitController("Image dithering", controls, {
-    id: "attention-factory-dither-v2",
+    id: "attention-factory-dither-v4",
     persist: true,
     onAction: (action) => {
       if (action === "reset") dial.resetValues();
