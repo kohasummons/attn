@@ -52,8 +52,10 @@ export function Artwork({
   sizes = "100vw",
   blend,
   tuningGroup,
+  colorOnHover,
 }: {
   tuningGroup?: string;
+  colorOnHover?: string;
   name: string;
   mobileName?: string;
   className?: string;
@@ -66,7 +68,8 @@ export function Artwork({
   const picture = painting ? (
     <DitherImage
       {...painting}
-      tuningGroup={tuningGroup}
+      tuningGroup={tuningGroup ?? name.split("-")[0]}
+      colorOnHover={colorOnHover}
       mobileSrc={
         mobilePainting?.src !== painting.src ? mobilePainting?.src : undefined
       }

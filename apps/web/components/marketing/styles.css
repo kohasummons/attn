@@ -413,7 +413,7 @@
   padding-bottom: 0;
 }
 .af-projects-heading {
-  max-width: 661px;
+  max-width: 860px;
   margin-bottom: 32px;
 }
 .af-lab-projects {
@@ -941,7 +941,7 @@
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 40px;
 }
-.af-site .af-footer-columns h2 {
+.af-site .af-footer-columns .af-footer-heading {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -952,7 +952,7 @@
   letter-spacing: 0.1em;
   margin-bottom: 16px;
 }
-.af-footer-columns h2::before {
+.af-footer-columns .af-footer-heading::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -1504,7 +1504,7 @@
   .af-footer-body {
     padding-top: 24px;
   }
-  .af-site .af-footer-columns h2 {
+  .af-site .af-footer-columns .af-footer-heading {
     font-size: clamp(13px, 4.1vw, 18px);
   }
   .af-footer-bottom {
@@ -1641,3 +1641,108 @@
 
 /* Temporary service destinations return immediately to the homepage top. */
 html:has(#top:target) { scroll-behavior: auto; }
+
+/* Breathing room between sections on the marketing pages. */
+.af-site:is(.af-home, .af-about, .af-labs) #main > * {
+  padding-block: 64px;
+}
+@media (min-width: 1024px) {
+  .af-site:is(.af-home, .af-about, .af-labs) #main > * {
+    padding-block: 96px;
+  }
+}
+
+/*
+ * Type follows the Frosted UI scale (size/line-height pairs 16/24, 18/26,
+ * 20/28, 24/30, 28/34, 32/38, 40/48) in Inter. Headings keep 600; running
+ * text drops to 400 so weight separates them. Mono labels are left as is.
+ */
+.af-site.af-site :is(h1, h2, h3, p, a, button, span, li, summary):not(.af-eyebrow, .af-eyebrow *, .af-footer-heading, .af-countdown-caption, .af-countdown-caption *) {
+  font-family: var(--font-inter-text), sans-serif;
+}
+.af-site.af-site h1 {
+  line-height: 1.1;
+}
+.af-site.af-site #main h2 {
+  font-size: 40px;
+  line-height: 48px;
+}
+.af-site.af-site #main h3 {
+  font-size: 24px;
+  line-height: 30px;
+}
+.af-site.af-site .af-lead,
+.af-site.af-site .af-lead span {
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: 500;
+}
+.af-site.af-site #main p:not(.af-lead, .af-eyebrow, .af-countdown-caption, .af-event-date, .sr-only) {
+  font-weight: 400;
+}
+.af-site.af-site .af-product p {
+  font-size: 18px;
+  line-height: 26px;
+}
+.af-site.af-site .af-services p:not(.af-eyebrow),
+.af-site.af-site .af-services p:not(.af-eyebrow) span {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 400;
+}
+.af-site.af-site .af-testimonials p:not(.af-eyebrow) {
+  font-size: 16px;
+  line-height: 24px;
+}
+.af-site.af-site .af-faq button,
+.af-site.af-site .af-faq button span {
+  font-size: 20px;
+  line-height: 28px;
+}
+.af-site.af-site .af-faq [role="region"] p,
+.af-site.af-site .af-faq p:not(.af-eyebrow) {
+  font-size: 16px;
+  line-height: 24px;
+}
+.af-site.af-site :is(.af-footer-brand, .af-agent-content) p {
+  font-size: 20px;
+  line-height: 28px;
+}
+@media (max-width: 767px) {
+  .af-site.af-site #main h2 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+  .af-site.af-site .af-lead,
+  .af-site.af-site .af-lead span {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+/* Hero subline: Frosted 28/34 at medium weight, so it sits below the headline. */
+.af-site.af-site .af-hero-content > p {
+  font-weight: 500;
+}
+@media (min-width: 768px) {
+  .af-site.af-site .af-hero-content > p {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+
+.af-site.af-site #main .af-projects-heading h2 {
+  font-size: 32px;
+  line-height: 40px;
+}
+@media (max-width: 767px) {
+  .af-site.af-site #main .af-projects-heading h2 {
+    font-size: 28px;
+    line-height: 34px;
+  }
+}
+.af-site .af-footer-body,
+.af-site.af-mobile-layout .af-footer-body {
+  min-height: 0;
+  padding-bottom: 64px;
+}
