@@ -84,7 +84,10 @@ const nextConfig = {
 ];
   },
   async rewrites() {
-    return legacyAssetRewrites;
+    return [
+      { source: "/studios", destination: "/studios/index.html" },
+      ...legacyAssetRewrites,
+    ];
   },
   images: {
     qualities: [75, 90],
