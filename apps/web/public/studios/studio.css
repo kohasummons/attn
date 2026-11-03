@@ -7,3 +7,5 @@ html{scroll-behavior:smooth;scroll-padding-top:25px}.studio-video-grid{width:100
 .studio-nav a{white-space:nowrap}.studio-nav a:last-child{max-width:none}.studio-nav{min-height:58px}.studio-nav a[aria-label="Start Your Film"]{white-space:nowrap}@media(max-width:700px){.studio-nav{min-height:51px;gap:18px}.studio-nav a:last-child{max-width:none}}
 /* Actual film artwork is visible before the embedded player loads. */
 .featured-player{background:#ece9e2}.featured-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}.featured-play{z-index:2;background:linear-gradient(transparent 35%,rgba(0,0,0,.13) 70%,rgba(0,0,0,.2))}.featured-player.is-playing .featured-poster{display:none}.featured-player.is-playing iframe{z-index:3}.featured-play:before{filter:drop-shadow(0 2px 5px #0009)}.featured-play span{text-shadow:0 1px 5px #000}
+
+#brief-status .brief-next{display:inline-block;margin-top:14px;background:#1a0000;color:#fff;border-radius:30px;padding:14px 24px;font-weight:700}

@@ -86,6 +86,7 @@ const nextConfig = {
   async rewrites() {
     return [
       { source: "/studios", destination: "/studios/index.html" },
+      { source: "/studios/brief", destination: "/studios/brief/index.html" },
       ...legacyAssetRewrites,
     ];
   },
