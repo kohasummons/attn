@@ -4,6 +4,9 @@ import { legacyPageRedirects, legacyAssetRewrites } from "./route-migration.mjs"
 const nextConfig = {
   async redirects() {
     return [
+      { source: "/studio", destination: "/studios", permanent: false },
+      { source: "/studio/brief", destination: "/studios/brief", permanent: false },
+      { source: "/studio/:path*", destination: "/studios/brief", permanent: false },
       {
             "source": "/legal/privacy-policy",
             "destination": "/privacy-policy",
