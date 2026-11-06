@@ -83,7 +83,14 @@ const nextConfig = {
       { source: "/the-lab", destination: "/labs", permanent: false },
       { source: "/university", destination: "https://university.attentionfactory.io", permanent: true },
       { source: "/launch", destination: "https://university.attentionfactory.io", permanent: true },
-      { source: "/courses", destination: "https://university.attentionfactory.io", permanent: true }
+      { source: "/courses", destination: "https://university.attentionfactory.io", permanent: true },
+      // X post still points here. Canonical guide is the published AttentionHQ page.
+      {
+        source: "/playbooks/edit-videos-with-claude",
+        destination:
+          "https://app.attentionfactory.io/guides/40-claude-commands-to-edit-better-videos",
+        permanent: true,
+      },
 ];
   },
   async rewrites() {

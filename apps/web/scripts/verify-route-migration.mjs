@@ -105,12 +105,41 @@ const extraRedirects = [
   ["/guide/how-to-set-up-claude", "/playbooks/how-to-set-up-claude", 307],
   ["/v2/privacy-policy", "/legal/privacy-policy", 308],
   ["/v2/terms-of-service", "/legal/terms-of-service", 308],
+  [
+    "/v2/playbooks/edit-videos-with-claude",
+    "/playbooks/edit-videos-with-claude",
+    308,
+  ],
+];
+const externalRedirects = [
+  [
+    "/playbooks/edit-videos-with-claude",
+    "https://app.attentionfactory.io/guides/40-claude-commands-to-edit-better-videos",
+    308,
+  ],
 ];
 for (const [old, path, status] of extraRedirects) {
   await check(`Compatibility ${old}`, async () => {
     const r = await request(old);
     assert.equal(r.status, status);
     assert.equal(new URL(r.headers.get("location"), base).pathname, path);
+  });
+}
+for (const [old, destination, status] of externalRedirects) {
+  await check(`External ${old}`, async () => {
+    const r = await request(`${old}?utm_source=x&ref=shared`);
+    assert.equal(r.status, status);
+    const location = new URL(r.headers.get("location"), base);
+    const expected = new URL(destination);
+    assert.equal(location.origin, expected.origin);
+    assert.equal(location.pathname, expected.pathname);
+    assert.equal(location.searchParams.get("utm_source"), "x");
+    assert.equal(location.searchParams.get("ref"), "shared");
+  });
+  await check(`Trailing slash ${old}`, async () => {
+    const r = await request(`${old}/`);
+    assert.equal(r.status, 308);
+    assert.equal(new URL(r.headers.get("location"), base).pathname, old);
   });
 }
 await check("Archive indexing", async () => {
@@ -133,6 +162,7 @@ await check("Sitemap", async () => {
     ),
   );
   assert.equal(new Set(urls).size, urls.length);
+  assert.ok(!urls.includes("/playbooks/edit-videos-with-claude"));
   for (const { path } of fixture.pages)
     if (path !== "/v1") assert.ok(urls.includes(path), `missing ${path}`);
 });
