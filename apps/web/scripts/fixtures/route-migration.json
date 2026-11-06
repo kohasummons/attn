@@ -184,11 +184,6 @@
       "headings": ["Make your AI stop writing like an AI"]
     },
     {
-      "old": "/v2/playbooks/edit-videos-with-claude",
-      "path": "/playbooks/edit-videos-with-claude",
-      "headings": ["Edit your videos with Claude"]
-    },
-    {
       "old": "/v2/playbooks/transcriptx-claude-setup",
       "path": "/playbooks/transcriptx-claude-setup",
       "headings": ["Get any video's transcript directly inside Claude"]

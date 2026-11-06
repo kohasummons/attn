@@ -25,7 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly" as const,
       priority: path === "/" ? 1 : 0.6,
     })),
-    ...GUIDE_ENTRIES.map((guide) => ({
+    // This slug 308s to the AttentionHQ guide, so it is not a local URL.
+    ...GUIDE_ENTRIES.filter(
+      (guide) => guide.slug !== "edit-videos-with-claude",
+    ).map((guide) => ({
       url: `${SITE_URL}/playbooks/${guide.slug}`,
       lastModified: new Date(guide.publishedAt),
       changeFrequency: "monthly" as const,
