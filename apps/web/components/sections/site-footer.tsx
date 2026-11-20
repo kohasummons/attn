@@ -27,7 +27,7 @@ const columns: { label: string; items: FooterLink[] }[] = [
     items: [
       // Temporarily hidden — routes still exist, just off the menu.
       // { label: "Blog", href: "/blog" },
-      { label: "Playbooks, guides and tools", href: "/playbooks" },
+      { label: "Playbooks, guides and tools", href: "https://app.attentionfactory.io/guides" },
       {
         label: "AI archetype",
         href: "https://ai-archetype-pied.vercel.app/",

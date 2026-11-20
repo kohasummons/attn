@@ -71,7 +71,7 @@ const resourcesMenu: MenuItem[] = [
   {
     title: "Playbooks, guides and tools",
     description: "Practical resources for putting AI to work.",
-    href: "/playbooks",
+    href: "https://app.attentionfactory.io/guides",
   },
   {
     title: "AI archetype",

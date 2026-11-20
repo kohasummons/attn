@@ -91,6 +91,48 @@ const nextConfig = {
           "https://app.attentionfactory.io/guides/40-claude-commands-to-edit-better-videos",
         permanent: true,
       },
+      // The playbooks page is retired. Old guide URLs go to the matching
+      // AttentionHQ guide; anything without a match goes to the guides index.
+      {
+        source: "/playbooks/how-to-set-up-claude",
+        destination: "https://app.attentionfactory.io/guides/how-to-set-up-claude-the-right-way",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/claude-5-step-beginner",
+        destination: "https://app.attentionfactory.io/guides/how-to-set-up-claude-the-right-way",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/remotion-claude-code-video-editing",
+        destination: "https://app.attentionfactory.io/guides/edit-your-videos-with-claude-and-remotion",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/five-claude-connectors",
+        destination: "https://app.attentionfactory.io/guides/5-claude-connectors-that-make-you-unbeatable",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/connect-claude-to-socials",
+        destination: "https://app.attentionfactory.io/guides/how-to-connect-your-social-media-accounts-to-claude",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/claude-council-pressure-test-decisions",
+        destination: "https://app.attentionfactory.io/guides/build-your-own-board-of-ai-mentors",
+        permanent: true,
+      },
+      {
+        source: "/playbooks",
+        destination: "https://app.attentionfactory.io/guides",
+        permanent: true,
+      },
+      {
+        source: "/playbooks/:path*",
+        destination: "https://app.attentionfactory.io/guides",
+        permanent: true,
+      },
 ];
   },
   async rewrites() {

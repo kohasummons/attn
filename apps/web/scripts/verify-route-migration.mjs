@@ -168,7 +168,6 @@ await check("Sitemap", async () => {
 });
 for (const path of [
   "/services/not-a-real-service",
-  "/playbooks/not-a-real-guide",
   "/v2/does-not-exist",
 ]) {
   await check(`Missing route ${path}`, async () =>

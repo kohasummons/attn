@@ -3,7 +3,7 @@ export const links = {
   waitlist: "https://university.attentionfactory.io",
   workshops: "https://weekendsofai.com",
   services: "/#top",
-  guides: "/playbooks",
+  guides: "https://app.attentionfactory.io/guides",
 };
 
 export const services = [
