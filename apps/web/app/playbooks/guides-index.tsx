@@ -1,17 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import { cn } from "@/lib/utils";
 
-import {
-  GUIDE_ENTRIES,
-  GUIDE_TOOLS,
-  GUIDE_TOPICS,
-  guideMatchesFilter,
-  guideMatchesSearch,
-} from "./guides-data";
+import { GUIDE_TOOL_FILTERS, type LiveGuide, guideTools, guideUrl } from "./live-guides";
 
 type Pill = { id: string; label: string };
 
@@ -25,31 +18,38 @@ function formatDate(iso: string) {
   return Number.isNaN(d.getTime()) ? "" : dateFmt.format(d);
 }
 
-export function GuidesIndex() {
+export function GuidesIndex({ guides }: { guides: LiveGuide[] }) {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
 
-  const { topicPills, toolPills } = useMemo(() => {
-    const usedTopics = new Set(GUIDE_ENTRIES.map((e) => e.topic));
-    const usedTools = new Set(GUIDE_ENTRIES.flatMap((e) => e.tools));
-    return {
-      topicPills: GUIDE_TOPICS.filter(
-        (t) => t.id !== "all" && usedTopics.has(t.id),
-      ).map((t) => ({ id: `topic:${t.id}`, label: t.label }) as Pill),
-      toolPills: GUIDE_TOOLS.filter(
-        (t) => t.id !== "all" && usedTools.has(t.id),
-      ).map((t) => ({ id: `tool:${t.id}`, label: t.label }) as Pill),
-    };
-  }, []);
+  const entries = useMemo(
+    () => guides.map((g) => ({ ...g, tools: guideTools(g) })),
+    [guides],
+  );
+
+  const toolPills = useMemo(() => {
+    const used = new Set(entries.flatMap((e) => e.tools));
+    return GUIDE_TOOL_FILTERS.filter((t) => used.has(t.label)).map(
+      (t) => ({ id: t.label, label: t.label }) as Pill,
+    );
+  }, [entries]);
 
   const filtered = useMemo(() => {
-    return GUIDE_ENTRIES.filter(
-      (e) => guideMatchesFilter(e, filter) && guideMatchesSearch(e, search),
-    ).sort(
-      (a, b) =>
-        new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-    );
-  }, [filter, search]);
+    const q = search.trim().toLowerCase();
+    return entries
+      .filter(
+        (e) =>
+          (filter === "all" || e.tools.includes(filter)) &&
+          (!q ||
+            e.title.toLowerCase().includes(q) ||
+            e.summary.toLowerCase().includes(q)),
+      )
+      .sort(
+        (a, b) =>
+          new Date(b.publishedAt).getTime() -
+          new Date(a.publishedAt).getTime(),
+      );
+  }, [entries, filter, search]);
 
   return (
     <div>
@@ -62,7 +62,7 @@ export function GuidesIndex() {
               active={filter === "all"}
               onClick={() => setFilter("all")}
             />
-            {topicPills.map((p) => (
+            {toolPills.map((p) => (
               <FilterPill
                 key={p.id}
                 pill={p}
@@ -82,16 +82,6 @@ export function GuidesIndex() {
           />
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          {toolPills.map((p) => (
-            <FilterPill
-              key={p.id}
-              pill={p}
-              active={filter === p.id}
-              onClick={() => setFilter(p.id)}
-            />
-          ))}
-        </div>
       </div>
 
       <p className="mt-6 text-[14px] tracking-[-0.02em] text-[#8a8a86]">
@@ -105,14 +95,14 @@ export function GuidesIndex() {
       ) : (
         <div className="mt-6 grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
           {filtered.map((entry) => (
-            <Link
+            <a
               key={entry.slug}
-              href={`/playbooks/${entry.slug}`}
+              href={guideUrl(entry.slug)}
               className="group flex flex-col border border-[#e4e3de] bg-white p-8 transition-colors duration-300 hover:bg-[#f9f9f9] md:p-10"
             >
               <div className="flex items-baseline justify-between gap-4">
                 <p className="text-[11px] font-medium tracking-[0.14em] text-[#8a8a86] uppercase">
-                  {entry.category}
+                  Guide
                 </p>
                 <span className="text-[13px] tracking-[-0.02em] text-[#c4c4c0]">
                   {formatDate(entry.publishedAt)}
@@ -123,7 +113,7 @@ export function GuidesIndex() {
                 {entry.title}
               </h3>
               <p className="mt-4 flex-1 text-[15px] leading-[1.5] tracking-[-0.02em] text-[#5a5a5a]">
-                {entry.excerpt}
+                {entry.summary}
               </p>
 
               <div className="mt-6 flex flex-wrap gap-1.5">
@@ -136,7 +126,7 @@ export function GuidesIndex() {
                   </span>
                 ))}
               </div>
-            </Link>
+            </a>
           ))}
         </div>
       )}

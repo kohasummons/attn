@@ -8,6 +8,10 @@ import { Container } from "@/components/ui/container";
 import { ButtonLink, PageHero, Section } from "@/components/ui/page-shell";
 
 import { GuidesIndex } from "./guides-index";
+import { fetchLiveGuides } from "./live-guides";
+
+// Re-read the AttentionHQ guides feed at most once an hour.
+export const revalidate = 3600;
 
 export const metadata: Metadata = withCanonical("/playbooks", {
   title: "Playbooks, guides and tools — Attention Factory",
@@ -15,7 +19,9 @@ export const metadata: Metadata = withCanonical("/playbooks", {
     "We turn the methods we teach, test, and use in our own work into free guides you can follow on your own. Choose the task in front of you and start there.",
 }, { ownImage: true });
 
-export default function PlaybooksPage() {
+export default async function PlaybooksPage() {
+  const guides = await fetchLiveGuides();
+
   return (
     <>
       <SiteHeader />
@@ -43,7 +49,7 @@ export default function PlaybooksPage() {
               </p>
             </div>
             <div className="mt-14">
-              <GuidesIndex />
+              <GuidesIndex guides={guides} />
             </div>
           </Container>
         </Section>
