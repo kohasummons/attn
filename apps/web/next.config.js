@@ -136,11 +136,19 @@ const nextConfig = {
 ];
   },
   async rewrites() {
-    return [
-      { source: "/studios", destination: "/studios/index.html" },
-      { source: "/studios/brief", destination: "/studios/brief/index.html" },
-      ...legacyAssetRewrites,
-    ];
+    // studios.attentionfactory.io shows the Studio page at its root.
+    const studiosHost = [{ type: "host", value: "studios.attentionfactory.io" }];
+    return {
+      beforeFiles: [
+        { source: "/", has: studiosHost, destination: "/studios/index.html" },
+        { source: "/brief", has: studiosHost, destination: "/studios/brief/index.html" },
+      ],
+      afterFiles: [
+        { source: "/studios", destination: "/studios/index.html" },
+        { source: "/studios/brief", destination: "/studios/brief/index.html" },
+        ...legacyAssetRewrites,
+      ],
+    };
   },
   images: {
     qualities: [75, 90],
