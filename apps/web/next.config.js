@@ -136,8 +136,8 @@ const nextConfig = {
 ];
   },
   async rewrites() {
-    // studios.attentionfactory.io shows the Studio page at its root.
-    const studiosHost = [{ type: "host", value: "studios.attentionfactory.io" }];
+    // studio.attentionfactory.io and studios.attentionfactory.io show the Studio page at their root.
+    const studiosHost = [{ type: "host", value: "studios?\\.attentionfactory\\.io" }];
     return {
       beforeFiles: [
         { source: "/", has: studiosHost, destination: "/studios/index.html" },
